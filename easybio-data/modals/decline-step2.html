@@ -1,0 +1,50 @@
+<div class="modal fade" id="declineStepSecond" tabindex='-1'>
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<a data-dismiss="modal" class="popup-close" onclick="if($('#fullUserBiodata').hasClass('in')){ setTimeout(function(){ $('#fullUserBiodata').modal('show'); },350); }" href="javascript:void(0);"></a>
+			<div class="modal-body">
+
+				<div class="modal-Cuswindow left-border declineStepTwo">
+					<h2>Please select from the options below to help us provide you with better matches. Why did you decline the candidate?</h2>
+					<ul class="decline-option">
+						<!--<li ng-repeat="declineItem in items">
+							<input type="checkbox" checked="checked" id="decline1"/>
+							<label for="decline1" ng-click="selected.declineItem= declineItem">{{ declineItem }}</label>
+						</li>-->
+						<li>
+							<input type="checkbox" checked="checked" id="decline1" />
+							<label for="decline1">Not Attractive</label>
+						</li>
+						<li>
+							<input type="checkbox" id="decline2" />
+							<label for="decline2">Education</label>
+						</li>
+						<li>
+							<input type="checkbox" id="decline3" />
+							<label for="decline3">Wrong caste</label>
+						</li>
+						<li>
+							<input type="checkbox" id="decline4" />
+							<label for="decline4">Not enough information on Biodata</label>
+						</li>
+						<li>
+							<input type="checkbox" id="decline5" />
+							<label for="decline5">Not enough income</label>
+						</li>
+						<li>
+							<input type="checkbox" id="decline6" />
+							<label for="decline6">Free form text</label>
+						</li>
+						<li>
+							<input type="checkbox" id="decline7" />
+							<label for="decline7">Other</label>
+						</li>
+					</ul>
+					<a href="javascript:void(0);" data-dismiss="modal" onclick="if($('#fullUserBiodata').hasClass('in')){ setTimeout(function(){ $('#fullUserBiodata').modal('show'); },350); }" class="btn-green">i do not want to decline</a>
+					<a href="#/dashboard" ng-click="ok()" class="btn-black">decline</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>	

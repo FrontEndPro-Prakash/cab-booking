@@ -1,0 +1,18 @@
+<div id="help-aside" ng-style="changeHeight">
+	<div class="aside-widget">
+		<h3>Popular Articles</h3>
+		<ul class="widget-list">
+			<li ng-repeat="list in PopularArticles">
+				<a ng-href="{{list.ArticleLink}}">{{list.ArticleName}}</a>
+			</li>
+		</ul>
+	</div>
+	<div class="aside-widget noShowMobile">
+		<h3>Issues we are fixing</h3>
+		<ul class="widget-list">
+			<li ng-repeat="list in ProbleFixing">
+				<a ng-href="{{list.ProbleFixingLink}}">{{list.ProbleFixingName}}</a>
+			</li>
+		</ul>
+	</div>
+</div>

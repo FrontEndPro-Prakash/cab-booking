@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>eTMS-Buddy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+</head>
+<body>
+<!-- body part start -->
+<form>
+	<div class="main-section" style="background:#fff;">
+		<div class="main-section-top">
+			<span class="toggle"><a href="5.home.html" class=""><img src="images/back-.png" class="male-img" alt=""></a></span>
+			<span class="center-text">Add New Roster</span>
+			<span class="sos-text"><a href="#" class="" data-toggle="modal" data-target="#exampleModal"><span class="sos-bg">SOS</span></a></span>
+		</div>
+		<div class="main-content-body">
+		<!-- calender -->
+		<div class="from-to-calender">
+			<div class="from-calender">
+				<div class="calender-box" id="demo">
+					<input type="text" id="datepicker" placeholder="From">
+			<i class="fa fa-calendar calender-icons" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="to-calender">
+				<div class="calender-box" id="demo">
+					<input type="text" id="datepicker-to" placeholder="To">
+				<i class="fa fa-calendar calender-icons" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>
+		<div class="login-logout-box">
+			<div class="choose-option">
+				<span class="" style="color:#fff;">CHOOSE LOGIN OPTIONS</span>
+			</div>
+			<div class="login-logout-option">
+				<div class="to-calender">
+				<div class="calender-box" id="demo">
+					<div class="form-group">
+					<select class="form-control" id="exampleSelect1">
+					  <option>Select Facility</option>
+					  <option>Campus</option>
+					</select>
+				  </div>
+				</div>
+				</div>
+				<div class="to-calender">
+				<div class="calender-box" id="demo">
+					<div class="form-group">
+					<select class="form-control" id="exampleSelect1">
+					  <option>Select Shift Time</option>
+					  <option>01 Hrs</option>
+					  <option>02 Hrs</option>
+					  <option>03 Hrs</option>
+					  <option>04 Hrs</option>
+					  <option>05 Hrs</option>
+					  <option>06 Hrs</option>
+					  <option>07 Hrs</option>
+					  <option>08 Hrs</option>
+					  <option>09 Hrs</option>
+					  <option>10 Hrs</option>
+					  <option>11 Hrs</option>
+					  <option>12 Hrs</option>
+					  <option>13 Hrs</option>
+					  <option>14 Hrs</option>
+					  <option>15 Hrs</option>
+					  <option>16 Hrs</option>
+					  <option>17 Hrs</option>
+					  <option>18 Hrs</option>
+					  <option>19 Hrs</option>
+					  <option>20 Hrs</option>
+					  <option>21 Hrs</option>
+					  <option>22 Hrs</option>
+					  <option>23 Hrs</option>
+					  <option>24 Hrs</option>
+					</select>
+				  </div>
+				</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="login-logout-box">
+			<div class="choose-option">
+				<span class="" style="color:#fff;">CHOOSE LOGOUT OPTIONS</span>
+			</div>
+			<div class="login-logout-option">
+				<div class="to-calender">
+				<div class="calender-box" id="demo">
+					<div class="form-group">
+					<select class="form-control" id="exampleSelect1">
+					  <option>Select Facility</option>
+					  <option>Campus</option>
+					</select>
+				  </div>
+				</div>
+				</div>
+				<div class="to-calender">
+				<div class="calender-box" id="demo">
+					<div class="form-group">
+					<select class="form-control" id="exampleSelect1">
+					  <option>Select Shift Time</option>
+					  <option>01 Hrs</option>
+					  <option>02 Hrs</option>
+					  <option>03 Hrs</option>
+					  <option>04 Hrs</option>
+					  <option>05 Hrs</option>
+					  <option>06 Hrs</option>
+					  <option>07 Hrs</option>
+					  <option>08 Hrs</option>
+					  <option>09 Hrs</option>
+					  <option>10 Hrs</option>
+					  <option>11 Hrs</option>
+					  <option>12 Hrs</option>
+					  <option>13 Hrs</option>
+					  <option>14 Hrs</option>
+					  <option>15 Hrs</option>
+					  <option>16 Hrs</option>
+					  <option>17 Hrs</option>
+					  <option>18 Hrs</option>
+					  <option>19 Hrs</option>
+					  <option>20 Hrs</option>
+					  <option>21 Hrs</option>
+					  <option>22 Hrs</option>
+					  <option>23 Hrs</option>
+					  <option>24 Hrs</option>
+					</select>
+				  </div>
+				</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="login-logout-box">
+			<div class="choose-option">
+				<span class="" style="color:#fff;">CHOOSE WEEKEND OPTIONS</span>
+			</div>
+			<div class="weak-option">
+				<div class="weak-bg">		
+					<input id="radio_1" type="checkbox" name="weak" value="0" checked>
+					<label for="radio_1" class="feedback_box">M</label>
+				</div>
+				<div class="weak-bg">		
+					<input id="radio_2" type="checkbox" name="weak" value="1">
+					<label for="radio_2" class="feedback_box">T</label>
+				</div>
+				<div class="weak-bg">		
+					<input id="radio_3" type="checkbox" name="weak" value="2">
+					<label for="radio_3" class="feedback_box">W</label>
+				</div>
+				<div class="weak-bg">		
+					<input id="radio_4" type="checkbox" name="weak" value="3">
+					<label for="radio_4" class="feedback_box">T</label>
+				</div>
+				<div class="weak-bg">		
+					<input id="radio_5" type="checkbox" name="weak" value="4">
+					<label for="radio_5" class="feedback_box">F</label>
+				</div>
+				<div class="weak-bg">		
+					<input id="radio_6" type="checkbox" name="weak" value="5">
+					<label for="radio_6" class="feedback_box">S</label>
+				</div>
+				<div class="weak-bg">		
+					<input id="radio_7" type="checkbox" name="weak" value="6">
+					<label for="radio_7" class="feedback_box">S</label>
+				</div>
+			</div>
+			<div class="login-logout-option">
+				<div class="to-calender">
+				<div class="calender-box" id="demo">
+					<div class="form-group">
+					<select class="form-control" id="exampleSelect1">
+					  <option>Login Time</option>
+					  <option>01 Hrs</option>
+					  <option>02 Hrs</option>
+					  <option>03 Hrs</option>
+					</select>
+				  </div>
+				</div>
+				</div>
+				<div class="to-calender">
+				<div class="calender-box" id="demo">
+					<div class="form-group">
+					<select class="form-control" id="exampleSelect1">
+					  <option>Logout Time</option>
+					  <option>01 Hrs</option>
+					  <option>02 Hrs</option>
+					  <option>03 Hrs</option>
+					</select>
+				  </div>
+				</div>
+				</div>
+			</div>
+			<div class="weak-save">
+				<a href="5.home.html" class="save-btn" data-toggle="modal" data-target="#exampleModal-note">SAVE</a>
+			</div>
+		</div>
+	</div>
+	</div>
+	</form>
+	
+	<!-- SOS Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Help Desk</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">(800) 692- 7777</h3>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button> -->
+        <!-- <button type="button" class="btn btn-primary">Call</button> -->
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="tel:800 692- 7777" class="firstbtn">Call</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SOS modal html -->
+
+<!-- weak popup Modal -->
+<div class="modal fade" id="exampleModal-note" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header"> -->
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Help</h5> -->
+      <!-- </div> -->
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">Notification Here</h3>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <a href="5.home.html" style="font-size:16px;font-weight:600;padding: .375rem .75rem;">OK</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- weak popup Modal end -->
+
+	<!-- body part end -->
+<script type='text/javascript' src='js/jquery-3.3.1.min.js'></script>
+<script type='text/javascript' src='js/bootstrap.min.js'></script>
+<script type='text/javascript' src='js/popover.js'></script>
+
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type='text/javascript' src='js/custom.js'></script>
+</body>
+</html>

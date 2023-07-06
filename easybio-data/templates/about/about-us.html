@@ -1,0 +1,44 @@
+<div id="About-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">				
+				<h2>About Us</h2>
+				<p>We are passionate about making the process easier to help you find your match.</p>	
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Help Middle -->
+<div id="About-middle">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			
+				<div id="About-content">
+					<h4>Our Mission</h4>
+					<p>Provide a new, simple yet elegant way for Indian people around the world to get married with the help from a personal professional marriage counselor, starting from creating the best-looking biodata, to finding the perfect match, to planning a memorable wedding.</p>
+					<h4>Our Story</h4>
+					<p>Over dinner one evening, we were talking about some of the particularly difficult aspects of the matrimonial search for us – our parent’s email inboxes were cluttered, we were spending numerous hours each day looking through Biodata and we were occasionally losing the Biodata of people whom we really liked. “Does it have to be this difficult?” we asked ourselves by the end of dinner. We thought for awhile and decided to create a service that would be the resounding “No” to this question. We spent months doing customer research and product development and the result is the site that you see today. </p>
+					<h4>Our Promise To You </h4>
+					<p>easyBiodata has been a labor of love to help the millions of others like ourselves find success and wonderful long lasting relationships. We want to make this process… easy! We hope you enjoy the site and would love your feedback. </p>
+					<a ui-sref="createBiodata" class="btn-orange">start creating biodata</a>
+					
+					<div class="testimonial" ng-controller="AboutController">
+						<h4><center>Testimonials</center></h4>
+						<uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+							  <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+								<div class="testimonial-review">{{slide.review}}</div>
+								<div class="testimonial-reviewer">- {{slide.reviewer}}</div>
+							  </uib-slide>
+						</uib-carousel>						
+					</div>
+					
+				</div>
+			
+			</div>			
+		</div>
+	</div>
+</div>
+<!-- /Help Middle -->
+

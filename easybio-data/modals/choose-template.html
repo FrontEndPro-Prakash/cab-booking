@@ -1,0 +1,99 @@
+<div class="modal fade" id="chooseTemplate" tabindex='-1'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<a data-dismiss="modal" class="popup-close" href="javascript:void(0);"></a>
+				<div class="choose-biodata-template">
+					<div class="biodata-auto-saved">
+						<img alt="" src="images/loader.gif"><br>
+						Auto Saved
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<h2>Choose Template</h2>
+						<div class="choose-template-box">
+							<ul class="choose-template-list">
+								<li class="cus-radio">
+									<script>
+										jQuery(document).ready(function(){					
+											jQuery('.zoom_01').elevateZoom({
+												cursor: "crosshair",
+												zoomWindowFadeIn: 300,
+												zoomWindowFadeOut: 450
+											});						
+										});
+									</script>
+									<input type="radio" checked="checked" ng-click="changeTemplate('greenTemplate');" id="template1" name="template">
+									<img class="zoom_01" src='images/template-preview1.jpg' data-zoom-image="images/template-preview1-big.jpg"/><br />
+									<label for="template1"></label>
+									<div class="check"></div>
+								</li>
+								<li class="cus-radio">
+									<input type="radio" ng-click="changeTemplate('brownTemplate');" id="template2" name="template">
+									<img class="zoom_01" src='images/template-preview2.jpg' data-zoom-image="images/template-preview2-big.jpg"/><br />
+									<label for="template2"></label>
+									<div class="check"></div>
+								</li>
+								<li class="cus-radio">
+									<input type="radio" id="template3" name="template">
+									<img class="zoom_01" src='images/template-preview3.jpg' data-zoom-image="images/template-preview1-big.jpg"/><br />
+									<label for="template3"></label>
+									<div class="check"></div>
+								</li>
+								<li class="cus-radio">
+									<input type="radio" id="template4" name="template">
+									<img class="zoom_01" src='images/template-preview3.jpg' data-zoom-image="images/template-preview2-big.jpg"/><br />
+									<label for="template4"></label>
+									<div class="check"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<h2 class="notemMar">Choose Symbol</h2>
+						<div class="choose-symbol-box">
+							<ul class="choose-symbol-list">
+							      	<li class="cus-radio" ng-repeat="singleReligionSymbol in religionSymbols">
+										<input type="radio" ng-checked="userprofile.religionSymbol == singleReligionSymbol.id" ng-click="changeSymbol(singleReligionSymbol)" id="symbol_{{singleReligionSymbol.id}}" name="symbol">
+										<img src="images/symbols/{{singleReligionSymbol.name}}-thumb.svg" alt=""/>
+										<label for="symbol_{{singleReligionSymbol.id}}"></label>
+										<div class="check"></div>
+									</li>
+								<!--<li class="cus-radio">
+									<input type="radio" checked="checked"  ng-click="changeSymbol('images/symbols/onkar.svg')" id="symbol1" name="symbol">
+									<img src="images/symbols/onkar-thumb.svg" alt="" />
+									<label for="symbol1"></label>
+									<div class="check"></div>
+								</li>
+								<li class="cus-radio">					
+									<input type="radio" checked="checked"  ng-click="changeSymbol('images/symbols/muslim.svg')" id="symbol2" name="symbol">
+									<img src="images/symbols/muslim-thumb.svg" alt="" />
+									<label for="symbol2"></label>
+									<div class="check"></div>
+								</li>
+								<li class="cus-radio">					
+									<input type="radio" checked="checked"  ng-click="changeSymbol('images/symbols/christ.svg')" id="symbol3" name="symbol">
+									<img src="images/symbols/christ-thumb.svg" alt="" />
+									<label for="symbol3"></label>
+									<div class="check"></div>
+								</li>
+								<li class="cus-radio">					
+									<input type="radio" checked="checked"  ng-click="changeSymbol('images/symbols/om.svg')" id="symbol4" name="symbol">
+									<img src="images/symbols/om-thumb.svg" alt="" />
+									<label for="symbol4"></label>
+									<div class="check"></div>
+								</li>
+								<li class="cus-radio">					
+									<input type="radio" checked="checked"  ng-click="changeSymbol()" id="symbol5" name="symbol">
+									<img src="images/symbols/none-thumb.svg" alt="" />
+									<label for="symbol5"></label>
+									<div class="check"></div>
+								</li>-->
+							</ul>
+						</div>
+					</div>	
+				</div>
+			
+			</div>
+		</div>
+	</div>
+</div>	

@@ -1,0 +1,14 @@
+<div class="unpaid-matching">
+	<div class="row">
+		<h4 class="missMatchesMsg">You missed these matches</h4>
+		<h4 class="sampleBiodataMsg">Sample Biodata</h4>
+		<ul class="unpaid-matching-list">
+			<li ng-repeat="matchitem in MatchingItems">
+				<img class="unpaidMatch-Pic" ng-src="{{matchitem.MatchingItemPic}}" alt="" />
+				<span class="unpaidMatch-Name">XXXXXXXXX</span>
+				<span class="unpaidMatch-Age">Age: {{matchitem.MatchingItemAge}}</span>
+				<span class="unpaidMatch-Place">Place: {{matchitem.MatchingItemPlace}}</span>
+			</li>
+		</ul>
+	</div>	
+</div>

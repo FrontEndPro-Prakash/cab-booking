@@ -1,0 +1,15 @@
+<div class="sidebar-profile mobile-profile" ng-controller="BiodataController">
+	<a href="javascript:void(0);" class="profileDownArrow" ng-click="showMenuList =! showMenuList"></a>
+	<img class="covers-info-block-pic" ng-src="{{PersonPic}}" alt="" />
+	<h3>{{user.firstName}} {{user.lastName}}</h3>
+	<p class="profile-createdby">{{user.RelativeName}} ({{user.RelativeRelation}})  created <span ng-if="user.sex=='male'">his</span><span ng-if="user.sex=='female'">her</span> biodata</p>
+	<ul class="side-menu mobile-side-menu" ng-show="showMenuList">
+		<li><a href="#/create-biodata"><i class="iconSideMenu-home"></i> Edit Biodata</a></li>
+		<li><a href="#/"><i class="iconSideMenu-download"></i> Download Biodata</a></li>
+		<li><a href="#/"><i class="iconSideMenu-print"></i> Print Biodata</a></li>
+		<li><a href="#/"><i class="iconSideMenu-email"></i> Email your biodata</a></li>
+		<li><a href="javascript:void(0);" ng-click="openBiodataAnotherPerson()"><i class="iconSideMenu-user"></i> Create Biodata for another person</a></li>
+		<li class="active"><a href="#/manage-subscription"><i class="iconSideMenu-time"></i> Manage Subscriptions</a></li>
+		<li><a href="#/my-account"><i class="iconSideMenu-setting"></i> Account Setting</a></li>
+	</ul>
+</div>

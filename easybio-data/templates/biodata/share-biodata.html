@@ -1,0 +1,46 @@
+<div class="container" ng-controller="BiodataController">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">
+				
+				<div class="middle-section-inner">
+					
+					<div class="share-biodata-content">
+						<div class="share-biodata-profile">
+							<img class="covers-info-block-pic" ng-src="{{PersonPic}}" alt="" />
+							<h2>Share biodata of Amit Shrivastav</h2>
+						</div>						
+						<form class="form-horizontal" ng-submit="shareBiodataFunction();">
+						  <div class="form-group">
+							<label for="inputEmail" class="col-sm-3 control-label">E-mail address</label>
+							<div class="col-sm-9">
+							  <div class="email-tag-field">
+								  <tags-input display-property="email" ng-model="shareBiodata.emails" min-tags="1" placeholder="Add an Email" add-on-	="true" allowed-tags-pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+								  {{shareBiodata.emails}}
+							  </div>		
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="inputMessage" class="col-sm-3 control-label">Default Message</label>
+							<div class="col-sm-9">
+							  <textarea class="form-control" id="inputMessage" ng-model="shareBiodata.default_message" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." rows="3" ></textarea>
+							</div>
+						  </div>
+						  <div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+							  <button type="submit" class="btn-green">Send Email</button>
+							</div>
+						  </div>
+						</form>							
+						<div class="back-button-box noShowMobile"><a href="javascript:void(0);" back-button class="btn-black">Back</a></div>
+					</div>	
+										
+				</div>
+
+			</section>
+			<!-- /Middle Section -->				
+			
+		</div>
+	</div>
+</div>

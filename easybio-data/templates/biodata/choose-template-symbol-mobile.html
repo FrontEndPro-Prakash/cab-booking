@@ -1,0 +1,88 @@
+<div class="container createBiodataMobile" ng-class="user.profileTemplate" ng-controller="BiodataController">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">
+			
+				<div class="mobileTabGroup">
+					<div class="mobileTabContent">
+						<div class="mobileTopHead"><a href="javascript:void(0);" class="backButton" back-button>back</a><!-- <h4>Choose Template</h4> --></div>
+						
+						<div class="choose-biodata-template">
+							<div class="col-md-6 col-sm-12">
+								<h2>Choose Template</h2>
+								<div class="choose-template-box">
+									<ul class="choose-template-list">
+										<li class="cus-radio">
+											<input type="radio" checked="checked" ng-click="changeTemplate('greenTemplate');" id="template1" name="template">
+											<img src='images/template-preview1.jpg' /><br />
+											<label for="template1"></label>
+											<div class="check"></div>
+										</li>
+										<li class="cus-radio">
+											<input type="radio" ng-click="changeTemplate('brownTemplate');" id="template2" name="template">
+											<img src='images/template-preview2.jpg' /><br />
+											<label for="template2"></label>
+											<div class="check"></div>
+										</li>
+										<li class="cus-radio">
+											<input type="radio" id="template3" name="template">
+											<img src='images/template-preview3.jpg' /><br />
+											<label for="template3"></label>
+											<div class="check"></div>
+										</li>
+										<li class="cus-radio">
+											<input type="radio" id="template4" name="template">
+											<img src='images/template-preview3.jpg' /><br />
+											<label for="template4"></label>
+											<div class="check"></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<h2 class="notemMar">Choose Symbol</h2>
+								<div class="choose-symbol-box">
+									<ul class="choose-symbol-list">
+										<li class="cus-radio">
+											<input type="radio" checked="checked"  ng-click="changeSymbol('images/symbols/onkar.svg')" id="symbol1" name="symbol">
+											<img src="images/symbols/onkar-thumb.svg" alt="" />
+											<label for="symbol1"></label>
+											<div class="check"></div>
+										</li>
+										<li class="cus-radio">					
+											<input type="radio" checked="checked"  ng-click="changeSymbol('images/symbols/muslim.svg')" id="symbol2" name="symbol">
+											<img src="images/symbols/muslim-thumb.svg" alt="" />
+											<label for="symbol2"></label>
+											<div class="check"></div>
+										</li>
+										<li class="cus-radio">					
+											<input type="radio" checked="checked"  ng-click="changeSymbol('images/symbols/christ.svg')" id="symbol3" name="symbol">
+											<img src="images/symbols/christ-thumb.svg" alt="" />
+											<label for="symbol3"></label>
+											<div class="check"></div>
+										</li>
+										<li class="cus-radio">					
+											<input type="radio" checked="checked"  ng-click="changeSymbol('images/symbols/om.svg')" id="symbol4" name="symbol">
+											<img src="images/symbols/om-thumb.svg" alt="" />
+											<label for="symbol4"></label>
+											<div class="check"></div>
+										</li>
+										<li class="cus-radio">					
+											<input type="radio" checked="checked"  ng-click="changeSymbol('  ')" id="symbol5" name="symbol">
+											<img src="images/symbols/none-thumb.svg" alt="" />
+											<label for="symbol5"></label>
+											<div class="check"></div>
+										</li>
+									</ul>
+								</div>
+								<a href="javascript:void(0);" class="btn-green templateSaveBtn">SAVE & RETURN</a>
+							</div>	
+						</div>
+					</div>	
+				</div>
+			
+			</section>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<div id="help-header">
+	<div class="container">
+		<a class="back-link noShowMobile" href="javascript:void(0);" back-button><i class="iconbdprev-back"></i> Back</a>
+		<div class="row">
+			<div class="col-md-12">				
+				<h2>How May We Help You?</h2>
+				<div class="help-dropdown help-search" ng-controller="HelpQuestion">
+					<div class="search-box">
+						<input type="text" ng-model="searchQues" placeholder="Search anything here">
+						<i class="seach-icon"></i>
+					</div>	
+					<div class="help-dropdown-section" ng-show="searchQues">
+						<div class="help-dropdown-heading">Articles related to <span ng-show="searchQues">"{{searchQues}}"</span></div>
+						<ul class="help-dropdown-list">
+							<li ng-repeat="help in helpsQ | filter:searchQues | limitTo:quantity">
+								<i class="help-doc-icon"></i> <a ng-href="{{help.helpQlink}}">{{help.helpQuestion}}</a>
+							</li>
+						</ul>
+						<span class="help-dropdown-no-rslt" ng-show="(helpsQ | filter:searchQues).length == 0">No results</span>
+					</div>					
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,175 @@
+<flex-slider slider-id="carousel" control-nav="false" direction-nav="false" start-at="0" slide="singleMatchingUser in matchingUsers track by singleMatchingUser.id" touch="true" easing="swing" animation-speed="800" slideshow="false" animation="fade">
+			<li>
+<div class="recommendation-section">
+	<div class="left-part">
+		<img class="recommned-pic" ng-src="{{RecommendedPic}}" alt="" />
+		<span class="recommededName">{{RecommendedName}}</span>
+	</div>
+	<div class="right-part">
+		<div class="right-part-in">
+			Dear <span class="Ruser-name">{{RecommendUser}}</span>,
+			<div class="bottomSpace"></div>
+			Based on your preferences. XXX from Mumbai is a good match for YYYY based on your preferences. See attached Biodata.			
+			<!-- I found this match for you. <span class="match-name">{{singleMatchingUser.CName}}</span> is from <span class="match-location">{{singleMatchingUser.City.name}}</span> and is good
+			match for you. See attached Biodata. -->
+			<div class="bottomSpace"></div>
+			Regards,<br />
+			<span class="counsler-name">{{RecommendedName}}</span><br />
+			<span class="counsler-title">Your Marriage Counselor</span>
+			<a class="recommendedHistory noShowMobile" target="_blank" ng-href="{{RecommendedHistory}}">Recommendation History</a>
+		</div>
+	</div>
+</div>
+</li>
+</flex-slider>
+<div class="matching-section">
+	
+	<flex-slider start-at="0" sync="#carousel" animation-speed="800" slide="singleMatchingUser in matchingUsers track by singleMatchingUser.id" touch="true" easing="swing" slideshow="false" animation="fade">
+	
+	<li>
+		<div class="preview-biodata matching-biodata noShowMobile">
+					<!-- Biodata Preview Covers -->
+					<div class="create-biodata-covers">
+					<div class="sliderCounter">{{singleMatchingUser.id}} of {{matchingUsers.length}}</div>
+						<div class="covers-name covers-name-preview">
+							<div class="covers-fields cname">
+								<span>{{singleMatchingUser.CName}}</span>
+							</div>
+						</div>
+						<div class="covers-info-block">
+							<img  class="covers-info-block-pic" ng-src="{{singleMatchingUser.profileImage}}" alt=""/>
+						</div>
+						<div class="covers-symbol">
+							<img ng-src="{{singleMatchingUser.profileSymbol}}" alt=""/>
+						</div>
+						<div class="cover-timer">
+							<h5>Time Left to view match</h5>
+							<span class="timer-box">
+								<timer countdown="864000" interval="1000">
+									<div class="timer-col"><b>{{ddays}}</b> <br />Day{{daysS}}</div>
+									<div class="timer-col"><b>{{hhours}}</b> <br />Hour{{hoursS}}</div> 
+									<div class="timer-col"><b>{{mminutes}}</b> <br />Minute{{minutesS}}</div> 
+									<div class="timer-col"><b>{{sseconds}}</b> <br />Second{{secondsS}}</div>
+								</timer>
+							</span>
+						</div>
+					</div>
+					<!-- /Biodata Preview Covers -->                  
+				
+			
+					<!-- Biodata Preview Tables -->		
+			<div class="create-biodata-tabs">
+			  	  <div class="preview-biodata-tab-heading">Personal Information </div>
+				  <div class="biodata-tab-info">
+					  <div class="col-md-3 col-sm-6">
+						<div class="CBD-fields dashBCus">
+							<div class="CBD-left">Born</div>
+								<div class="CBD-right">
+									<span class="cbd-dob" ng-show="user.dob">{{singleMatchingUser.dob | date:'MMM-dd-yyyy'}}</span><br />
+									<span class="cbd-dot" ng-show="user.dob">{{singleMatchingUser.dob | date:'HH:mm'}}</span>
+								</div>
+						</div>
+					  </div>
+					  
+					  <div class="col-md-3 col-sm-6">
+						<div class="CBD-fields dashBCus">
+							<div class="CBD-left">Birth Place</div>
+							<div class="CBD-right">
+								<span class="cbd-city" ng-show="singleMatchingUser.city.name">{{singleMatchingUser.city.name}}</span>
+								<span class="cbd-state"  ng-show="singleMatchingUser.state.name">{{singleMatchingUser.state.name}}</span>
+								<span class="cbd-country"  ng-show="singleMatchingUser.country.name">{{singleMatchingUser.country.name}}</span>
+							</div>
+						</div>
+					  </div>
+					  
+					  <div class="col-md-3 col-sm-6">
+						<div class="CBD-fields dashBCus">
+							<div class="CBD-left">gotra</div>
+							<div class="CBD-right">
+								<span class="cbd-gotra" ng-show="singleMatchingUser.gotra">{{singleMatchingUser.gotra}}</span>
+								<span class="cbd-religion" ng-show="singleMatchingUser.religion">{{singleMatchingUser.religion.religion}}</span>
+								<span class="cbd-caste" ng-show="singleMatchingUser.cast">{{singleMatchingUser.cast}}</span>
+							</div>
+						</div>
+					  </div>
+					  
+					  <div class="col-md-3 col-sm-6">
+						<div class="CBD-fields">
+							<div class="CBD-left">Own car</div>
+							<div class="CBD-right">
+								<span class="cbd-ownCar" ng-if="singleMatchingUser.hasCar">Yes</span>
+								<span class="cbd-ownCar" ng-if="!singleMatchingUser.hasCar">No</span>
+							</div>
+						</div>
+						<div class="CBD-fields">
+							<div class="CBD-left">Own House</div>
+							<div class="CBD-right">
+								<span class="cbd-ownHouse" ng-if="singleMatchingUser.hasHouse">Yes</span>
+								<span class="cbd-ownHouse" ng-if="!singleMatchingUser.hasHouse">No</span>
+							</div>
+						</div>
+					  </div>
+				  </div>
+				  <div class="preview-biodata-tab-heading">Education/Work Experience</div>
+				  <div class="biodata-tab-info no-disSmallTab">
+					<div class="col-md-6 col-sm-6">
+						<div class="CBD-fields dashBCus">
+							<div class="CBD-left">Education</div>
+							<div class="CBD-right">
+								<span class="cbd-school">{{singleMatchingUser.EducationDetails[0].schoolUniversity}}</span><br />
+								<span class="cbd-dot">{{singleMatchingUser.EducationDetails[0].level}}</span><br />
+								<span class="cbd-dot">{{singleMatchingUser.EducationDetails[0].year}}</span><br />
+								<span class="cbd-dot">{{singleMatchingUser.EducationDetails[0].typeOfDegree.name}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<div class="CBD-fields dashBCus">
+							<div class="CBD-left">Work Experience</div>
+							<div class="CBD-right">
+								<span class="cbd-com-name">{{singleMatchingUser.WorkExperiences[0].companyName}}</span><br />
+								<span class="cbd-dot">{{singleMatchingUser.WorkExperiences[0].title}}</span><br />
+								<span class="cbd-dot">{{singleMatchingUser.WorkExperiences[0].city}}</span><br />
+								<span class="cbd-dot">{{singleMatchingUser.WorkExperiences[0].description}}</span>
+							</div>
+						</div>
+					</div>
+				  </div>	
+			</div>
+			<!-- /Biodata Preview Tables -->						
+		</div>
+		<div class="matching-button-section noShowMobile">
+			<div class="matching-button-section-in">
+				<a href="javascript:void(0);" ng-click="openfullUserBiodata()" class="btn-orange"><i class="view-icon"></i>FULL BIODATA</a>
+				<a href="javascript:void(0);" onclick="$('.mobileTab2 a').click();setTimeout(function(){$('html, body').animate({scrollTop: $('#chatleftside').offset().top-152}, 500);},150);" class="btn-green"><i class="contact-icon"></i>Contact her</a>
+				<a href="javascript:void(0);" ng-click="openDeclineStepOne()" class="btn-gray"><i class="decline-icon"></i>Decline</a>
+			</div>
+		</div>
+		<!-- ==========!^MOBILE^!========== -->
+		<div class="ShowMobile Mobile-Matching-section">
+			<div class="cover-timer">
+				<h5>Time Left to view match</h5>
+				<span class="timer-box">
+					<timer countdown="864000" interval="1000">
+						<div class="timer-col"><b>{{ddays}}</b> <br />Day{{daysS}}</div>
+						<div class="timer-col"><b>{{hhours}}</b> <br />Hour{{hoursS}}</div> 
+						<div class="timer-col"><b>{{mminutes}}</b> <br />Minute{{minutesS}}</div> 
+						<div class="timer-col"><b>{{sseconds}}</b> <br />Second{{secondsS}}</div>
+					</timer>
+				</span>
+			</div>
+			<div class="MobilematchingSlides">
+				<img class="MobilematchingSlidesPic" src="images/matchingPic.jpg" alt="" />
+				<div class="MobilematchingSlidesContent">
+					<span class="MobilematchingSlidesName">Pooja Ramlingam</span>
+					<span class="MobilematchingSlidesLocation">25, Chandigarh</span>
+					<a href="javascript:void(0);" ui-sref="fullBiodataMobile" class="btn-orange"><i class="view-icon"></i>FULL BIODATA</a>
+					<a href="javascript:void(0);" onclick="$('.mobileTab2 a').click();setTimeout(function(){$('html, body').animate({scrollTop: $('#chatleftside').offset().top-152}, 500);},150);" class="btn-green"><i class="contact-icon"></i>Contact her</a>
+					<a href="javascript:void(0);" ng-click="openDeclineStepOne()" class="btn-gray"><i class="decline-icon"></i>Decline</a>
+				</div>
+			</div>
+		</div>		
+		<!-- ==========!^MOBILE^!========== -->
+	</li>
+		</flex-slider>
+</div>

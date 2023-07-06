@@ -1,0 +1,44 @@
+<div class="payment-history">
+	<div class="row">
+		<h4>Payment History</h4>
+		<div class="table-box">
+			<!-- table-striped table-bordered table-hover -->
+			<table id="paymentHistory" class="table table-responsive" cellspacing="0">
+				<thead>
+					<tr>
+						<th width="6%">#</th>
+						<th width="40%">Date of Payment</th>
+						<th width="27%"><span class="pay-currency">&#8377;</span> Payment</th>
+						<th width="27%">Invoice No.</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th width="6%">#</th>
+						<th width="40%">Date of Payment</th>
+						<th width="27%"><span class="pay-currency">&#8377;</span> Payment</th>
+						<th width="27%">Invoice No.</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr ng-repeat="singleUserPayment in userPayments track by $index">
+						<td>{{$index+1}}</td>
+						<td>{{singleUserPayment.createdAt | date:"fullDate"}}</td>
+						<td data-order="{{singleUserPayment.amount}}">{{singleUserPayment.amount | currency:"&#8377;":2}}</td>
+						<td data-order="{{singleUserPayment.id}}">EBD10000{{singleUserPayment.id}}</td>
+					</tr>
+				</tbody>	
+			</table>
+		</div>
+		<div class="payment-history-btn noShowMobile"><a href="#/dashboard" class="btn-black">back to matches</a></div>
+	</div>	
+</div>
+<script>
+jQuery(document).ready(function() {
+	setTimeout(function(){
+    	jQuery('#paymentHistory').DataTable({
+		    "bFilter": false
+		});
+    },500);
+});
+</script>

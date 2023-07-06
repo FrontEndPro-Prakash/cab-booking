@@ -1,0 +1,35 @@
+<div class="modal fade" id="uploadUserPhotos" tabindex='-1'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<a data-dismiss="modal" class="popup-close" href="javascript:void(0);"></a>
+			<div class="modal-body">				
+				
+				<div class="upload-pics" ng-controller="MainController">
+					<form action class="upload-pic-form">
+					  <!--<input class="drag-file" type="file" fileread="uploadme.src">-->
+					  
+					
+					
+					<ng-dropzone class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods">upload images here</ng-dropzone>
+					
+					</form>
+					<div class="upload-pic-field btn-sec">
+						<a href="#" class="btn-green">Save Images to Gallery</a>
+						<a href="javascript:void(0);" data-dismiss="modal" class="btn-black">Cancel</a>
+					</div>	
+					<!--<div class="upload-pic-field">
+						<div class="or-opt">OR</div>
+					</div>	
+					<div class="upload-pic-field">
+						<input type="file" fileread="uploadme.src">
+					</div>	
+					<div class="upload-pic-field btn-sec">
+						<a href="#" class="btn-green">make profile picture</a>
+						<a href="javascript:void(0);" data-dismiss="modal" class="btn-black">Cancel</a>
+					</div>		-->			
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>	

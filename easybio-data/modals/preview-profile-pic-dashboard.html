@@ -1,0 +1,24 @@
+<style>
+a[ng-disabled=true]{
+	opacity: 0.4;
+}
+</style>
+<div class="modal fade" id="preivewUserPicDashboard" tabindex='-1'>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<a data-dismiss="modal" class="popup-close" href="javascript:void(0);"></a>
+			<div class="modal-body">
+				<div class="preview-profile-pics-main" ng-controller="BiodataController">
+					<ul class="preview-profile-pics" ng-class="{'preview-profile-card-hide': index  > $index + 1}" ng-repeat="card in cards" ng-style="{'z-index': (cards.length - $index)}">
+						<li ng-repeat="value in card.cardItem">
+							<img ng-src="{{value.keys}}" />
+						</li>
+					</ul>
+					<a class="preview-profile-keys-left" href="javascript:void(0);" ng-disabled="{{index == cards.length}}" ng-click="index = index < cards.length ? index + 1 : cards.length">Next</a>
+					<a class="preview-profile-keys-right" href="javascript:void(0);" ng-disabled="{{index == 1 || index == null }}" ng-click="index = index > 1 ? index - 1 : 1">Previous</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>			

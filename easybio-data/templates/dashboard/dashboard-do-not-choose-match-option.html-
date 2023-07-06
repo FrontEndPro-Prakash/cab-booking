@@ -1,0 +1,34 @@
+<div class="unpaid-dashboard forSampleBiodataMsg">
+	<div class="dashboardUserMessage">This feature only available to users that have enrolled in the premium candidate matching service</div>					
+	<!-- Unpaid DashBoard -->
+	<div class="recommendation-section">
+		<div class="left-part">
+			<img class="recommned-pic" ng-src="{{RecommendedPic}}" alt="" />
+			<span class="recommededName">{{RecommendedName}}</span>
+		</div>
+		<div class="right-part">
+			<div class="right-part-in">
+				Dear <span class="Ruser-name">{{RecommendUser}}</span>,
+				<div class="bottomSpace"></div>
+				You are not able to see the matches because you have enrolled in our 
+premium matching service.  In order to see your matches, please click on the Enroll button below.
+				<div class="bottomSpace"></div>
+				<a href="#/dashboard" class="btn-green">Enroll in Matching Service</a>
+				<div class="participateBox">
+				  Learn more about easyBiodata’s <a style="cursor:pointer;" onclick="$('#potentialSpouse').modal('show');">premium candidate matching service ?</a> 
+				  <a uib-tooltip="FAQ" tooltip-placement="bottom" style="cursor:pointer;" onclick="$('#faqRelationManager').modal('show');console.log('model open');" class="faq"></a>
+				  <!-- <input type="checkbox" checked="checked" id="matching" />
+				  <label for="matching"></label> -->
+				</div>
+				<div class="bottomSpace"></div>
+				Regards,<br />
+				<span class="counsler-name">{{RecommendedName}}</span><br />
+				<span class="counsler-title">Your Marriage Counselor</span>
+			</div>
+		</div>
+	</div>
+	<!-- /Unpaid DashBoard -->
+
+	<div ng-include='"templates/dashboard/dashboard-matches-bottom.html"'></div>	
+							
+</div>	

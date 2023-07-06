@@ -1,0 +1,30 @@
+<div class="unpaid-dashboard forSampleBiodataMsg">
+	<div class="dashboardUserMessage">This feature only available to users that have enrolled in the premium candidate matching service</div>					
+	<!-- Unpaid DashBoard -->
+	<div class="recommendation-section">
+		<div class="left-part">
+			<img class="recommned-pic" ng-src="{{RecommendedPic}}" alt="" />
+			<span class="recommededName">{{RecommendedName}}</span>
+		</div>
+		<div class="right-part">
+			<div class="right-part-in">
+				Dear <span class="Ruser-name">{{RecommendUser}}</span>,
+				<div class="bottomSpace"></div>
+				Your biodata is only {{RecommendPercent}}% complete. In order to enroll in the Easybiodata premium matching service, please complete at least 50% of your biodata.
+				<div class="bottomSpace"></div>
+				Regards,<br />
+				<span class="counsler-name">{{RecommendedName}}</span><br />
+				<span class="counsler-title">Your Marriage Counselor</span>
+				<div class="bottomSpace"></div>
+				<div class="recommended-button-section">
+					<a ui-sref="createbiodata" class="btn-green">complete your biodata</a>
+					<a style="cursor: pointer;" onclick="$('.mobileTab3 a').click();setTimeout(function(){$('html, body').animate({scrollTop: $('#dashboard-inner-section').offset().top-30}, 1000);},150);" class="btn-orange">update preference</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Unpaid DashBoard -->
+
+	<div ng-include='"templates/dashboard/dashboard-matches-bottom.html"'></div>	
+							
+</div>

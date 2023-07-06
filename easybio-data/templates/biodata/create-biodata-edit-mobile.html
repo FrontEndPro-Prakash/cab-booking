@@ -1,0 +1,659 @@
+<style>
+.mobileTabGroup.active {
+    display: block !important;
+}
+.mobileTabGroup.filled {
+    display: block !important;
+}
+</style>
+<div class="container createBiodataMobile" ng-class="user.profileTemplate" ng-controller="BiodataController">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">
+			
+				<!-- Common For All Pages -->
+				<div class="mobileCommonDiv">
+					<a class="btn-green" ui-sref="createBiodataMobileTemplateSymbol">Edit template & symbol</a>
+					<a href="javascript:void(0);" class="btn-orange" ui-sref="createBiodataMobilePreview">Preview Biodata</a>
+					<div class="mobileDivider"></div>
+					<!-- Create Biodata Process -->
+					<div class="create-biodata-procees">
+						<div class="biodata-progress-bar" ng-controller="ProgressCtrl">
+							<p>50% completion required for matching service</p>
+							<uib-progressbar value="40" type="success">
+								
+							</uib-progressbar>
+							<div class="progress-percent-block">
+								<b class="progress40per">40%</b>
+								<b class="progress50per">50%</b>
+								<b class="progress80per">80%</b>
+								<b class="progress90per">90%</b>
+								<b class="progress100per">100%</b>
+							</div>
+							<ul class="progress-lock-block">
+								<li class="lock-icon open first" uib-tooltip="Unlocked" tooltip-placement="bottom"></li>
+								<li class="lock-icon close second" uib-tooltip="Free Biodata & enroll in matching service" tooltip-placement="bottom"></li>
+								<li class="lock-icon close third" uib-tooltip="1 free match" tooltip-placement="bottom"></li>
+								<li class="lock-icon close fourth" uib-tooltip="2 free match" tooltip-placement="bottom"></li>
+								<li class="lock-icon close fifth" uib-tooltip="3 free match" tooltip-placement="bottom"></li>
+							</ul>
+						</div>						
+					</div>
+					<!-- /Create Biodata Process -->
+				</div>
+				<!-- /Common For All Pages -->	
+					<!-- Create Biodata Tabs -->
+					<div ng-tabs>
+						<div>
+							<ul class="mobileBDTabsDiv">
+								<li id="firstCbTab" class="active" ng-tab-head>
+									<a href="#/create-biodata#personal" name="personal" id="personalTabMobile"><span class="TabPersonalicon"><i></i></span>
+									Personal</a>
+								</li>	
+								<li ng-tab-head>
+									<a href="#/create-biodata#education" name="education" id="educationTabMobile"><span class="TabEducicon"><i></i></span>
+									Education</a>
+								</li>
+								<li ng-tab-head>
+									<a href="#/create-biodata#work" name="work" id="workTabMobile"><span class="TabWorkicon"><i></i></span>
+									Work</a>
+								</li>
+								<li ng-tab-head>
+									<a href="#/create-biodata#family" name="family" id="familyTabMobile"><span class="TabFamilyicon"><i></i></span>
+									Family</a>
+								</li>
+								<li ng-tab-head>
+									<a href="#/create-biodata#photo" name="photo" id="photoTabMobile"><span class="TabPhotoicon"><i></i></span>
+									Photos & Kundali</a>
+								</li>	
+							</ul>
+							<!-- /Create Biodata Tabs -->
+						</div>				
+				<!-- Personal -->
+				<div class="mobileTabGroup active mobieFieldError" ng-tab-body style="display:none">
+					<div class="mobileTabHeading">PERSONAL STATEMENT <span class="mobileRequired">* Required Field</span></div>
+					<div class="mobileTabContent">
+						<p style="padding-bottom:10px;">Enter most recent information.</p>						
+						<form name="personalStatementMobile" class="mobileCBform" ng-submit="saveUser()" novalidate>
+							<input id="userFirstNameMobile" placeholder="First Name of the Candidate" type="text" name="userFirstName" ng-model="user.firstName" required/>
+							<div ng-messages="personalStatementMobile.userFirstName.$error"  ng-show="personalStatementMobile.userFirstName.$dirty"  role="alert">
+								<div ng-message="required">Please enter first name</div>
+							</div>
+
+							<input id="userLastNameMobile" placeholder="Last Name of the Candidate" type="text" name="userLastName"  ng-model="user.lastName" required/>
+							<div ng-messages="personalStatementMobile.userLastName.$error"  ng-show="personalStatementMobile.userLastName.$dirty"  role="alert">
+								<div ng-message="required">Please enter last name</div>
+							</div>
+							<div class="mobileCBformField">
+								Gender
+								<input name="userGender" ng-model="user.gender" type="checkbox" value="female" ng-click="user.gender='female'" ng-checked="user.gender=='female'" id="userGenderFemalee" required/>
+								<label for="userGenderFemalee">Female</label>
+								<input name="userGender" ng-model="user.gender" type="checkbox" value="male" ng-click="user.gender='male'" ng-checked="user.gender=='male'"id="userGenderMalee" required/>
+								<label for="userGenderMalee">Male</label>	
+							</div>
+							<div ng-messages="personalStatementMobile.userGender.$invalid" role="alert">
+								<div ng-message="required">Please select Gender.</div>
+							</div>
+							<div class="mobileCBformField">
+								Born
+							</div>
+							<select 
+								ng-model="user.country"          
+								ng-options="country as country.name for country in countryArray track by country.id"
+								class="form-control"
+								id="userCountryMobile" name="userCountry"  ng-required="true">
+								<option value="">Birthplace Country</option>
+							</select>								
+						  	<div ng-messages="personalStatementMobile.userCountry.$error" ng-show="personalStatementMobile.userCountry.$dirty" role="alert">
+								<div ng-message="required">Please select country.</div>
+							</div>
+							<select ng-model="user.state" 
+								ng-options="state as state.name for state in stateArray | filter:{countryId:user.country.id?user.country.id:0} track by state.id"
+								class="form-control"
+								id="userStateMobile"  ng-required="true" name="userState"> 
+								<option value="">Birthplace State</option>
+							</select>  
+							<div ng-messages="personalStatementMobile.userState.$error" ng-show="personalStatementMobile.userState.$dirty" role="alert">
+								<div ng-message="required">Please select state.</div>
+							</div>
+							<select 
+								ng-model="user.city" 
+								ng-options="city as city.name for city in cityArray | filter:{stateId:user.state.id?user.state.id:0} track by city.id"
+								class="form-control" 
+								id="userCityMobile"  ng-required="true" name="userCity">
+								<option value="">Birthplace City</option>
+							</select>
+							<div ng-messages="personalStatementMobile.userCity.$error" ng-show="personalStatementMobile.userCity.$dirty" role="alert">
+								<div ng-message="required">Please select city.</div>
+							</div>
+							<select 
+								ng-model="user.currentCountry"                
+								ng-options="country as country.name for country in countryArray track by country.id"
+								class="form-control" 
+								id="country" name="userCurrentCountry" ng-required="true">
+								<option value="">Current Country</option>
+							</select>
+							<div ng-messages="personalStatementMobile.userCurrentCountry.$error" ng-show="personalStatementMobile.userCurrentCountry.$dirty" role="alert">
+								<div ng-message="required">Please select country.</div>
+							</div>
+							<select 
+								ng-model="user.currentState" 
+								ng-options="state as state.name for state in stateArray | filter:{countryId:user.currentCountry.id?user.currentCountry.id:0} track by satet.id"
+								class="form-control"
+								id="currentStateMobile" name="userCurrentState" ng-required="true">
+								<option value="">Current State</option>
+							</select>
+							<div ng-messages="personalStatementMobile.userCurrentState.$error" ng-show="personalStatementMobile.userCurrentState.$dirty" role="alert">
+								<div ng-message="required">Please select state.</div>
+							</div>
+							<select 
+								ng-model="user.currentCity"
+								ng-options="city as city.name for city in cityArray | filter:{stateId:user.currentState.id?user.currentState.id:0} track by city.id"
+								class="form-control animate-hide" 
+								id="city" name="userCurrentCity" ng-required="true">
+								<option value="">Current City</option>
+							</select>
+							<div ng-messages="personalStatementMobile.userCurrentCity.$error" ng-show="personalStatementMobile.userCurrentCity.$dirty" role="alert">
+								<div ng-message="required">Please select city.</div>
+							</div>
+							<select 
+								ng-model="user.religion"                
+								ng-options="religion as religion.name for religion in religionArray track by religion.id"
+								name="userReligionMobile">
+								<option value="">Religion</option>
+							</select>
+							<div ng-messages="personalStatementMobile.userReligion.$error" ng-show="personalStatementMobile.userReligion.$dirty" role="alert">
+								<div ng-message="required">Please select religion.</div>
+							</div>
+							<input id="userGotraMobile" 
+							   placeholder="e.g Gotra" 
+							   type="text" 
+							   name="userGotra" 
+							   ng-model="user.gotra"  
+							   uib-typeahead="gotra for gotra in gotraArray | filter: $viewValue | limitTo:8" class="form-control" 
+							   ng-required="true"/>
+							<input id="userCastMobile" 
+								placeholder="e.g cast" 
+								type="text" 
+								name="userCast" 
+								ng-model="user.cast"  
+								uib-typeahead="cast for cast in castArray | filter: $viewValue | limitTo:8" class="form-control" />
+							<select 
+								ng-model="user.zodiac"                
+								ng-options="zodiac as zodiac.name for zodiac in zodiacArray track by zodiac.id"
+								id="userZodiacMobile" name="userZodiac">
+								<option value="">Select Zodiac</option>
+							</select>
+							<div class="mobileCBformField">
+								Manglik
+								<input type="checkbox" ng-model="user.isManglik" ng-disabled="!user.isManglik" ng-true-value="false" ng-false-value=""  id="mNo" checked="checked" />
+								<label for="mNo">No</label>
+								<input type="checkbox" ng-model="user.isManglik" ng-disabled="user.isManglik" ng-true-value="true" ng-false-value=""  id="mYes" />
+								<label for="mYes">Yes</label>
+							</div>
+							<select 
+								ng-model="user.moonsign"                
+								ng-options="moonsign as moonsign.name for moonsign in moonsignArray track by moonsign.id"
+								class="form-control" 
+								id="userMoonsignMobile">
+								<option value="">Your Moonsign</option>
+							</select>
+							<select
+								ng-model="user.maritalStatus"                
+								ng-options="obj for obj in maritalStatusArray"
+								id="userMaritalStatusMobile">
+								<option value="">Select Marital Status</option>
+							</select>
+							<select 
+								ng-model="user.height"                
+								ng-options="height for height in heightsArray"
+								id="userheightMobile">
+								<option value="">Select Height</option>
+							</select>
+							<select
+								ng-model="user.complexion"                
+								ng-options="complexion for complexion in complexionArray"
+								id="userComplexionMobile">
+								<option value="">Select Complexion</option>
+							</select>
+							<select
+								ng-model="user.AnnualIncome"                
+								ng-options="income for income in incomeArray"
+								id="userIncomeMobile">
+								<option value="">Select Income</option>
+							</select>
+							<div class="mobileCBformField">
+								Own House
+								<input type="checkbox" ng-model="user.hasCar" ng-disabled="!user.hasCar" ng-true-value="false" ng-false-value="" id="hNo" />
+								<label for="hNo">No</label>
+								<input ng-model="user.hasCar" ng-disabled="user.hasCar" ng-true-value="true" ng-false-value="" type="checkbox" id="hYes" />
+								<label for="hYes">Yes</label>
+							</div>
+							<div class="mobileCBformField">
+								Own Car
+								<input type="checkbox" id="cNo"  ng-model="user.hasHouse" ng-disabled="!user.hasHouse" ng-true-value="false" ng-false-value="" />
+								<label for="cNo">No</label>
+								<input type="checkbox" ng-model="user.hasHouse" ng-disabled="user.hasHouse" ng-true-value="true" ng-false-value="" checked="checked" id="cYes" />
+								<label for="cYes">Yes</label>
+							</div>
+							<select	ng-model="user.bloodGroup"                
+									ng-options="bloodgroup as bloodgroup.title for bloodgroup in bloodgrouparray"
+									id="userBloodGroupMobile">
+									<option value="">Select Blood Type</option>
+							</select>
+							<select	ng-model="user.smoke"                
+									ng-options="smoke as smoke.title for smoke in smokearray"
+									id="userSmokeMobile">
+								  <option value="">Select Smoker or Not</option>
+							</select>
+							<select	ng-model="user.drink"                
+									ng-options="drink as drink.title for drink in drinkarray"
+									id="userDrinkMobile">
+							  <option value="">Select Drinker or Not</option>
+							</select>
+							<select	ng-model="user.diet"                
+									ng-options="diet as diet.title for diet in dietarray"
+									id="userdiet">
+									<option value="">Select Diet</option>
+							</select>
+							<textarea placeholder="Add Your Personal Statement" ng-model="user.personalInformation"  maxlength="180"></textarea>
+							<span class="mobileCounterless">{{180 - user.personalInformation.length}} Character remaining</span>
+							<div class="mobileCBformBtnSection">
+								<a href="javascript:void(0);" class="btn-black" back-button>Back</a>
+								<a href="javascript:void(0);" class="btn-orange" ng-click="tabs.index=2">Save & Continue</a>
+							</div>
+						</form>
+					</div>	
+				</div>
+				<!-- /Personal -->
+				
+				<!-- Education -->
+				<div class="mobileTabGroup mobieFieldError" ng-tab-body  style="display:none">
+					<div class="mobileTabHeading">education <span class="mobileRequired">* Required Field</span></div>
+					<div class="mobileTabContent">
+						<p>Enter most recent information.</p>
+						<form class="mobileCBform" name="userEducationMobile" novalidate="">
+							<div class="mobileCBGroup" ng-repeat="EducationDetailsTemp in user.EducationDetails track by $index">
+								<ng-form name="userEducationMobileInner">
+									<span class="cbd-remove-icon cbd-mobile-remove-icon" confirmation-click-message="you really want to delete education detail?" confirmation-click="removeEducationDetail($index)">Remove</span>
+									<input id="" required placeholder="School or University" type="text" ng-model="EducationDetailsTemp.schoolUniversity" name="schoolUniversity"/>
+									<div ng-messages="userEducationMobileInner.schoolUniversity.$error" ng-show="userEducationMobileInner.schoolUniversity.$dirty" role="alert">
+										<div ng-message="required">Please enter school/university</div>
+									</div>
+									<input id="" required placeholder="Graduation Year" type="text" ng-model="EducationDetailsTemp.year" name="year"/>
+									<div ng-messages="userEducationMobileInner.year.$error" ng-show="userEducationMobileInner.year.$dirty" role="alert">
+										<div ng-message="required">Please enter year</div>
+									</div>
+									<select	ng-model="EducationDetailsTemp.level"
+											ng-options="obj as obj for obj in ['Masters','Graduation']"
+											class="form-control"
+											id="country" name="level" required>
+											<option value="">Select Level</option>
+									</select>
+									<div ng-messages="userEducationMobileInner.level.$error" ng-show="userEducationMobileInner.level.$dirty" role="alert">
+										<div ng-message="required">Please enter level</div>
+									</div>
+									<input id="EducationDetailsTempMobile.typeOfDegree" 
+									   placeholder="Degree" 
+									   autocomplete="off"
+									   type="text" 
+									   name="typeOfDegree" 
+									   ng-model="EducationDetailsTemp.typeOfDegree"
+									   uib-typeahead="degree as degree.name for degree in degreeArray | filter: EducationDetailsTemp.typeOfDegree | limitTo:8" class="form-control" required/>
+									<div ng-messages="userEducationMobileInner.typeOfDegree.$error" ng-show="userEducationMobileInner.typeOfDegree.$dirty" role="alert">
+										<div ng-message="required">Please select type of degree</div>
+									</div>
+
+								</ng-form>
+							</div>	
+							<div class="mobileCBformBtnSection">
+								<a href="javascript:void(0);" ng-click="addBlankEductaionDetail();" class="btn-green addAdditionalBtn"><span class="mobideAddPlus">+</span> Add Additional Education</a>
+								<a href="javascript:void(0);" class="btn-black" back-button>Back</a>
+								<button class="btn-orange" ng-click="tabs.index=3" type="submit">Save & Continue</button>
+							</div>
+						</form>
+					</div>	
+				</div>		
+				<!-- /Education -->
+				<!-- Work -->
+				<div class="mobileTabGroup mobieFieldError" ng-tab-body  style="display:none">
+					<div class="mobileTabHeading">work <span class="mobileRequired">* Required Field</span></div>
+					<div class="mobileTabContent">
+						<p>Enter most recent information.</p>
+						<form class="mobileCBform" name="workExperienceFormMobile">
+							<div class="mobileCBGroup" ng-repeat="WorkExperienceTemp in user.WorkExperiences track by $index">
+								<ng-form name="userWorkExperienceMobileInner">
+								<span class="cbd-remove-icon cbd-mobile-remove-icon" confirmation-click-message="you really want to delete work experience detail?" confirmation-click="removeWorkExperience($index);showEducationDetail=false;">Remove</span>
+									<input id="" placeholder="Company Name" ng-model="WorkExperienceTemp.companyName" type="text" name="companyName" required/>
+									<div ng-messages="userWorkExperienceMobileInner.companyName.$error" ng-show="userWorkExperienceMobileInner.companyName.$dirty" role="alert">
+										<div ng-message="required">Please enter company name</div>
+									</div>
+									<input id="" placeholder="Title" type="text" ng-model="WorkExperienceTemp.title" name="title" required/>
+									<div ng-messages="userWorkExperienceMobileInner.title.$error" ng-show="userWorkExperienceMobileInner.title.$dirty" role="alert">
+										<div ng-message="required">Please enter job title</div>
+									</div>
+									<select	ng-model="WorkExperienceTemp.city"                
+										ng-options="obj as obj for obj in ['Zira','Chandigarh','Amritsar','Jalandhar','Moga']"
+										class="form-control" 
+										id="workexperiencecity" name="city" required>
+										<option value="">Select City</option>
+									</select>
+									<div ng-messages="userWorkExperienceMobileInner.city.$error" ng-show="userWorkExperienceMobileInner.city.$dirty" role="alert">
+										<div ng-message="required">Please enter city</div>
+									</div>
+									<textarea ng-model="WorkExperienceTemp.description" name="description" placeholder="Add Your Work Description" maxlength="180"></textarea>
+									<div ng-messages="userWorkExperienceMobileInner.description.$error" ng-show="userWorkExperienceMobileInner.description.$dirty" role="alert">
+										<div ng-message="required">Please enter description</div>
+									</div>
+									<span class="mobileCounterless">{{180 - WorkExperienceTemp.description.length}} Character remaining</span>
+								</ng-form>
+							</div>	
+							<div class="mobileCBformBtnSection">
+								<a href="javascript:void(0);" class="btn-green addAdditionalBtn" ng-click="addBlankWorkExperience();"><span class="mobideAddPlus">+</span> Add Additional Work Experience</a>
+								<a href="javascript:void(0);" class="btn-black" back-button>Back</a>
+								<a href="javascript:void(0)" class="btn-orange" ng-click="tabs.index=4">Save & Continue</a>
+							</div>
+						</form>
+					</div>	
+				</div>	
+				<!-- /Work -->
+				<!-- Family -->
+				<div class="mobileTabGroup mobieFieldError" ng-tab-body  style="display:none">
+					<div class="mobileTabHeading">family <span class="mobileRequired">* Required Field</span></div>
+					<div class="mobileTabContent">
+						<p>Enter most recent information.</p>
+						<form class="mobileCBform" novalidate="" method="post">
+							<div class="mobileCBGroup" ng-repeat="FamilyInfoTemp in user.FamilyInfoArray track by $index">
+							 	<ng-form name="FamilyInfoFormInner">
+							 	<span class="cbd-remove-icon  cbd-mobile-remove-icon" confirmation-click-message="you really want to delete family information?" confirmation-click="removeFamilyInfo($index)">Remove</span>
+									<select	ng-model="FamilyInfoTemp.relation"                
+											ng-options="obj as obj for obj in relationArray"
+											class="form-control" 
+											id="FamilyInfoRelationMobile"
+											name="relation" required>
+											<option value="">Choose Relation</option>
+									</select>
+									<div ng-messages="FamilyInfoFormInner.relation.$error" ng-show="FamilyInfoFormInner.relation.$dirty" role="alert">
+										<div ng-message="required">Please select relation</div>
+									</div>
+
+									<input ng-model="FamilyInfoTemp.name" name="name" type="text" placeholder="Full Name" required/>
+									<div ng-messages="FamilyInfoFormInner.name.$error" ng-show="FamilyInfoFormInner.name.$dirty" role="alert">
+										<div ng-message="required">Please enter name</div>
+									</div>
+									<select 
+										ng-model="FamilyInfoTemp.city" 
+										ng-options="city as city.name for city in cityArray | filter:{stateId:FamilyInfoTemp.state.id?FamilyInfoTemp.state.id:0 } track by cityid"
+										class="form-control"
+										name="city"
+										id="FamilyInfoStateMobile" required>
+										<option value="">Choose city</option>
+									</select>
+									<div ng-messages="FamilyInfoFormInner.city.$error" ng-show="FamilyInfoFormInner.city.$dirty" role="alert">
+										<div ng-message="required">Please select city</div>
+									</div>
+									<select 
+										ng-model="FamilyInfoTemp.state" 
+										ng-options="state as state.name for state in stateArray | filter:{countryId:FamilyInfoTemp.country.id?FamilyInfoTemp.country.id:0 } track by state.id"
+										class="form-control"
+										id="FamilyInfoStateMobile" name="state" required>
+										<option value="">Choose State</option>
+									</select>
+									<div ng-messages="FamilyInfoFormInner.state.$error" ng-show="FamilyInfoFormInner.state.$dirty" role="alert">
+										<div ng-message="required">Please select state</div>
+									</div>
+									<select 
+										ng-model="FamilyInfoTemp.country" 
+										ng-options="country as country.name for country in countryArray track by country.id"
+										class="form-control"
+										id="FamilyInfoCountry" name="country" required>
+										<option value="">Choose Country</option>
+									</select>
+									<div ng-messages="FamilyInfoFormInner.country.$error" ng-show="FamilyInfoFormInner.country.$dirty" role="alert">
+										<div ng-message="required">Please select country</div>
+									</div>
+									<select	ng-model="FamilyInfoTemp.workType"                
+											ng-options="obj as obj for obj in ['Govt Employ','Business','Private job','Shopkeeper']"
+											class="form-control" 
+											id="FamilyInfoWork" name="workType" required>
+											<option value="">Select Work</option>
+									</select>
+									<div ng-messages="FamilyInfoFormInner.workType.$error" ng-show="FamilyInfoFormInner.workType.$dirty" role="alert">
+										<div ng-message="required">Please select work type</div>
+									</div>
+									<textarea ng-model="FamilyInfoTemp.workDesctiption" 
+											   name="workDesctiption" 
+											   type="text" 
+											   placeholder="Description" maxlength="180" required/>
+									<div ng-messages="FamilyInfoFormInner.workDesctiption.$error" ng-show="FamilyInfoFormInner.workDesctiption.$dirty" role="alert">
+										<div ng-message="required">Please enter work description</div>
+									</div>
+									<span class="mobileCounterless">{{180 - FamilyInfoTemp.workDesctiption.length}} Character remaining</span>
+								</ng-form>
+							</div>
+							<div class="mobileCBformBtnSection">
+								<a href="javascript:void(0);" class="btn-green addAdditionalBtn noMgBottom" ng-click="addBlankFamilyInfo();"><span class="mobideAddPlus">+</span> Add Member</a>
+							</div>
+						</form>
+					</div>
+					<div class="mobileTabHeading">paternal side</div>
+					<div class="mobileTabContent">
+						<form class="mobileCBform" novalidate="" method="post">
+							<div class="mobileCBGroup" ng-repeat="PaternalFamilyTemp in user.PaternalFamilyArray track by $index">
+							 	<ng-form name="PaternalFamilyInfoFormInner">
+							 	<span class="cbd-remove-icon cbd-mobile-remove-icon" confirmation-click-message="you really want to delete family detail?" confirmation-click="removePaternalFamily($index)">Remove</span>
+									<select	ng-model="FamilyInfoTemp.relation"                
+											ng-options="obj as obj for obj in relationArray"
+											class="form-control" 
+											id="FamilyInfoRelationMobile"
+											name="relation" required>
+											<option value="">Choose Relation</option>
+									</select>
+									<div ng-messages="PaternalFamilyInfoFormInner.relation.$error" ng-show="PaternalFamilyInfoFormInner.relation.$dirty" role="alert">
+										<div ng-message="required">Please select relation</div>
+									</div>
+
+									<input ng-model="PaternalFamilyTemp.name" name="name" type="text" placeholder="Full Name" required/>
+									<div ng-messages="PaternalFamilyInfoFormInner.name.$error" ng-show="PaternalFamilyInfoFormInner.name.$dirty" role="alert">
+										<div ng-message="required">Please enter name</div>
+									</div>
+									<select 
+										ng-model="PaternalFamilyTemp.city" 
+										ng-options="city as city.name for city in cityArray | filter:{stateId:PaternalFamilyTemp.state.id?PaternalFamilyTemp.state.id:0 } track by cityid"
+										class="form-control"
+										name="city"
+										id="FamilyInfoStateMobile" required>
+										<option value="">Choose city</option>
+									</select>
+									<div ng-messages="PaternalFamilyInfoFormInner.city.$error" ng-show="PaternalFamilyInfoFormInner.city.$dirty" role="alert">
+										<div ng-message="required">Please select city</div>
+									</div>
+									<select 
+										ng-model="PaternalFamilyTemp.state" 
+										ng-options="state as state.name for state in stateArray | filter:{countryId:PaternalFamilyTemp.country.id?PaternalFamilyTemp.country.id:0 } track by state.id"
+										class="form-control"
+										id="FamilyInfoStateMobile" name="state" required>
+										<option value="">Choose State</option>
+									</select>
+									<div ng-messages="PaternalFamilyInfoFormInner.state.$error" ng-show="PaternalFamilyInfoFormInner.state.$dirty" role="alert">
+										<div ng-message="required">Please select state</div>
+									</div>
+									<select 
+										ng-model="PaternalFamilyTemp.country" 
+										ng-options="country as country.name for country in countryArray track by country.id"
+										class="form-control"
+										id="FamilyInfoCountry" name="country" required>
+										<option value="">Choose Country</option>
+									</select>
+									<div ng-messages="PaternalFamilyInfoFormInner.country.$error" ng-show="PaternalFamilyInfoFormInner.country.$dirty" role="alert">
+										<div ng-message="required">Please select country</div>
+									</div>
+									<select	ng-model="PaternalFamilyTemp.workType"                
+											ng-options="obj as obj for obj in ['Govt Employ','Business','Private job','Shopkeeper']"
+											class="form-control" 
+											id="FamilyInfoWork" name="workType" required>
+											<option value="">Select Work</option>
+									</select>
+									<div ng-messages="PaternalFamilyInfoFormInner.workType.$error" ng-show="PaternalFamilyInfoFormInner.workType.$dirty" role="alert">
+										<div ng-message="required">Please select work type</div>
+									</div>
+									<textarea ng-model="PaternalFamilyTemp.workDesctiption" 
+											   name="workDesctiption" 
+											   type="text" 
+											   placeholder="Description" maxlength="180" required />
+									<div ng-messages="PaternalFamilyInfoFormInner.workDesctiption.$error" ng-show="PaternalFamilyInfoFormInner.workDesctiption.$dirty" role="alert">
+										<div ng-message="required">Please enter work description</div>
+									</div>
+									<span class="mobileCounterless">{{180 - PaternalFamilyTemp.workDesctiption.length}} Character remaining</span>
+								</ng-form>
+							</div>
+							<div class="mobileCBformBtnSection">
+								<a href="javascript:void(0);" class="btn-green addAdditionalBtn noMgBottom" ng-click="addBlankPaternalFamilyInfo();"><span class="mobideAddPlus">+</span> Add Member</a>
+							</div>
+						</form>
+					</div>
+					<div class="mobileTabHeading">maternal side</div>
+					<div class="mobileTabContent">
+						<form class="mobileCBform" novalidate="" method="post">
+							<div class="mobileCBGroup" ng-repeat="MaternalFamilyTemp in user.MaternalFamilyArray track by $index">
+							 	<ng-form name="MaternalFamilyInfoFormInner">
+							 		<span class="cbd-remove-icon cbd-mobile-remove-icon" confirmation-click-message="you really want to delete family detail?" confirmation-click="removeMaternalFamily($index)">Remove</span>
+									<select	ng-model="FamilyInfoTemp.relation"                
+											ng-options="obj as obj for obj in relationArray"
+											class="form-control" 
+											id="FamilyInfoRelationMobile"
+											name="relation" required>
+											<option value="">Choose Relation</option>
+									</select>
+									<div ng-messages="MaternalFamilyInfoFormInner.relation.$error" ng-show="MaternalFamilyInfoFormInner.relation.$dirty" role="alert">
+										<div ng-message="required">Please select relation</div>
+									</div>
+									<input ng-model="MaternalFamilyTemp.name" name="name" type="text" placeholder="Full Name" required/>
+									<div ng-messages="MaternalFamilyInfoFormInner.name.$error" ng-show="MaternalFamilyInfoFormInner.name.$dirty" role="alert">
+										<div ng-message="required">Please enter name</div>
+									</div>
+
+									<select 
+										ng-model="MaternalFamilyTemp.city" 
+										ng-options="city as city.name for city in cityArray | filter:{stateId:MaternalFamilyTemp.state.id?MaternalFamilyTemp.state.id:0 } track by cityid"
+										class="form-control"
+										name="city"
+										id="FamilyInfoStateMobile" required>
+										<option value="">Choose city</option>
+									</select>
+									<div ng-messages="MaternalFamilyInfoFormInner.city.$error" ng-show="MaternalFamilyInfoFormInner.city.$dirty" role="alert">
+										<div ng-message="required">Please select city</div>
+									</div>
+									<select 
+										ng-model="MaternalFamilyTemp.state" 
+										ng-options="state as state.name for state in stateArray | filter:{countryId:MaternalFamilyTemp.country.id?MaternalFamilyTemp.country.id:0 } track by state.id"
+										class="form-control"
+										id="FamilyInfoStateMobile" name="state" required>
+										<option value="">Choose State</option>
+									</select>
+									<div ng-messages="MaternalFamilyInfoFormInner.state.$error" ng-show="MaternalFamilyInfo	FormInner.state.$dirty" role="alert">
+										<div ng-message="required">Please select state</div>
+									</div>
+									<select 
+										ng-model="MaternalFamilyTemp.country" 
+										ng-options="country as country.name for country in countryArray track by country.id"
+										class="form-control"
+										id="FamilyInfoCountry" name="country" required>
+										<option value="">Choose Country</option>
+									</select>
+									<div ng-messages="MaternalFamilyInfoFormInner.country.$error" ng-show="MaternalFamilyInfoFormInner.country.$dirty" role="alert">
+										<div ng-message="required">Please select country</div>
+									</div>
+									<select	ng-model="MaternalFamilyTemp.workType"                
+											ng-options="obj as obj for obj in ['Govt Employ','Business','Private job','Shopkeeper']"
+											class="form-control" 
+											id="FamilyInfoWork" name="workType" required>
+											<option value="">Select Work</option>
+									</select>
+									<div ng-messages="MaternalFamilyInfoFormInner.workType.$error" ng-show="MaternalFamilyInfoFormInner.workType.$dirty" role="alert">
+										<div ng-message="required">Please select work type</div>
+									</div>
+									<textarea ng-model="MaternalFamilyTemp.workDesctiption" 
+											   name="workDesctiption" 
+											   type="text" 
+											   placeholder="Description" maxlength="180" required />
+									<div ng-messages="MaternalFamilyInfoFormInner.workDesctiption.$error" ng-show="MaternalFamilyInfoFormInner.workDesctiption.$dirty" role="alert">
+										<div ng-message="required">Please enter work description</div>
+									</div>
+									<span class="mobileCounterless">{{180 - MaternalFamilyTemp.workDesctiption.length}} Character remaining</span>
+								</ng-form>
+							</div>
+							<div class="mobileCBformBtnSection">
+								<a href="javascript:void(0);" class="btn-green addAdditionalBtn noMgBottom" ng-click="addBlankMaternalFamilyInfo();"><span class="mobideAddPlus">+</span> Add Member</a>
+							</div>
+						</form>
+					</div>	
+				</div>
+				<!-- /Family -->
+				<!-- Photos & Kundali -->
+				<div class="mobileTabGroup" ng-tab-body  style="display:none">
+					<div class="mobileTabHeading">photos</div>
+					<div class="mobileTabContent">
+						<img class="CBD-photo-thumb" src="images/ProfilePic/profile-photo.jpg" />
+						<a href="javascript:void(0);" class="CBD-add-photo" ui-sref="uploadPhotoMobile">
+							<i class="CBD-add-photo-icon">+</i>
+						</a>
+					</div>
+					<div class="mobileTabHeading">make your kundali</div>
+					<div class="mobileTabContent">
+						<ul class="mobileKundaliList">
+							<li>
+								<div class="kundaliListLeft">Name</div>
+								<div class="kundaliListRight">Amit Shrivastav</div>
+							</li>
+							<li>
+								<div class="kundaliListLeft">Gender</div>
+								<div class="kundaliListRight">Male</div>
+							</li>
+							<li>
+								<div class="kundaliListLeft">DOB/Time</div>
+								<div class="kundaliListRight">Jan 10, 1980 at 10:30 pm Wednesday</div>
+							</li>
+							<li>
+								<div class="kundaliListLeft">Birthplace</div>
+								<div class="kundaliListRight">Mumbai, India</div>
+							</li>
+						</ul>
+						<a class="mobileCoordinate" ui-sref="createBiodataMobileCoordinate">Coordinate and advance settings</a>
+						<!-- Create Biodata Terms -->
+						<div class="create-biodata-terms-block">
+							<input type="checkbox" checked="checked" id="terms" />
+							<label for="terms"><a ui-sref="termsCondition">agree to all Terms & conditions.</a></label>
+						</div>
+						<div class="col-sm-12 participateBox kundaliParticipate">
+						  Participate in our  <a style="cursor:pointer;" ui-sref="potentialSpouseMobile">premium candidate matching service?</a> 
+						  <a style="cursor:pointer;" ui-sref="faqRelationManagerMobile" class="faq"></a>
+						  <input type="checkbox" checked="checked" id="matching" />
+						  <label for="matching"></label>
+						</div>
+						<!-- /Create Biodata Terms -->
+						<div class="mobileCBformBtnSection noStyle">
+							<a ui-sref="createBiodataMobileKundali" class="btn-orange addAdditionalBtntop">Make your Kundali</a>
+						</div>									
+						<div class="mobileCBformBtnSection">
+							<a href="javascript:void(0);" class="btn-black" back-button>Back</a>
+							<a ui-sref="createBiodataMobilePreview" class="btn-green cus-greenBtn">Save & Preivew Biodata</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<!-- /Photos & Kundali -->
+			</section>
+		</div>
+	</div>
+</div>
+<div preivew-user-pic-modal=""></div>
+<script>
+
+jQuery('document').ready(function(){
+	setTimeout(function(){
+		jQuery('#firstCbTab').click();
+	},1000);
+});
+</script>

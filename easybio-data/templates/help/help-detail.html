@@ -1,0 +1,52 @@
+<div ng-controller="HelpController">
+<div ng-include='"templates/help/help-header.html"'></div>
+
+<!-- Help Strip -->
+<div id="help-strip">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<a class="active" href="#/help">Help Center</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Help Strip -->
+
+<!-- Help Middle -->
+<div id="help-middle">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			
+				<div id="help-content" sync-height>
+					<div id="help-content-inner">
+						<h3>Heading Goes Here 1</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>						
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>						
+						<div class="aside-widget noShowMobile">
+							<h3>Other Related Articles</h3>
+							<ul class="widget-list">
+								<li ng-repeat="list in SuggestedArticles">
+									<a ng-href="{{list.SuggestedArticleLink}}">{{list.SuggestedArticleName}}</a>
+								</li>
+							</ul>
+						</div>
+						<div class="helpful-section noShowMobile" ng-hide="showfeedback">Was this helpful? <a ng-click="showfeedback=true" href="javascript:void(0);">Yes</a>   <a ng-click="showfeedback=true" href="javascript:void(0);">No</a></div>
+						<div class="helpful-section"  ng-show="showfeedback">Thank you for your feedback!</div>
+					</div>
+				</div>
+				<div ng-include='"templates/help/help-sidebar.html"'></div>
+			
+			</div>			
+		</div>
+	</div>
+</div>
+<!-- /Help Middle -->
+
+</div>
+

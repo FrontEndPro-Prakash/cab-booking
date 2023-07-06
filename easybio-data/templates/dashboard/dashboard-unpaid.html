@@ -1,0 +1,34 @@
+<div class="unpaid-dashboard forMatchingaMsg">
+						
+	<!-- Unpaid DashBoard -->
+	<div class="recommendation-section">
+		<div class="left-part">
+			<img class="recommned-pic" ng-src="{{RecommendedPic}}" alt="" />
+			<span class="recommededName">{{RecommendedName}}</span>
+		</div>
+		<div class="right-part">
+			<div class="right-part-in">
+				Dear <span class="Ruser-name">{{RecommendUser}}</span>,
+				<div class="bottomSpace"></div>
+				You are not able to see the matches because you have not paid for the 
+easyBiodata premium matching service. In order to see your matches, please click on the Payment button below.
+				<div class="bottomSpace"></div>
+				<a ui-sref ="manageSubscription" class="btn-orange">make payment</a>
+				<div class="participateBox">
+				  Participate in our <a href="">candidate matching service ?</a> 
+				  <a uib-tooltip="FAQ" tooltip-placement="bottom" href="javascript:void(0);" ng-click="open()" class="faq"></a>
+				  <!-- <input type="checkbox" checked="checked" id="matching" />
+				  <label for="matching"></label> -->
+				</div>
+				<div class="bottomSpace"></div>
+				Regards,<br />
+				<span class="counsler-name">{{RecommendedName}}</span><br />
+				<span class="counsler-title">Your Marriage Counselor</span>
+			</div>
+		</div>
+	</div>
+	<!-- /Unpaid DashBoard -->
+
+	<div ng-include='"templates/dashboard/dashboard-matches-bottom.html"'></div>	
+							
+</div>

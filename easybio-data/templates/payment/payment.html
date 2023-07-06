@@ -1,0 +1,282 @@
+<style>
+.error{color:red}
+small.error{display:none;}
+alert.error{font-size:12px;}
+.CDCard-form input[type="text"], .CDCard-form input[type="number"]{
+	margin-bottom:0px;
+}
+.CDCard-form .ng-active{
+position:relative;
+left:0px;
+bottom:0px;
+}
+.btn-green[disabled] {
+    opacity: 0.4;
+}
+</style>
+<div class="container" ng-controller="PaymentController">
+	<div class="row">
+		<div class="col-md-12">
+			
+			<!-- DashBoard -->
+			<div id="payment-section">
+				<div id="payment-leftSidebar" class="noShowMobile">
+					<div class="payment-option-heading">Payment options</div>
+					<ul class="payment-option-list">
+						<li ng-class="{ active: isSet(1) }"><a href="" ng-click="setTab(1)"><i class="credit-icon"></i>Credit/Debit Card</a></li>
+						<li ng-class="{ active: isSet(2) }"><a href="" ng-click="setTab(2)"><i class="netbanking-icon"></i>Net Banking</a></li>
+						<li ng-class="{ active: isSet(3) }"><a href="" ng-click="setTab(3)"><i class="wallete-icon"></i>Wallet</a></li>
+					</ul>
+					<!-- <div class="back-plan-box">
+						<a href="#/" class="btn-black">Back to Plans</a>
+					</div> -->	
+				</div>
+				<!-- ==========!^MOBILE^!========== -->
+				<div id="payment-leftSidebar" class="ShowMobile" ng-show="mobilePaymentMethods" init="mobilePaymentMethods=true;">
+					<div class="mobilePaymentBGcolor">
+						<a href="javascript:void(0);" class="ShowMobile backButton" back-button>back</a>
+						<h4>Payment options</h4>
+					</div>
+					<ul class="payment-option-list">
+						<li><a style="cursor: pointer;" ng-click="showPaymentMethod('card');" onclick="jQuery('#firstMethod').removeClass('hidden-xs');"><i class="credit-icon"></i>Credit/Debit Card</a></li>
+						<li><a style="cursor: pointer;" ng-click="showPaymentMethod('netbanking')"><i class="netbanking-icon"></i>Net Banking</a></li>
+						<li><a style="cursor: pointer;" ng-click="showPaymentMethod('wallet')"><i class="wallete-icon"></i>Wallet</a></li>
+					</ul>
+				</div>
+				<!-- ==========!^MOBILE^!========== -->
+				<div id="payment-centerSidebar">
+					<div class="payment-types hidden-xs" id="firstMethod" ng-show="isSet(1);">
+						<div class="mobilePaymentBGcolor">
+							<a href="javascript:void(0);" class="ShowMobile backButton" ng-click="backButton()">back</a>
+							<h4>Enter your Card details</h4>
+						</div>
+						<form name="checkoutForm" class="CDCard-form" stripe-form="stripeCallback" ng-submit="onSubmit()" data-abide novalidate>
+							<label for="paymentCardNumber">Card Number</label>
+							<br/>
+							<alert ng-if="stripeError" class="error" type="'alert'" close="hideAlerts()">
+								{{stripeError}}
+							</alert>
+
+							<input type="text" class="form-control" autocomplete="off" stripe-card-number required id="paymentCardNumber" placeholder="card number" ng-model="number" name="number" placeholder="Card Number" required/>
+							<div ng-messages="checkoutForm.number.$error" class="text-danger" role="alert"
+						         ng-show="checkoutForm.number.$dirty">
+						        <div ng-message="required">please enter a card number.</div>
+						        <div ng-message="cardNumber">please enter a valid card number.</div>
+						    </div>
+
+						    <div class="form-group">
+								<div class="paymentExpiry">
+									<label for="paymentCardExpiryMonth">Expiry</label>
+									<input ng-model="expiry" style="display:none;" type="text"/>
+									<select class="form-control" name="exp_month" ng-options="month for month in cardMonthsArray" id="paymentCardExpiryMonth" ng-model="expiryMonth" ng-change="changeExpiry()" required>
+									  <option value="">MM</option>
+									</select>
+									<select class="form-control" name="exp_year" ng-options="year.id as year.name for year in cardYearsArray" id="paymentCardExpiryYear" ng-model="expiryYear" ng-change="changeExpiry()" required>
+									  <option value="">YYYY</option>
+									</select>
+									<div ng-messages="checkoutForm.exp_month.$error" ng-show="checkoutForm.exp_month.$dirty" class="text-danger" role="alert">
+								        <div ng-message="required">please enter a valid expiry.</div>
+								    </div>
+									<div ng-messages="checkoutForm.exp_year.$error"  ng-show="checkoutForm.exp_month.$valid &&  checkoutForm.exp_month.$dirty && checkoutForm.exp_year.$dirty" role="alert">
+										<div ng-message="required">please enter a valid expiry.</div>
+									</div>
+								</div>
+								<div class="paymentCvv">	
+									<label for="paymentCardName">CVC/Security code</label>
+									<input type="text" class="form-control" ng-model="cvc" name="cvc" minlength="3" maxlength="4" stripe-cvc-number autocomplete="off" required/>
+									<div ng-messages="checkoutForm.cvc.$error" class="text-danger" role="alert" ng-show="checkoutForm.cvc.$dirty">
+									    <div ng-message="required">please enter CVC.</div>
+									    <div ng-message="cvc">please enter a valid CVC.</div>
+									</div>
+								</div>
+						    </div>
+						  	<button ng-disabled="checkoutForm.$invalid" type="submit" id="paymentButton" style="display:none;" class="btn-green">MAKE PAYMENTr</button>
+						</form>  
+						<div class="payment-quickPay">
+							<input type="checkbox" id="quickPay" ng-model="rememberCard" ng-true-value="true" ng-false-value="false">
+							<label for="quickPay"></label>
+							<div class="payment-quickPayNote"><span>QUIKPAY</span>Save this card information to easyBiodata account and make faster payments.
+							</div>
+						</div>
+						<a href="javascript:void(0)" ng-disabled="checkoutForm.$invalid" onclick="jQuery('#paymentButton').click();" class="btn-green">make payment</a>
+						<!--<button type="submit" class="btn-green">MAKE PAYMENT</button>-->
+						<p class="payment-agree">By clicking “Make Payment’ you agree to the <a href="#/terms-condition">terms and conditions</a></p>
+					</div>
+					<div class="payment-types" ng-show="isSet(2)" class="">
+						<div class="mobilePaymentBGcolor">
+							<a href="javascript:void(0);" class="ShowMobile backButton" ng-click="backButton()">back</a>
+							<h4>Pay using Net Banking</h4>
+						</div>
+						<ul class="bank-list">
+							<li class="cus-radio">
+								<input type="radio" checked="checked" id="bank1" name="bank">
+								<label for="bank1"></label>
+								<div class="check"></div>
+								<img src="images/bank-img1.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="bank2" name="bank">
+								<label for="bank2"></label>
+								<div class="check"></div>
+								<img src="images/bank-img2.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="bank3" name="bank">
+								<label for="bank3"></label>
+								<div class="check"></div>
+								<img src="images/bank-img3.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="bank4" name="bank">
+								<label for="bank4"></label>
+								<div class="check"></div>
+								<img src="images/bank-img4.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="bank5" name="bank">
+								<label for="bank5"></label>
+								<div class="check"></div>
+								<img src="images/bank-img5.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="bank6" name="bank">
+								<label for="bank6"></label>
+								<div class="check"></div>
+								<img src="images/bank-img6.png" alt="" />
+							</li>
+						</ul>
+						<form class="all-bank">
+							<div class="form-group">
+								<label for="paymentBank">ALL BANKS</label>
+								<select class="form-control" id="paymentBank">
+								  <option>Select Bank</option>
+								  <option>Kotak</option>
+								  <option>CityBank</option>
+								  <option>Bank of Broada</option>
+								  <option>HDFC</option>
+								  <option>Punjab National Bank</option>
+								  <option>State Bank of India</option>
+								</select>
+							</div>	
+						</form>
+						<div class="payment-quickPay">
+							<input type="checkbox" id="quickPay2">
+							<label for="quickPay2"></label>
+							<div class="payment-quickPayNote"><span>QUIKPAY</span>Save this card information to easyBiodata account and make faster payments.</div>
+						</div>
+						<a href="#" class="btn-green">make payment</a>
+						<p class="payment-agree">By clicking “Make Payment’ you agree to the <a href="#/terms-condition">terms and conditions</a></p>
+					</div>
+					<div class="payment-types" ng-show="isSet(3)" class="">
+						<div class="mobilePaymentBGcolor">
+							<a href="javascript:void(0);" class="ShowMobile backButton" ng-click="backButton()">back</a>
+							<h4>Pay using by Wallets & Cash Card</h4>
+						</div>
+						<ul class="bank-list">
+							<li class="cus-radio">
+								<input type="radio" checked="checked" id="wallet1" name="wallet">
+								<label for="wallet1"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img1.png" alt=""/>
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet2" name="wallet">
+								<label for="wallet2"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img2.png" alt=""/>
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet3" name="wallet">
+								<label for="wallet3"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img3.png" alt=""/>
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet4" name="wallet">
+								<label for="wallet4"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img4.png" alt=""/>
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet5" name="wallet">
+								<label for="wallet5"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img5.png" alt=""/>
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet6" name="wallet">
+								<label for="wallet6"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img6.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet7" name="wallet">
+								<label for="wallet7"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img7.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet8" name="wallet">
+								<label for="wallet8"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img8.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet9" name="wallet">
+								<label for="wallet9"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img9.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet10" name="wallet">
+								<label for="wallet10"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img10.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet11" name="wallet">
+								<label for="wallet11"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img11.png" alt="" />
+							</li>
+							<li class="cus-radio">
+								<input type="radio" id="wallet12" name="wallet">
+								<label for="wallet12"></label>
+								<div class="check"></div>
+								<img src="images/wallet-img12.png" alt="" />
+							</li>							
+						</ul>
+						<a href="#" class="btn-green">make payment</a>
+					</div>					
+				</div>				
+				<div id="payment-rightSidebar">
+					<div class="payment-summary-heading">SUMMARY</div>
+					<div class="payment-summary-content">
+					<!-- <h4>Monthly membership</h4> -->
+					<div class="payment-price-offer"><strike>&#8377;840</strike> &#8377;{{upgradePlan.priceCents}}</div>
+					<p>50% off first payment</p>
+					<ul class="payment-price-offer-list">
+						<li>Dolor sit amet, consectetur adipiscing elit. Aenean euismod</li>
+						<li>Dolor sit amet, consectetur adipiscing elit.</li>
+						<li>Dolor sit amet, consectetur adipiscing elit.</li>
+						<li>Dolor sit amet.</li>
+						<li>Dolor sit amet, consectetur adipiscing elit.</li>
+						<li>Dolor sit amet, consectetur adipiscing elit. Aenean euismod</li>
+					</ul>
+					</div>
+				</div>	
+			</div>
+			<!-- /DashBoard -->
+		</div>
+	</div>
+</div>
+<script>
+jQuery('document').ready(function(){
+	jQuery("#paymentCardNumber").on('keyup onblur',function(){
+        var thisObject = jQuery(this);
+        if (((thisObject.val().length+1) % 5)==0){
+            jQuery(this).val(thisObject.val() + " ");
+        }
+    });
+});
+</script>

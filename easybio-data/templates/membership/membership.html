@@ -1,0 +1,110 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">
+				<div class="middle-section-inner">
+					<div class="mobileBGcolor">
+						<a href="javascript:void(0);" class="ShowMobile backButton memberBackBtn" back-button>back</a>
+						<h2 class="center">Your Biodata looks great!<span class="sub-heading">You are ready to download and print it.</span></h2>
+					</div>	
+					<div class="biodata-looks noShowMobile">
+						<div class="biodata-looks-colSpace"></div>
+						<div class="biodata-looks-col dark">
+							<img class="biodata-looks-icon" src="images/member-download-icon.svg" alt="" />
+							Download your<br>Biodatas
+						</div>
+						<div class="biodata-looks-colSpace"></div>
+						<div class="biodata-looks-col">
+							<img class="biodata-looks-icon" src="images/member-print-icon.svg" alt="" />
+							Email/Print<br>Your Biodata
+						</div>
+						<div class="biodata-looks-colSpace"></div>
+						<div class="biodata-looks-col dark">
+							<img class="biodata-looks-icon" src="images/member-edit-icon.svg" alt="" />
+							Edit Biodata<br>Details Anytime
+						</div>
+						<div class="biodata-looks-colSpace"></div>
+						<div class="biodata-looks-col">
+							<img class="biodata-looks-icon" src="images/member-access-icon.svg" alt="" />Access to Premium<br>Matchmaking<br>Service
+						</div>						
+					</div>
+					<h2 class="biodata-features noShowMobile">Get access to all features of easyBiodata!</h2>
+					<img class="biodata-down-arrow noShowMobile" src="images/down-arrow-icon.svg" alt="" />
+					<h2 class="biodata-following">Select from one of the following options</h2>	
+					<div class="biodata-plan-option biodata-offer-option biodataMembershipPlan">
+
+						<div class="biodata-plan-option-col" ng-repeat="singleSubscriptionPlan in subscriptionPlans" ng-class="{true: 'pro'}[singleSubscriptionPlan.name == 'Gold']">
+							<h3>{{singleSubscriptionPlan.name}}</h3> 
+							<ul class="biodataOfferList">
+								<li>{{singleSubscriptionPlan.name}} Biodata access</li>
+								<li>{{singleSubscriptionPlan.noProfiles}} Receive inbound match requests </li>
+								<li>{{singleSubscriptionPlan.noReceives}} free match recommendations from marriage counselor ({{singleSubscriptionPlan.durationDays}} Days)</li>
+								<li ng-if="singleSubscriptionPlan.name=='Gold' || singleSubscriptionPlan.name=='Platinum'">Option to remove logo from Biodata</li>
+							</ul>
+							<div class="biodataOptions">
+								<h4>Limited time offer</h4>
+								<div class="biodata-price">&#8377; {{singleSubscriptionPlan.priceCents}}</div>
+								<!--<div class="biodata-price">&#8377; <strike>850</strike> FREE</div>-->
+								<div class="noShowMobile" ng-if="singleSubscriptionPlan.name=='Basic'"><a href="javascript:void(0);" ng-click="openshareBiodataForm()" class="btn-black">Email to 5 People</a></div>
+								<div class="ShowMobile"  ng-if="singleSubscriptionPlan.name=='Basic'"><a ui-sref="shareBiodataForm" class="btn-black">Email to {{singleSubscriptionPlan.noShares-5}} People</a></div>
+								<a class="facebook" href="#"  ng-if="singleSubscriptionPlan.name=='Basic'"><i class="fa fa-facebook"></i> Share on Facebook</a>
+								<a ui-sref="payment" class="btn-orange" ng-if="singleSubscriptionPlan.name=='Gold'">Buy Now</a>
+								<a ui-sref="payment" class="btn-black" ng-if="singleSubscriptionPlan.name=='Platinum'">Buy Now</a>
+							</div>
+						</div>
+
+						<!--<div class="biodata-plan-option-col">
+							<h3>Basic</h3> 
+							<ul class="biodataOfferList">
+								<li>Biodata access</li>
+								<li>Receive inbound match requests </li>
+								<li>3 free match recommendations from marriage counselor (1 Week)</li>
+							</ul>
+							<div class="biodataOptions">
+								<h4>Limited time offer</h4>
+								<div class="biodata-price">&#8377; <strike>850</strike> FREE</div>
+								<div class="noShowMobile"><a href="javascript:void(0);" ng-click="openshareBiodataForm()" class="btn-black">Email to 5 People</a></div>
+								<div class="ShowMobile"><a ui-sref="shareBiodataForm" class="btn-black">Email to 5 People</a></div>
+								<a class="facebook" href="#"><i class="fa fa-facebook"></i> Share on Facebook</a>
+							</div>
+						</div>
+						<div class="biodata-plan-option-col pro">
+							<h3>Gold</h3>
+							<ul class="biodataOfferList">
+								<li>Biodata access</li>
+								<li>Receive inbound match requests.</li>
+								<li>15 free matches recommendations from marriage counselor (1Months)</li>
+								<li>Option to remove logo from Biodata</li>
+							</ul>
+							<div class="biodataOptions">
+								<h4>Limited time offer</h4>
+								<div class="biodata-price">&#8377; <strike>850</strike> FREE</div>
+								<a ui-sref="payment" class="btn-orange">Buy Now</a>
+							</div>
+						</div>
+						<div class="biodata-plan-option-col">
+							<h3>Platinum</h3>
+							<ul class="biodataOfferList">
+								<li>Biodata access</li>
+								<li>Receive inbound match requests </li>
+								<li>45 free matches recommendations from marriage counselor (3 Months)</li>
+								<li>Option to remove logo from</li>
+							</ul>
+							<div class="biodataOptions">
+								<h4>Limited time offer</h4>
+								<div class="biodata-price">&#8377; <strike>850</strike> FREE</div>
+								<a ui-sref="payment" class="btn-black">Buy Now</a>
+							</div>
+						</div>-->
+						<!-- Share Biodata Form Popup -->
+						<div share-biodata-form-modal=""></div>
+						<!-- /Share Biodata Form Popup -->
+					</div>
+					<div class="back-section noShowMobile"><a href="javascript:void(0);" back-button class="btn-black">BACK</a></div>	
+				</div>
+			</section>
+			<!-- /Middle Section -->
+		</div>
+	</div>
+</div>

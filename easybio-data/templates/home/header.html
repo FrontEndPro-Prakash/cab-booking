@@ -1,0 +1,71 @@
+<div class="ShowMobile notificDesktop" ng-hide="notificDesktop">For the best experience, we recommend using a desktop PC <a href="javascript:void(0);" ng-click="notificDesktop=true">X</span></div>
+<!-- Header -->
+<header>
+	<div id="top-header" class="header-common" >
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 center">
+					<a ui-sref="home"><h1 class="logo">easybiodata</h1></a>
+
+					<a ng-if="!authenticate" class="login loginDesktop" href="javascript:void(0);" tooltip-placement="bottom" uib-tooltip="Create Biodata" esc-key="$('#userRegistrationModal').modal('hide');" ng-click="openRegistrationForm();">Create Biodata</a>
+					<a class="login loginMobile" ui-sref="createBiodataMobileForm" href="javascript:void(0);">Create Biodata</a>
+					
+					<!-- /Login Window Popup -->
+					<ul class="main-menu">
+						<li ng-if="authenticate" ><a ui-sref="dashboard">Dashboard</a></li> 						
+						<li>
+							<a href="javascript:void(0);" esc-key="$('#userLoginModal').modal('hide');" ng-click="openUserLoginForm();" ng-if="!authenticate">Login</a>
+							 <a href="javascript:void(0);" ng-click="logoutFunction();"  ng-if="authenticate">Logout</a> 						
+						</li>
+						<li ng-controller="HelpPopoverCtrl"><a uib-popover-template="helpPopover.templateUrl" popover-placement="bottom-right" popover-trigger="outsideClick" href="javascript:void(0);">Help</a>
+						<script type="text/ng-template" id="helpPopoverTemplate.html">
+							<div class="help-dropdown" ng-controller="HelpQuestion">
+								<div class="search-box">
+									<input type="text" ng-model="searchQues" placeholder="How can we help you?">
+									<i class="seach-icon"></i>
+								</div>	
+								<div class="help-dropdown-heading">Suggested Articles <span ng-show="searchQues">"{{searchQues}}"</span></div>
+								<ul class="help-dropdown-list" mb-scrollbar>
+									<li ng-repeat="help in helpsQ | filter:searchQues" style="cursor: pointer;">
+										<i class="help-doc-icon"></i> <a style="cursor:pionter;" ng-click="openHelpQuestion(help.helpQlink)">{{help.helpQuestion}}</a>
+									</li>
+								</ul>
+								<span class="help-dropdown-no-rslt" ng-show="(helpsQ | filter:searchQues).length == 0">No results</span>
+								<a style="cursor:pionter;" class="help-dropdown-link" ng-click="openHelpQuestion('/help')">Help Center</a>
+							</div>
+						</script>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<div ng-if="!authenticate" register-user-modal=""></div>
+<div ng-if="!authenticate" login-user-modal=""></div>
+<div click-confirmation=""></div>
+<div faq-relation-manager-modal=""></div>
+<div potential-spouse-modal=""></div>	
+<div class="outside-div"></div>
+<input type="hidden" class="focus-textbox"/>
+<script>
+jQuery('ul[role=listbox] li[role=option]').click(function(){
+	var thisElement = $(this).parent().previous();
+	console.log(thisElement);
+	setTimeout(function(){
+		var e = jQuery.Event("keydown");
+	    e.which = 13; // Enter
+	    thisElement.trigger(e);
+	},1000);
+});
+/*function pressEnter(inputId){
+	setTimeout(function(){
+		var e = jQuery.Event("keydown");
+	    e.which = 13; // Enter
+	    $("#"+inputId).trigger(e);
+	},1000)
+}*/
+</script>
+<loading></loading>
+<loading-page></loading-page>
+<!-- /Header -->

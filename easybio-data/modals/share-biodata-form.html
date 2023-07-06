@@ -1,0 +1,68 @@
+<div class="modal fade" id="shareBiodataForm" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<a dismiss="modal" class="popup-close" href="javascript:void(0);" onclick="jQuery('#shareBiodataForm').modal('hide');"></a>
+			<div class="modal-body">					
+				
+				<div class="modal-Cuswindow left-border">
+					<h2>Share Biodata with 5 people to get free access</h2>
+					<form class="ShareBioform" name="shareBiodataForm" role="form" novalidate>
+						  	<div role="alert" ng-show="duplicateEmailsError">
+								<div class="duplicateMsgEr">Email duplicate</div>
+							</div>	
+						  <div class="form-group" ng-repeat="shareEmail in shareEmails track by $index">
+						  <ng-form name="innerForm">
+							<input type="email" class="form-control" id="shareEmaile{{$index}}"  ng-change="compareShareEmails()" name="shareUserEmail" ng-model="shareEmails[$index]" placeholder="Enter Email Id" required/>
+							<div ng-messages="innerForm.shareUserEmail.$error" ng-show="innerForm.shareUserEmail.$dirty" role="alert">
+								<div ng-message="required">Please enter email.</div>
+								<div ng-message="email">Please enter valid email.</div>
+							</div>
+
+							<!--<div ng-messages="shareBiodataForm.shareUserEmail1.$error" ng-show="shareBiodataForm.shareUserEmail1.$dirty" role="alert">
+								<div ng-message="required">Please enter email.</div>
+								<div ng-message="email">Please enter valid email.</div>
+							</div>-->
+							</ng-form>
+						  </div>
+					  <!--<div class="form-group">
+						<input type="email" class="form-control" id="shareEmail2" name="shareUserEmail2" ng-model="shareBiodata.shareEmail[1]" placeholder="Enter Email Id" required matcher="shareBiodata">
+						<div ng-messages="shareBiodataForm.shareUserEmail2.$error"  ng-show="shareBiodataForm.shareUserEmail2.$dirty" role="alert">
+							<div ng-message="required">Please enter email.</div>
+							<div ng-message="email">Please enter valid email.</div>
+						</div>
+					  </div>
+					  <div class="form-group">
+						<input type="email" class="form-control" id="shareEmail3" name="shareUserEmail3" ng-model="shareBiodata.shareEmail[2]" placeholder="Enter Email Id" required matcher="shareBiodata">
+						<div ng-messages="shareBiodataForm.shareUserEmail3.$error" ng-show="shareBiodataForm.shareUserEmail3.$dirty" role="alert">
+							<div ng-message="required">Please enter email.</div>
+							<div ng-message="email">Please enter valid email.</div>
+						</div>
+					  </div>
+					  <div class="form-group">
+						<input type="email" class="form-control" id="shareEmail4" name="shareUserEmail4" ng-model="shareBiodata.shareEmail[3]" placeholder="Enter Email Id" required matcher="shareBiodata">
+						<div ng-messages="shareBiodataForm.shareUserEmail4.$error" ng-show="shareBiodataForm.shareUserEmail4.$dirty" role="alert">
+							<div ng-message="required">Please enter email.</div>
+							<div ng-message="email">Please enter valid email.</div>
+						</div>
+					  </div>
+					  <div class="form-group">
+						<input type="email" class="form-control" id="shareEmail5" name="shareUserEmail5" ng-model="shareBiodata.shareEmail[4]" placeholder="Enter Email Id" required matcher="shareBiodata">
+						<div ng-messages="shareBiodataForm.shareUserEmail5.$error" ng-show="shareBiodataForm.shareUserEmail5.$dirty" role="alert">
+							<div ng-message="required">Please enter email.</div>
+							<div ng-message="email">Please enter valid email.</div>
+						</div>
+					  </div>-->
+					  <!-- <div class="form-group">
+						<textarea class="form-control" id="shareMsg" placeholder="Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris."></textarea>
+					  </div> -->
+					  <div class="form-group">
+						<button class="btn-green" type="submit" id="shareBiodataButton" ng-disabled="shareBiodataForm.$invalid || duplicateEmailsError">share</button>
+					  </div>
+					</form>  
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

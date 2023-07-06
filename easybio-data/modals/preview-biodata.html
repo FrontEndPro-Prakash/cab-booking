@@ -1,0 +1,403 @@
+<div class="modal fade" id="preivewUserBiodata" tabindex='-1'>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<a data-dismiss="modal" onclick="$('#userProcessComplete').modal('hide');$('#preivewUserBiodata').modal('hide');" class="popup-close" href="javascript:void(0);"></a>
+			<div class="modal-body">
+
+				<div class="preview-biodata">
+					<div class="preview-watermark"><img src="images/preview-watermark.png" alt="" /></div>
+					<!-- Biodata Preview Buttons -->
+					<div class="biodata-preivew-btns">
+						<div class="biodata-preivew-btns-left">
+							<p>Your Biodata is 80% Complete</p>
+							<a style="cursor:pointer;" onclick="$('#preivewUserBiodata').modal('hide');" class="preview-btns edit-btn"><i class="previw-edit-icon"></i> Edit</a>
+						</div>
+						<div class="biodata-preivew-btns-right">			
+							<a ui-sref="shareBiodata" class="preview-btns right-btn"><i class="iconbdprev-email"></i>Email</a>
+							<a href="javascript:void(0);" class="preview-btns right-btn"><i class="iconbdprev-download"></i>Download</a>
+							<a href="javascript:void(0);" class="preview-btns right-btn"><i class="iconbdprev-print"></i>Print</a>
+						</div>
+					</div>
+					<!-- /Biodata Preview Buttons -->
+					
+					<!-- Biodata Preview Congrats -->
+					<div class="biodata-preivew-congrats"><strong>Congratulations!</strong>  Your biodata looks great.  You can continue to edit, download, email, or print your biodata by clicking on the buttons above.</div>
+					<!-- /Biodata Preview Congrats -->
+					
+					<!-- Biodata Preview Covers -->
+					<div class="create-biodata-covers">
+						<div class="covers-name covers-name-preview">
+							<div class="covers-fields cname">
+							<span ng-show="user.name">{{userprofile.contactName}}</span><span ng-show="!userprofile.contactName">Your Son's Name</span>
+							</div>
+						</div>
+						<div class="covers-info-block">
+							<a href="javascript:void(0);" ng-click="openpreivewUserPic()"><img  class="covers-info-block-pic" ng-src="{{PersonPic}}" alt="" /></a>
+
+								<div class="covers-info-block-content">
+									<div class="covers-info-block-content-heading">
+										Contact Info For This Biodata
+									</div>
+									<div class="covers-info-block-content-field">
+										<i class="fa fa-user"></i>  
+										
+										<span ng-show="user.name">{{user.name}}</span> 
+										<span ng-show="!user.name"></span> 
+
+										<span ng-show="userprofile.relativeRelation">({{userprofile.relativeRelation}})</span>
+										<span ng-show="!userprofile.relativeRelation">(Father)</span>
+									</div>
+									<div class="covers-info-block-content-field">	
+										<i class="fa fa-envelope"></i> 
+										<span ng-show="user.email">{{user.email}}</span>
+										<span ng-show="!user.email"></span>
+									</div>
+									<div class="covers-info-block-content-field">	
+										<i class="fa fa-phone"></i>
+										<span ng-show="user.phone">{{user.phone}}</span>
+										<span ng-show="!user.phone">Phone</span>
+									</div>
+									<div class="covers-info-block-content-field">	
+										<i class="fa fa-map-marker"></i> 
+										<span ng-show="!user.address">Address</span>
+										<span ng-show="user.address">{{user.address}}</span>
+									</div>
+								</div>
+
+						</div>
+						<div class="covers-symbol">
+							<img ng-src="{{Symbol}}" alt="" />
+						</div>
+					</div>
+					<!-- /Biodata Preview Covers -->
+					
+					<!-- Biodata Preview Tables -->		
+					<div class="create-biodata-tabs">
+						  <div class="preview-biodata-tab-heading">Personal Information </div>
+						  <div class="biodata-tab-info">
+							  <div class="col-md-3 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Born</div>
+									<div class="CBD-right">
+										<span class="cbd-dob" ng-show="userprofile.birthDatetime">{{userprofile.birthDatetime | date:'MMM-dd-yyyy'}}</span><br />
+									    <span class="cbd-dot" ng-show="userprofile.birthDatetime">{{userprofile.birthDatetime | date:'HH:mm'}}</span>
+									</div>
+									
+									<div class="CBD-right" ng-show="!userprofile.birthDatetime">
+										<span class="cbd-dob" ng-show="!userprofile.birthDatetime">MMM dd, yyyy</span><br ng-show="!userprofile.birthDatetime"/>
+									    <span class="cbd-dotBorn" ng-show="!userprofile.birthDatetime">HH:MM AM</span>
+
+									</div>
+								</div>
+								<div class="CBD-fields">
+										<div class="CBD-left">complexion</div>
+										<div class="CBD-right">
+											<span class="cbd-height" ng-show="userprofile.complexion">{{userprofile.complexion}}</span>
+											<span class="cbd-height" ng-show="!userprofile.complexion">Add complexion</span><br />
+										</div>
+								</div>	
+							  </div>
+							  
+							  <div class="col-md-3 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Birth Place</div>
+									<div class="CBD-right">
+										<span class="cbd-city" ng-show="userprofile.City.name">{{userprofile.City.name}}</span>
+										<span class="cbd-city" ng-show="!userprofile.City.name">Mumbai</span><br />
+										<span class="cbd-state"  ng-show="userprofile.State.name">{{userprofile.State.name}}</span>
+										<span class="cbd-state"  ng-show="!userprofile.State.name">maharshtra</span><br />
+										<span class="cbd-country"  ng-show="userprofile.Country.name">{{userprofile.Country.name}}</span>
+										<span class="cbd-country"  ng-show="!userprofile.Country.name">india</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Current City</div>
+									<div class="CBD-right">
+										<span class="cbd-city" ng-show="userprofile.CurrentCity.name">{{userprofile.City.name}}</span>
+										<span class="cbd-city" ng-show="!userprofile.CurrentCity.name">Mumbai</span><br />
+										<span class="cbd-state"  ng-show="userprofile.CurrentState.name">{{userprofile.State.name}}</span>
+										<span class="cbd-state"  ng-show="!userprofile.CurrentState.name">maharshtra</span><br />
+										<span class="cbd-country"  ng-show="userprofile.CurrentCountry.name">{{userprofile.Country.name}}</span>
+										<span class="cbd-country"  ng-show="!userprofile.CurrentCountry.name">india</span>
+									</div>
+								</div>
+							  </div>
+							  
+							  <div class="col-md-3 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">gotra</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="userprofile.gothra">{{userprofile.gothra}}</span>
+										<span class="cbd-gotra" ng-show="!userprofile.gothra">gothra</span><br />
+										<span class="cbd-religion" ng-show="userprofile.religion" data-ng-repeat="singleReligion in religionArray | filter:{id: userprofile.religion}:true">{{singleReligion.name}}</span>
+										<span class="cbd-religion" ng-show="!userprofile.religion">Religion</span><br />
+										<span class="cbd-caste" ng-show="userprofile.caste">{{userprofile.caste}}</span>
+										<span class="cbd-caste" ng-show="!userprofile.caste">Caste</span>
+									</div>
+								</div>
+							  </div>
+							  
+							  <div class="col-md-3 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Own car</div>
+									<div class="CBD-right">
+										<span class="cbd-ownCar" ng-if="userprofile.ownCar=='Yes'">Yes</span>
+										<span class="cbd-ownCar" ng-if="userprofile.ownCar!='Yes'">No</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Own House</div>
+									<div class="CBD-right">
+										<span class="cbd-ownHouse" ng-if="userprofile.ownHouse=='Yes'">Yes</span>
+										<span class="cbd-ownHouse" ng-if="userprofile.ownHouse!='Yes'">No</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">income</div>
+									<div class="CBD-right">
+										<span class="cbd-income" ng-if="userprofile.annualIncome"><span class="cbd-currency">&#8377;</span>{{userprofile.annualIncome}}</span>
+										<span class="cbd-income" ng-if="!userprofile.annualIncome"><!--<span class="cbd-currency">&#8377;</span> 5-10 lakh / annum-->Add income</span>
+									</div>
+								</div>
+							  </div>
+						  </div>
+						  <div class="preview-biodata-tab-heading no-bg">Other Personal Information</div>
+						  <div class="biodata-tab-info">
+							  <div class="col-md-4 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">zodiac</div>
+									<div class="CBD-right">
+										<span class="cbd-zodiac" ng-show="userprofile.zodiac">{{userprofile.zodiac}}</span>
+										<span class="cbd-zodiac" ng-show="!userprofile.zodiac">Add Zodiac</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">manglik</div>
+									<div class="CBD-right">
+										<span class="cbd-maglik" ng-show="userprofile.isManglik">Yes</span>
+										<span class="cbd-maglik" ng-show="!userprofile.isManglik">No</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">moonsign</div>
+									<div class="CBD-right">
+										<span class="cbd-moonsign" ng-show="userprofile.moonSign">{{userprofile.moonSign}}</span>
+										<span class="cbd-moonsign" ng-show="!userprofile.moonSign">Add moonsign</span>
+									</div>
+								</div>
+							  </div>
+							  <div class="col-md-4 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">height</div>
+									<div class="CBD-right">
+										<span class="cbd-height" ng-show="userprofile.height"><span  data-ng-repeat="singleHeight in heightsArray | filter:{cm: userprofile.height}:true">{{singleHeight.inch}} ({{singleHeight.cm}})</span></span>
+										<span class="cbd-height" ng-show="!userprofile.height">Add Height</span><br />
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left"></div>
+									<div class="CBD-right">
+										<span class="cbd-interest">
+										<span ng-repeat="singleInterest in userprofile.interests">{{singleInterest.title.name}}<br/></span>
+										</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Marital Status</div>
+									<div class="CBD-right">
+										<span class="cbd-marital" ng-show="userprofile.maritalStatus">{{userprofile.maritalStatus}}</span>
+										<span class="cbd-marital" ng-show="!userprofile.maritalStatus">Add Marital Status</span>
+									</div>
+								</div>
+							  </div>
+							  
+							  <div class="col-md-4 col-sm-12">
+								<div class="CBD-fields">
+									<div class="CBD-left">additional information</div>
+									<div class="CBD-right">
+										<ul class="cbd-add-info-after">
+											<li ng-show="!userprofile.bloodType">
+												Add Additional Information
+											</li>
+											<li ng-show="userprofile.bloodType">Blood Group - <span>{{userprofile.bloodType}}<span></li>
+											<li ng-show="userprofile.diet">Diet - <span>{{userprofile.diet}}<span></li>
+											<li ng-show="userprofile.drink">Drink - <span>{{userprofile.drink}}<span></li>
+											<li ng-show="userprofile.smoke">Smoke - <span>{{userprofile.smoke}}<span></li>
+										</ul>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">personal information</div>
+									<div class="CBD-right">
+										<span class="cbd-per-info-after" ng-show="userprofile.description">{{userprofile.description}}</span>
+										<span class="cbd-per-info-after" ng-show="!userprofile.description">Add Personal Information</span>
+									</div>
+								</div>
+							  </div>
+						  </div>
+						  <div class="preview-biodata-tab-heading">Education / Work Experience</div>
+						  <div class="biodata-tab-info">
+							<div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Education</div>
+									<div class="CBD-right" ng-show="userprofile.EducationDetails == '' ">
+										<span class="cbd-school">School/University</span><br />
+											<span class="cbd-dot">Level</span><br />
+											<span class="cbd-dot">Graduation year</span><br />
+											<span class="cbd-dot">Degree</span>
+									</div>
+									<div class="CBD-right" ng-show="userprofile.EducationDetails != '' " ng-repeat="singleEducationDetail in userprofile.EducationDetails">
+										<span class="cbd-school">{{singleEducationDetail.schoolUniversity}}</span><br />
+										<span class="cbd-dot">{{singleEducationDetail.level}}</span><br />
+										<span class="cbd-dot">{{singleEducationDetail.year}}</span><br />
+										<span class="cbd-dot">{{singleEducationDetail.typeOfDegree.name}}</span>
+									</div>								
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6">
+								<div class="CBD-fields" >
+									<div class="CBD-left">Work Experience</div>
+									
+									<div class="CBD-right" ng-show="userprofile.WorkExperiences == '' ">
+										<span class="cbd-school">Company Name</span><br/>
+										<span class="cbd-dot">Title</span><br/>
+										<span class="cbd-dot">City</span><br/>
+										<span class="cbd-dot">Description</span>
+	                               	</div>
+									<div class="CBD-right" ng-show="!userprofile.WorkExperiences == '' " ng-repeat="singleWorkExperience in userprofile.WorkExperiences">
+										<span class="cbd-com-name">{{singleWorkExperience.companyName}}</span><br />
+										<span class="cbd-dot">{{singleWorkExperience.title}}</span><br />
+										<span class="cbd-dot">{{singleWorkExperience.city}}</span><br />
+										<span class="cbd-dot">{{singleWorkExperience.description}}</span>
+									</div>
+								</div>
+							</div>
+						  </div>		  			  
+						  <div class="preview-biodata-tab-heading">Family Information</div>
+						  <div class="biodata-tab-info">
+							  <div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Relationship to Candidate</div>
+									<div class="CBD-right" ng-show="userprofile.FamilyInfoArray == '' ">
+										<span class="cbd-school">Add Your Relation</span><br />
+										<span class="cbd-dot">Full Name</span><br />
+										<span class="cbd-dot">Living In</span><br />
+									</div>
+									<div class="CBD-right" ng-show="userprofile.FamilyInfoArray != '' " ng-repeat="singleFamilyInfo in userprofile.FamilyInfoArray">
+										<span class="cbd-add-relation">{{singleFamilyInfo.relation}}</span><br />
+										<span class="cbd-dot">{{singleFamilyInfo.name}}</span><br />
+										<span class="cbd-dot">{{singleFamilyInfo.city.name}}<br />{{singleFamilyInfo.state.name}}<br />{{singleFamilyInfo.country.name}}</span>
+									</div>
+								</div>
+							  </div>
+							  
+							  <div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Work Experience</div>
+									<div class="CBD-right CBD-hover" ng-show="userprofile.FamilyInfoArray == '' ">		
+										<span class="cbd-add-work">add your work experience</span><br/>
+										<span class="cbd-dot">add your work description</span>
+	                               	</div>
+									<div class="CBD-right"  ng-show="userprofile.FamilyInfoArray != '' " ng-repeat="singleFamilyInfo in userprofile.FamilyInfoArray">
+										<span class="cbd-add-work">{{singleFamilyInfo.workType}}</span><br />
+										<span class="cbd-dot">{{singleFamilyInfo.workDesctiption}}</span>
+									</div>
+								</div>							
+								
+							  </div>
+						  </div>
+						  <div class="preview-biodata-tab-heading" ng-show="userprofile.paternalPreview">Paternal Side</div>
+						  <div class="biodata-tab-info" ng-show="userprofile.paternalPreview">
+							  <div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Relationship to Candidate</div>
+									<div class="CBD-right CBD-hover removeEdit" ng-show="userprofile.PaternalFamilyArray == '' ">
+										<span class="cbd-school">Add Your Relation</span><br />
+										<span class="cbd-dot">Full Name</span><br />
+										<span class="cbd-dot">Living In</span><br />
+									</div>
+									<div class="CBD-right" ng-show="userprofile.PaternalFamilyArray" ng-show="userprofile.PaternalFamilyArray == '' " ng-repeat="singlePaternalFamily in userprofile.PaternalFamilyArray">
+										<span class="cbd-add-relation">{{singlePaternalFamily.relation}}</span><br />
+										<span class="cbd-dot">{{singlePaternalFamily.name}}</span><br />
+										<span class="cbd-dot">{{singlePaternalFamily.city.name}}<br />{{singlePaternalFamily.state.name}}<br />{{singlePaternalFamily.country.name}}</span>
+									</div>
+								</div>
+							  </div>
+							  <div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Work Experience</div>
+									<div class="CBD-right" ng-show="userprofile.PaternalFamilyArray == '' ">			
+										<span class="cbd-add-work" >add your work experience</span><br/>
+										<span class="cbd-dot" >add your work description</span>
+	                               	</div>
+
+									<div class="CBD-right" ng-show="userprofile.PaternalFamilyArray" ng-show="!userprofile.PaternalFamilyArray != '' " ng-repeat="singlePaternalFamily in userprofile.PaternalFamilyArray">
+										<span class="cbd-add-work">{{singlePaternalFamily.workType}}</span><br />
+										<span class="cbd-dot">{{singlePaternalFamily.workDesctiption}}</span>
+									</div>
+								</div>
+							  </div>
+						  </div>
+						  <div class="preview-biodata-tab-heading" ng-show="userprofile.maternalPreview">Maternal Side</div>
+						  <div class="biodata-tab-info" ng-show="userprofile.maternalPreview">
+							  <div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Relationship to Candidate</div>
+										<div class="CBD-right" ng-show="userprofile.MaternalFamilyArray == '' ">
+											<span class="cbd-school">Add Your Relation</span><br />
+											<span class="cbd-dot">Full Name</span><br />
+											<span class="cbd-dot">Living In</span><br />
+										</div>
+									<div class="CBD-right" ng-show="userprofile.MaternalFamilyArray" ng-show="userprofile.MaternalFamilyArray != '' " ng-repeat="singleMaternalFamily in userprofile.MaternalFamilyArray">
+										<span class="cbd-add-relation">{{singleMaternalFamily.relation}}</span><br />
+										<span class="cbd-dot">{{singleMaternalFamily.name}}</span><br />
+										<span class="cbd-dot">{{singleMaternalFamily.city.name}}<br />{{singleMaternalFamily.state.name}}<br />{{singleMaternalFamily.country.name}}</span>
+									</div>
+
+								</div>
+							  </div>
+							  
+							  <div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Work Experience</div>
+									<div class="CBD-right" ng-show="userprofile.MaternalFamilyArray == '' ">		
+										<span class="cbd-add-work" >add your work experience</span><br/>
+										<span class="cbd-dot" >add your work description</span>
+                               		</div>
+									<div class="CBD-right" ng-show="userprofile.MaternalFamilyArray"  ng-show="userprofile.MaternalFamilyArray != '' " ng-repeat="singleMaternalFamily in userprofile.MaternalFamilyArray">
+										<span class="cbd-add-work">{{singleMaternalFamily.workType}}</span><br />
+										<span class="cbd-dot">{{singleMaternalFamily.workDesctiption}}</span>
+									</div>
+								</div>
+							  </div>
+						  </div>
+						  <div class="preview-biodata-tab-heading">Photos</div>
+						  <div class="biodata-tab-info">
+							  <div class="col-md-12 col-sm-12">
+								<div class="CBD-photo-thumb" ng-click="openpreivewUserPic()">
+									<img src="images/ProfilePic/profile-photo.jpg" />
+								</div>
+								<div class="CBD-photo-thumb" ng-click="openpreivewUserPic()">
+									<img src="images/ProfilePic/profile-photo.jpg" />
+								</div>
+								<div class="CBD-photo-thumb" ng-click="openpreivewUserPic()">
+									<img src="images/ProfilePic/profile-photo.jpg" />
+								</div>	
+							  </div>
+						  </div>
+						  <div class="preview-biodata-tab-heading">Kundali</div>
+						  <div class="biodata-tab-info">
+							  <div class="col-md-12 col-sm-12 center fullKundaliSection">
+								<div class="kundli-preview"><img src="images/kundli-img.png" /></div>
+								<div class="kundli-preview"><img src="images/kundli-img.png" /></div>
+								<div class="center kundali-love">Made with <i class="kundali-heart"></i> on Easybiodata.com </div>
+							  </div>										  
+						  </div>							
+					</div>
+					<!-- /Biodata Preview Tables -->						
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>		

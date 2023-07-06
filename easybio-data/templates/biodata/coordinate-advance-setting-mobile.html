@@ -1,0 +1,40 @@
+<div class="container createBiodataMobile" ng-class="user.profileTemplate" ng-controller="BiodataController">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">
+			
+				<!-- Kundali Preview -->
+				<div class="mobileTabGroup">
+					<div class="mobileTabContent">
+						<div class="mobileTopHead"><a href="javascript:void(0);" class="backButton" back-button>back</a></div>
+						{{tempKundali}}
+						<form class="mobileCBform">
+							<input id="" ng-model="tempKundali.longituteDegree" placeholder="Long Degree" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.longituteMinute" placeholder="Long Minute" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.longituteEw" placeholder="Long EW" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.latitudeDegree" placeholder="Lat Degree" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.latitudeMinute" placeholder="Lat Minute" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.latitudeNs" placeholder="Lat NS" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.timezone" placeholder="Time Zone" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.dst" placeholder="DST" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.kpHoraryNo" placeholder="KP Horary No." type="text" name=""/>	
+							<input id="" ng-model="tempKundali.ayanamsa" placeholder="Ayanamsa" type="text" name=""/>	
+							<input id="" ng-model="tempKundali.chartStyle" placeholder="Chart Sytle" type="text" name=""/>	
+							<div class="mobileCBformBtnSection noStyle">
+								<button ng-click="saveUserKundali();" class="btn-orange addAdditionalBtntop">Save & Make your Kundali</a>
+							</div>		
+							<!-- ui-sref="createBiodataMobileKundali"  -->							
+							<div class="mobileCBformBtnSection">
+								<a href="javascript:void(0);" class="btn-black" back-button>Back</a>
+								<a ui-sref="createBiodataMobilePreview" class="btn-green cus-greenBtn">Preivew your Biodata</a>
+							</div>
+						</form>						
+					</div>	
+				</div>
+				<!-- /Kundali Preview -->				
+			
+			</section>
+		</div>
+	</div>
+</div>

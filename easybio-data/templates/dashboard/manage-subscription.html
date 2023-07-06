@@ -1,0 +1,104 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- DashBoard -->
+			<div id="dashboard-section">
+				<div id="leftSidebar" class="noShowMobile" ng-style="changeHeight" ng-include='"templates/dashboard/dashboard-sidebar.html"'></div>
+				<div id="dashboard-inner-section" sync-height>
+					<div class="my-dashboard unpaid-dashboard unpaid-nopadd">
+						<!-- Unpaid DashBoard -->
+						<div class="recommendation-section">
+							<div class="heading-row"><a href="javascript:void(0);" class="ShowMobile backButton" back-button>back</a>
+							<h2><center>Manage Subscription</center></h2>
+							<!-- ==========!^MOBILE^!========== -->
+							<div class="ShowMobile" ng-include='"templates/dashboard/dashboard-mobile.html"'></div></div>
+							<!-- ==========!^MOBILE^!========== -->
+							<!-- Subscription -->
+							<div class="memberSSubscriptionS">
+								<p class="subscriptionMsg" ng-if="showExpiryMessage==false">Your subscription expires in {{subscriptionExpireinDays}} days ({{subscriptionExpireDate | date:"longDate"}}) You can extend by upgrading</p>
+								<p class="subscriptionMsg" ng-if="showExpiryMessage==true">Your subscription has been expired</p>
+
+								<div class="biodata-plan-option biodata-offer-option biodataMembershipPlan">
+									<div class="biodata-plan-option-col" ng-repeat="singleSubscriptionPlan in subscriptionPlans">
+										<h3>{{singleSubscriptionPlan.name}}</h3> 
+										<ul class="biodataOfferList OfferListHeight">
+											<li>Biodata access</li>
+											<li>Receive inbound match requests </li>
+											<li>{{singleSubscriptionPlan.noReceives}} Free matches({{singleSubscriptionPlan.durationDays}} Days)</li>
+											<li ng-if="singleSubscriptionPlan.name=='Gold' || singleSubscriptionPlan.name=='Platinum'">Option to remove logo from Biodata</li>
+										</ul>
+										<div class="biodataOptions" ng-if="singleSubscriptionPlan.id==userSubscriptionPlans.subscriptionPlan && (userSubscriptionPlans.isActive==null || userSubscriptionPlans.isActive==true)">
+											<h4>Your Current Subscription</h4>
+											<div ng-if="singleSubscriptionPlan.id==userSubscriptionPlans.subscriptionPlan && (userSubscriptionPlans.isActive==null || userSubscriptionPlans.isActive==true)" class="biodata-price">&#8377; {{singleSubscriptionPlan.priceCents}}</div>
+											<a ng-if="singleSubscriptionPlan.id==userSubscriptionPlans.subscriptionPlan && (userSubscriptionPlans.isActive==null || userSubscriptionPlans.isActive==true)" href="javascript:void(0)" class="btn-orange" ng-click="upgradeSubscription(singleSubscriptionPlan)">Upgrade</a>
+										</div>
+										<div class="biodataOptions" ng-if="singleSubscriptionPlan.id!=userSubscriptionPlans.subscriptionPlan || userSubscriptionPlans.isActive==false">
+											<h4>Limited time offer</h4>
+											<div class="biodata-price">&#8377; {{singleSubscriptionPlan.priceCents}}</div>
+											<!--<a href="javascript:void(0);" class="btn-orange">Upgrade</a>-->
+											<a href="javascript:void(0)" class="btn-orange" ng-click="upgradeSubscription(singleSubscriptionPlan)" ng-if="singleSubscriptionPlan.name=='Basic'" ng-disabled="singleSubscriptionPlan.name=='Platinum' || singleSubscriptionPlan.name=='Gold'">Buy Now</a>
+											<a href="javascript:void(0)" class="btn-orange" ng-click="upgradeSubscription(singleSubscriptionPlan)" ng-if="singleSubscriptionPlan.name=='Gold'" ng-disabled="singleSubscriptionPlan.name=='Platinum'">Buy Now</a>
+											<a href="javascript:void(0)" class="btn-black" ng-click="upgradeSubscription(singleSubscriptionPlan)" ng-if="singleSubscriptionPlan.name=='Platinum'">Buy Now</a>
+										</div>
+									</div>
+									<!--<div class="biodata-plan-option-col">
+										<h3>Basic</h3> 
+										<ul class="biodataOfferList OfferListHeight">
+											<li>Biodata access</li>
+											<li>Receive inbound match requests </li>
+											<li>3 Free matches(1 Week)</li>
+										</ul>
+										<div class="biodataOptions">
+											<h4>Your Current Subscription</h4>
+										</div>
+									</div>
+									<div class="biodata-plan-option-col pro">
+										<h3>Gold</h3>
+										<ul class="biodataOfferList">
+											<li>Biodata access</li>
+											<li>Receive inbound match requests.</li>
+											<li>15 Free matches(1Months)</li>
+											<li>Option to remove logo from Biodata</li>
+										</ul>
+										<div class="biodataOptions">
+											<h4>Limited time offer</h4>
+											<div class="biodata-price">&#8377; <strike>850</strike> Free</div>
+											<a href="javascript:void(0);" class="btn-orange">Upgrade</a>
+										</div>
+									</div>
+									<div class="biodata-plan-option-col">
+										<h3>Platinum</h3>
+										<ul class="biodataOfferList">
+											<li>Biodata access</li>
+											<li>Receive inbound match requests </li>
+											<li>45 Free matches(3 Months)</li>
+											<li>Option to remove logo from Biodata</li>
+										</ul>
+										<div class="biodataOptions">
+											<h4>Limited time offer</h4>
+											<div class="biodata-price">&#8377; <strike>850</strike> Free</div>
+											<a href="javascript:void(0);" ng-click="openshareBiodataForm()" class="btn-black">Upgrade</a>
+										</div>
+									</div>-->
+									<!-- Share Biodata Form Popup -->
+									<div share-biodata-form-modal=""></div>
+									<!-- /Share Biodata Form Popup -->
+								</div>
+							</div>
+							<!-- Subscription -->
+						</div>
+						<!-- /Unpaid DashBoard -->
+						<div ng-include='"templates/dashboard/dashboard-payment-history.html"'></div>	
+					</div>	
+				</div>
+			</div>
+			<!-- /DashBoard -->
+		</div>
+	</div>
+</div>
+<div payment-sucess-message-modal ng-if="paymentSuccess==true"></div>
+<script ng-if="paymentSuccess==true">
+jQuery(document).ready(function(){
+	setTimeout(function(){ jQuery('#paymentSuccessfullMessage').modal('show'); },1000);	
+});
+</script>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>eTMS-Buddy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+</head>
+<body>
+<!-- body part start -->
+<form>
+	<div class="main-section">
+		<div class="main-section-top">
+			<!-- <a href="#" class="toggle"><i class="fa fa-bars fa-bars-icon" aria-hidden="true"></i></a> -->
+			<span class="toggle"><a href="javascript:void(0);" class="sbarmenushow" style=""><i class="fa fa-bars fa-bars-icon" aria-hidden="true"></i></a></span>
+			<span class="center-text">Cab Delay Validation</span>
+			<span class="sos-text"><a href="#" class="" data-toggle="modal" data-target="#exampleModal"><span class="sos-bg">SOS</span></a></span>
+		</div>
+		<div class="main-content-body">
+		<!-- calender -->
+		<div class="calender-box" id="demo">
+			<div class="form-group" style="background:#fff;">
+			<input type="text" id="datepicker" placeholder="DD/MM/YYYY">
+			</div>
+			<!-- <p id="demo"></p> -->
+			<i class="fa fa-calendar calender-icons" aria-hidden="true"></i>
+		</div>
+		<div style="padding:10px;">
+		<div class="pickup-cancel-shaddow adhoc-approval" style="margin-bottom: 10px;">
+				<div class="pickup-bg-text">
+					Pickup Route Information
+					<span class="float-right"><div class="common_chkbox">
+					<input type="checkbox" id="newsletter" name="newsletter" checked>
+					<label for="newsletter"></label>
+				</div></span>
+				</div>
+					<div class="pickup-trip-cancel">
+						<p class="trip-pickup-text font-weight-bold">Trip ID</p>
+						<p class="trip-pickup-text text-right">01309310R0002</p>
+					</div>
+					<div class="pickup-trip-cancel">
+						<p class="trip-pickup-text font-weight-bold"><img src="images/trip-id.png" class="male-img" alt="">Shift Date</p>
+						<p class="trip-pickup-text text-right">21<sup>ST</sup>  June, 2018</p>
+					</div>
+						<div class="pickup-trip-cancel">
+							<p class="trip-pickup-text font-weight-bold"><img src="images/time.png" class="male-img" alt="">Shift Time</p>
+							<p class="trip-pickup-text text-right">09:00 AM</p>
+						</div>
+							<div class="pickup-trip-cancel">
+								<p class="trip-pickup-text font-weight-bold"><img src="images/faclitiy.png" class="male-img" alt="">Facility </p>
+								<p class="trip-pickup-text text-right">Campus</p>
+							</div>
+							<div class="pickup-trip-cancel">
+								<p class="trip-pickup-text font-weight-bold"><img src="images/car-trip.png" class="male-img" alt="">Trip Type </p>
+								<p class="trip-pickup-text text-right">Pickup</p>
+							</div>
+							<div class="cab-info">
+							<div class="cab-info-main">
+								<ul class="nav nav-tabs pickup-drop pickup-drop-cabdelay" style="border:1px solid #000;" id="myTab" role="tablist">
+								  <li class="nav-item pickbtn">
+									<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Planned</a>
+								  </li>
+								  <li class="nav-item pickbtn">
+									<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Actual</a>
+								  </li>
+								</ul>
+								<div class="tab-content" id="myTabContent">
+									<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+										<div class="employ-name">
+													<span class="employ-detail-heading">Reporting Time</span>
+													<span class="employ-detail-heading"></span>
+													<span class="employ-detail-heading">ETA</span>
+										</div>
+										<div class="employ-name" style="background:#fff;color:#000;">
+											<span class="employ-detail-heading">08:00 Hrs</span>
+											<span class="employ-detail-heading"></span>
+											<span class="employ-detail-heading">07:10 mins</span>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+										<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+										<div class="employ-name">
+													<span class="employ-detail-heading">Reporting Time</span>
+													<span class="employ-detail-heading"></span>
+													<span class="employ-detail-heading">ETA</span>
+										</div>
+										<div class="employ-name" style="background:#fff;color:#000;">
+											<span class="employ-detail-heading">08:00 Hrs</span>
+											<span class="employ-detail-heading"></span>
+											<span class="employ-detail-heading">07:10 mins</span>
+										</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+			 </div>
+			 <div class="pickup-cancel-shaddow adhoc-approval">
+				<div class="pickup-bg-text">
+					Drop Route Information
+					<span class="float-right"><div class="common_chkbox">
+					<input type="checkbox" id="newsletter1" name="newsletter1">
+					<label for="newsletter1"></label>
+				</div></span>
+				</div>
+					<div class="pickup-trip-cancel">
+						<p class="trip-pickup-text font-weight-bold">Trip ID</p>
+						<p class="trip-pickup-text text-right">01309310R0002</p>
+					</div>
+					<div class="pickup-trip-cancel">
+						<p class="trip-pickup-text font-weight-bold"><img src="images/trip-id.png" class="male-img" alt="">Shift Date</p>
+						<p class="trip-pickup-text text-right">21<sup>ST</sup>  June, 2018</p>
+					</div>
+						<div class="pickup-trip-cancel">
+							<p class="trip-pickup-text font-weight-bold"><img src="images/time.png" class="male-img" alt="">Shift Time</p>
+							<p class="trip-pickup-text text-right">09:00 AM</p>
+						</div>
+							<div class="pickup-trip-cancel">
+								<p class="trip-pickup-text font-weight-bold"><img src="images/faclitiy.png" class="male-img" alt="">Facility </p>
+								<p class="trip-pickup-text text-right">Campus</p>
+							</div>
+							<!-- second tab -->
+							
+							<div class="cab-info">
+							<div class="cab-info-main">
+								<ul class="nav nav-tabs pickup-drop pickup-drop-cabdelay" style="border:1px solid #000;" id="myTab" role="tablist">
+								  <li class="nav-item pickbtn">
+									<a class="nav-link active" data-toggle="tab" href="#tab_1" role="tab" aria-controls="tab_1" aria-selected="true">Planned</a>
+								  </li>
+								  <li class="nav-item pickbtn">
+									<a class="nav-link" data-toggle="tab" href="#tab_2" role="tab" aria-controls="tab_2" aria-selected="false">Actual</a>
+								  </li>
+								</ul>
+								<div class="tab-content" id="myTabContent-second">
+									<div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="home-tab">
+										<div class="employ-name">
+													<span class="employ-detail-heading">Reporting Time</span>
+													<span class="employ-detail-heading"></span>
+													<span class="employ-detail-heading">ETA</span>
+										</div>
+										<div class="employ-name" style="background:#fff;color:#000;">
+											<span class="employ-detail-heading">08:00 Hrs</span>
+											<span class="employ-detail-heading"></span>
+											<span class="employ-detail-heading">07:10 mins</span>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="profile-tab">
+										<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+										<div class="employ-name">
+													<span class="employ-detail-heading">Reporting Time</span>
+													<span class="employ-detail-heading"></span>
+													<span class="employ-detail-heading">ETA</span>
+										</div>
+										<div class="employ-name" style="background:#fff;color:#000;">
+											<span class="employ-detail-heading">08:00 Hrs</span>
+											<span class="employ-detail-heading"></span>
+											<span class="employ-detail-heading">07:10 mins</span>
+										</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+							
+							
+							<!-- second tab -->
+							<div class="weak-save top-space-save-btn">
+				<a href="21.mail-to-manager.html" class="save-btn">MAIL TO MANAGER</a>
+			</div>
+			 </div>
+			 </div>
+			 
+		</div>
+	</div>
+	</form>
+	<!-- sidebar -->
+	<div class="sidebar-main">
+		<div class="sidebar-inner">
+			<div class="sidebar-yellow-bg">
+				<span class="cross-sidebar sbar-close"><img src="images/cross.png" class="male-img"></span>
+				<h4 class="font-weight-bold">Anurag Singh</h4>
+				<ul class="male-infosis">
+				<li> <a href="#"><img src="images/male.png" class="male-img">Male</a> </li>
+				<li> <a href="#"><img src="images/infoces.png" class="male-img">Infosys</a> </li>
+				</ul>
+			</div>
+			<div class="sidebar-navigation-bg">
+				<ul class="main-menu">
+				<li> <a href="5.home.html"><img src="images/manage-roster.png" class="menu-img">Manage Roster</a> </li>
+				<li> <a href="10.manage-adhoc.html"><img src="images/manage-adhoc.png" class="menu-img">Manage Adhoc</a> </li>
+				<li> <a href="12.adhoc-approval.html"><img src="images/adodhe-approvel.png" class="menu-img">Adhoc Approval</a> </li>
+				<li> <a href="16.cab-info.html"><img src="images/cab-info.png" class="menu-img">Cab Info</a> </li>
+				<li> <a href="19.geo-code.html"><img src="images/geo-code.png" class="menu-img">Geo Coding</a> </li>
+				<li> <a href="20.cabdelay-validations.html"><img src="images/cab-.png" class="menu-img">Cab Delay Validation</a> </li>
+				<li> <a href="17.where-is-cab.html"><img src="images/where-is-my-cab.png" class="menu-img">Where is my Cab</a> </li>
+				<li> <a href="22.employee-feedback.html"><img src="images/employe-feedback.png" class="menu-img">Employee Feedback</a> </li>
+				<li> <a href="27.about.html"><img src="images/about.png" class="menu-img">About</a> </li>
+				<li> <a href="#" data-toggle="modal" data-target="#exampleModa-help"><img src="images/help-desk.png" class="menu-img">Transport HelpDesk</a> </li>
+				</ul>
+				<a href="2.registration.html" class="logout-sidebar font-weight-bold">Logout</a>
+			</div>
+		</div>
+	</div>
+	<!-- sidebar end -->
+	
+		<!-- help desk Modal -->
+<div class="modal fade" id="exampleModa-help" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Help Desk</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">(800) 692- 7777</h3>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="tel:800 692- 7777" class="firstbtn">Call</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- help desk modal html -->
+	
+	<!-- SOS Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Help Desk</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">(800) 692- 7777</h3>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="tel:800 692- 7777" class="firstbtn">Call</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SOS modal html -->
+
+<!-- info Modal -->
+<div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-info" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel-info">Route Information</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+	  <ul class="nav nav-tabs pickup-drop pickup-drop-cabdelay" id="myTab" role="tablist">
+  <li class="nav-item pickbtn">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pickup</a>
+  </li>
+  <li class="nav-item pickbtn">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Drop</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+	<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		<div class="pickup-drop-main">
+		</div>
+        <div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Trip ID</h6>
+		<h6 class="">43343R343DA</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Date</h6>
+		<h6 class="">21-june-2018</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Time</h6>
+		<h6 class="">09:00 AM</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Facility </h6>
+		<h6 class="">Campus</h6>
+		</div>
+	</div>
+	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+		<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		<div class="pickup-drop-main">
+		</div>
+        <div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Trip ID</h6>
+		<h6 class="">43343R</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Date</h6>
+		<h6 class="">22-june-2018</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Time</h6>
+		<h6 class="">08:00 AM</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Facility </h6>
+		<h6 class="">Campus</h6>
+		</div>
+		</div>
+	</div>
+</div>
+      <div class="modal-footer two-btn-modal">
+		<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">OK</button> 
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- info modal html -->
+
+<!-- second tab info Modal -->
+<div class="modal fade" id="myTabContent-second " tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-info" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel-info">Route Information</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+	  <ul class="nav nav-tabs pickup-drop pickup-drop-cabdelay" id="myTab" role="tablist">
+  <li class="nav-item pickbtn">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pickup</a>
+  </li>
+  <li class="nav-item pickbtn">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Drop</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent-second">
+	<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		<div class="pickup-drop-main">
+		</div>
+        <div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Trip ID</h6>
+		<h6 class="">43343R343DA</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Date</h6>
+		<h6 class="">21-june-2018</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Time</h6>
+		<h6 class="">09:00 AM</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Facility </h6>
+		<h6 class="">Campus</h6>
+		</div>
+	</div>
+	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+		<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		<div class="pickup-drop-main">
+		</div>
+        <div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Trip ID</h6>
+		<h6 class="">43343R</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Date</h6>
+		<h6 class="">22-june-2018</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Time</h6>
+		<h6 class="">08:00 AM</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Facility </h6>
+		<h6 class="">Campus</h6>
+		</div>
+		</div>
+	</div>
+</div>
+      <div class="modal-footer two-btn-modal">
+		<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">OK</button> 
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- info modal html -->
+	
+<!-- body part end -->
+<script type='text/javascript' src='js/jquery-3.3.1.min.js'></script>
+<script type='text/javascript' src='js/bootstrap.min.js'></script>
+<script type='text/javascript' src='js/popover.js'></script>
+
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type='text/javascript' src='js/custom.js'></script>
+
+</body>
+</html>

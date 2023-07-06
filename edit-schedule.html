@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>eTMS-Buddy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+</head>
+<body>
+<!-- body part start -->
+<form>
+	<div class="main-section" style="background:#fff;">
+		<div class="main-section-top">
+			<span class="toggle"><a href="5.home.html" class=""><img src="images/back-.png" class="male-img" alt=""></a></span>
+			<span class="center-text">Edit Schedule</span>
+			<span class="sos-text"><a href="#" class="" data-toggle="modal" data-target="#exampleModal"><span class="sos-bg">SOS</span></a></span>
+		</div>
+		<div class="main-content-body">
+		<!-- calender -->
+		<div class="edit-schedule" style="margin-top: 10px;">
+		<label class="label-edit-schedule">Shift Date</label>
+		<div class="calender-box calender-schedule" id="demo">
+			<input type="text" id="datepicker" placeholder="DD/MM/YYYY">
+			<!-- <p id="demo"></p> -->
+			<i class="fa fa-calendar calender-icons" aria-hidden="true"></i>
+		</div>
+		</div>
+		<div class="edit-schedule">
+			<label class="label-edit-schedule">Login Facility</label>
+			<select class="form-control select-field" id="exampleSelect1">
+			  <option>One</option>
+			  <option>Two</option>
+			  <option>Three</option>
+			</select>
+		</div>
+		<div class="edit-schedule">
+			<label class="label-edit-schedule">Login Shift</label>
+			<select class="form-control select-field" id="exampleSelect1">
+			  <option>09:00 Hrs</option>
+			  <option>09:00 Hrs</option>
+			  <option>09:00 Hrs</option>
+			</select>
+		</div>
+		<div class="edit-schedule">
+			<label class="label-edit-schedule">Logout Facility</label>
+			<select class="form-control select-field" id="exampleSelect1">
+			  <option>One</option>
+			  <option>Two</option>
+			  <option>Three</option>
+			</select>
+		</div>
+		<div class="edit-schedule">
+			<label class="label-edit-schedule">Logout Shift</label>
+			<select class="form-control select-field" id="exampleSelect1">
+			  <option>18:00 Hrs</option>
+			  <option>17:00 Hrs</option>
+			  <option>13:00 Hrs</option>
+			</select>
+		</div>
+		<div class="weak-save top-space-save-btn">
+				<a href="5.home.html" class="save-btn">SAVE</a>
+			</div>
+	</div>
+	</div>
+	</form>
+	<!-- SOS Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Help Desk</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">(800) 692- 7777</h3>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="tel:800 692- 7777" class="firstbtn">Call</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SOS modal html -->
+
+	
+	<!-- body part end -->
+<script type='text/javascript' src='js/jquery-3.3.1.min.js'></script>
+<script type='text/javascript' src='js/bootstrap.min.js'></script>
+<script type='text/javascript' src='js/popover.js'></script>
+
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type='text/javascript' src='js/custom.js'></script>
+</body>
+</html>

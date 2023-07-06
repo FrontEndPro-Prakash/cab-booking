@@ -1,0 +1,22 @@
+<!-- Biodata Another Person Popup -->
+<div biodata-another-person-modal=""></div>
+<!-- /Biodata Another Person Popup -->
+
+<div class="sidebar-profile" ng-controller="BiodataController">
+	<img class="covers-info-block-pic" ng-src="{{PersonPic}}" alt="" />
+	<h3>{{user.firstName}} {{user.lastName}}</h3>
+	<p class="profile-createdby">{{user.firstName}} {{user.relativeRelation}}  created <span ng-if="user.gender=='male'">his</span><span ng-if="user.gender=='female'">her</span> biodata</p>
+</div>
+<ul class="side-menu">
+	<li><a href="#/create-biodata"><i class="iconSideMenu-home"></i> Edit Biodata</a></li>
+	<li><a href="#/"><i class="iconSideMenu-download"></i> Download Biodata</a></li>
+	<li><a href="#/"><i class="iconSideMenu-print"></i> Print Biodata</a></li>
+	<li><a href="#/"><i class="iconSideMenu-email"></i> Email Your Biodata</a></li>
+	<li><a href="javascript:void(0);" ng-click="openBiodataAnotherPerson()"><i class="iconSideMenu-user"></i> Create Biodata For Another Person</a></li>
+	<li class="active"><a href="#/manage-subscription"><i class="iconSideMenu-time"></i> Manage Subscriptions</a></li>
+	<li><a href="#/my-account"><i class="iconSideMenu-setting"></i> Account Settings</a></li>
+</ul>
+<div class="subs-expire" ng-if="showExpiryMessage==false">Your Subscription expires in {{subscriptionExpireinDays}} days</div>
+<div class="subs-expire" ng-if="showExpiryMessage==true">Your subscription has been expired</div>
+
+		

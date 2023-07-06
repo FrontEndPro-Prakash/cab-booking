@@ -1,0 +1,36 @@
+<div class="container createBiodataMobile" ng-class="user.profileTemplate" ng-controller="BiodataController">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">
+			
+				<div class="mobileTabGroup">
+					<div class="mobileTabContent">
+						<div class="mobileTopHead"><a href="javascript:void(0);" class="backButton" back-button>back</a><h4>Upload your Picture</h4></div>
+						
+						<div class="upload-pics" ng-controller="MainController">
+							<form action class="upload-pic-form">
+							  <input class="drag-file" type="file" fileread="uploadme.src">
+							  <img ng-src="{{ uploadme.src }}">
+							  
+							</form>
+							<span class="upload-pic-text">Drag Photo Here</span>
+							<div class="upload-pic-field">
+								<div class="or-opt">OR</div>
+							</div>	
+							<div class="upload-pic-field">
+								<input type="file" fileread="uploadme.src">
+							</div>	
+							<div class="upload-pic-field btn-sec">
+								<a href="#" class="btn-green">make profile picture</a>
+								<a href="javascript:void(0);" data-dismiss="modal" class="btn-black">Cancel</a>
+							</div>					
+						</div>
+						
+					</div>	
+				</div>
+			
+			</section>
+		</div>
+	</div>
+</div>

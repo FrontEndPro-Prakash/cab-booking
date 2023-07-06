@@ -1,0 +1,45 @@
+    
+    Hello Allyson,
+
+    Time esitimation for implementing api endpionts for frontend are as: 
+
+    Registration: 3d
+
+    User account (#25) and (#31): 3d
+
+    Profile this and this: 5d-7d (including auto save functionality)
+
+    Religions(#28): 1d
+
+    Zodiac, Moon sign(#29): 1d
+
+    profile Template, Symbol(#30): 2d
+    
+    Contact us(#32): 1d
+
+    Recommended profiles(#34): 3d-4d
+
+    Testimonials(#35): 2d
+
+    Recommend website(#36): 1d
+
+    Profile image: profile(#37) and gallery images(#38 ): 4d
+    
+    Forget-Reset Password(): 4d
+
+    Chat: 7d-9d
+
+    Kundali: 2.5d (without any kundali computation algorithms if needed)
+
+    Dashboard Prefrences: 1d
+
+   
+    These are all time for implementing the api endpoinsts, excluding the membership apis and payment api endpoints and "the remaining parts of our Create biodata api" wich was not mentioned in the api endpoints on github.
+
+    Besides of these api endpoints there are much more work remaining on the frontend. for example, progress on createbiodata page, enable disable tabs on createbiodata page based on profile completed, validation of pages and blocks based on the membership of user(wether is basic,gold or platinum),
+    matching based on  potential spouse, download biodata button, print biodata button, User help topics page.
+
+    After these mobile functionality will take additional time because its designe is defferent form desktop and we made some different pages for mobile instead of using the same pages made for desktop.
+
+
+    

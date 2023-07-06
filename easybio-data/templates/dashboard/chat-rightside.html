@@ -1,0 +1,36 @@
+<h4 class="visible-xs mobileChatHead" ng-show="message.showMobileChatContents"><a href="javascript:void(0);" class="ShowMobile backButton"  ng-click="message.backButton()">back</a> <br class="mobileChatSpace" />Chats</h4>
+<ul mb-scrollbar class="chat-userMsgList" ng-class="{active:message.isSet(singleMessage.id)}" style="display:none;" ng-repeat="singleMessage in message.messages track by $index">
+	<li class="active" ng-repeat="singleMessageChat in singleMessage.chats | orderBy: 'dateTime' ">
+		<span class="chat-userMsgList-time">{{singleMessageChat.dateTime | date:'MMM d, y'}}</span>
+		<img class="chat-userMsgList-pic" ng-src="{{singleMessage.senderProfileImage}}" alt=""/>
+		<div class="chat-userMsgList-field">
+			<span class="chat-userMsgList-name">{{singleMessage.senderFirstName}} {{singleMessage.senderLastName}}</span>
+			<span class="chat-userMsgList-place">{{singleMessage.senderCity}}, {{singleMessage.senderState}}</span>
+		</div>
+		<p class="chat-userMsgList-description">{{singleMessageChat.message}}</p>
+	</li>	
+</ul>
+<!-- this will be hidden for mobile and dynamically shown on click -->
+<div class="chat-userMsgbox-Main fixed-bottom-reply-box" ng-show="message.showMobileChatContents">
+	<textarea class="chat-userMsgbox" id="chatUserMsg" name="" placeholder="Write your reply"></textarea>
+	<a href="javascript:void(0);" class="ShowMobile chatEnterBtn"></a>
+	<div class="chat-userMsgoption">
+		Press Enter to send 
+		<input type="checkbox" checked="checked" id="sendusermsg" />
+		<label for="sendusermsg"></label>
+	</div>
+</div>
+
+<script>
+function checkOffset() {
+    if($('.fixed-bottom-reply-box').offset().top + $('.fixed-bottom-reply-box').height() >= $('#footer').offset().top - 2)
+    $('.fixed-bottom-reply-box').css('position', 'relative');
+    if($(document).scrollTop() + window.innerHeight < $('#footer').offset().top)
+        $('.fixed-bottom-reply-box').css({'position':'fixed','bottom':'0','width': '390px','z-index': '1'}); // restore when you scroll up
+}
+if(window.innerWidth<767){
+	$(document).scroll(function() {
+	    checkOffset();
+	});	
+}
+</script>

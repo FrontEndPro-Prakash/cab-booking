@@ -1,0 +1,201 @@
+<style>
+button[disabled="disabled"]{
+	opacity: 0.5;
+}
+</style>	
+<script>
+setTimeout(function(){
+  $("#myAccountUserPhone").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+               return false;
+    }
+   });
+	},1000);
+</script>
+<script>
+setTimeout(function(){
+		$('#recomendBiodataEmail')
+		  .on('tokenfield:createtoken', function (e) {
+		    var data = e.attrs.value.split('|')
+		    e.attrs.value = data[1] || data[0]
+		    e.attrs.label = data[1] ? data[0] + ' (' + data[1] + ')' : data[0]
+		  })
+		  .on('tokenfield:createdtoken', function (e) {
+		    // Über-simplistic e-mail validation
+		    var re = /\S+@\S+\.\S+/
+		    var valid = re.test(e.attrs.value)
+		    if (!valid) {
+		        $(e.relatedTarget).addClass('invalid');
+		      	$(e.relatedTarget).dblclick();
+		    }
+		  })
+		  .on('tokenfield:edittoken', function (e) {
+		    if (e.attrs.label !== e.attrs.value) {
+		      var label = e.attrs.label.split(' (')
+		      e.attrs.value = label[0] + '|' + e.attrs.value
+		    }
+		  })
+		  .on('tokenfield:removedtoken', function (e) {
+		  })
+		  .tokenfield();
+	},1000);
+</script>	
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			
+			<!-- Middle Section -->
+			<section id="middle-section">
+				
+				<div class="middle-section-inner">
+					
+					<div class="my-account-section">
+						<h2>Your easyBiodata subscription is not active<br /><br /> <span>Please select a plan option or update your payment information to download, print and email your Biodata as well as enroll in the premium matching service. <a ui-sref="membershipPlan">Go to plans</a></span></h2>
+						<a class="payHistory" href="#/manage-subscription">Payment History</a>
+						<div class="my-account-content">
+							<uib-tabset active="active">
+								<uib-tab index="0" heading="My Account">
+									<form class="form-horizontal" id="myAccountForm" ng-submit="updateUserAccount();" name="myAccountForm" novalidate>
+									  <div class="form-group">
+										<label for="inputName" class="col-sm-4 control-label">Name</label>
+										<div class="col-sm-8">
+										  	<div class="email-tag-field">
+											  <input type="text" name="userName" class="form-control" ng-model-onblur id="userName" ng-model="user.name" ng-change="updateUserAccount()" required/>
+											</div>	
+											<div ng-messages="myAccountForm.userName.$error" ng-show="myAccountForm.userName.$dirty" role="alert">
+												<div ng-message="required">Please enter your full name.</div>
+											</div>	
+										</div>
+									  </div>
+									  <div class="form-group">
+										<label for="userEmail" class="col-sm-4 control-label">Email</label>
+										<div class="col-sm-8">
+										  <div class="email-tag-field">
+											  <input type="email" name="userEmail" ng-model-onblur ng-change="updateUserAccount()" class="form-control" id="userEmail" ng-model="user.email" required/></div>
+											  <div ng-messages="myAccountForm.userEmail.$error" ng-show="myAccountForm.userEmail.$dirty" role="alert">
+												<div ng-message="required">Please enter email.</div>
+												<div ng-message="email">Please enter valid email.</div>
+											</div>		
+										</div>
+									  </div>
+									  <div class="form-group">
+										<label for="inputPhone" class="col-sm-4 control-label">Phone</label>
+										<div class="col-sm-8">
+										  <div class="email-tag-field">
+											 <input type="text" class="form-control" ng-model-onblur ng-change="updateUserAccount()" name="myAccountUserPhone" ng-minlength="10" required ng-maxlength="10" ng-model="user.phone" id="myAccountUserPhone">
+											 <div ng-messages="myAccountForm.myAccountUserPhone.$error" ng-show="myAccountForm.myAccountUserPhone.$dirty" role="alert">
+											    <div ng-message="required">Please enter phone.</div>
+											    <div ng-message="minlength">phone number should be minimum 10 digits.</div>
+											    <div ng-message="maxlength">phone number should be maximum 10 digits.</div>
+										  	 </div>
+										  </div>
+										</div>
+									  </div>
+									   <button style="display:none;" ng-disabled="myAccountForm.$invalid" type="submit" class="btn-green">Save</button>
+									</form>  
+									<div class="divider"></div>
+									<div class="password-change-box">
+									<form class="form-horizontal" ng-submit="showme=true" novalidate name="myAccountChangePasswordForm" ng-hide="showme">
+										  <div class="form-group">
+											<label for="inputName" class="col-sm-4 control-label">Current Password</label>
+											<div class="col-sm-8">
+											  <div class="email-tag-field">
+												    <input type="password" name="userPassword" id="userPassword" class="form-control" ng-model="user.oldpassword" placeholder="*********" required/>
+												  <div ng-messages="myAccountChangePasswordForm.userPassword.$error" ng-show="myAccountChangePasswordForm.userPassword.$dirty" role="alert">
+														<div ng-message="required">Please enter password.</div>
+													</div>
+												</div>	
+											</div>
+										  </div>
+										  <div class="form-group">
+											<label for="inputEmail" class="col-sm-4 control-label">New Password</label>
+											<div class="col-sm-8">
+											  <div class="email-tag-field">
+												  	<input type="password" name="userNewPassword" id="userNewPassword" class="form-control" ng-model="user.password" placeholder="*********" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z])/" ng-minlength="8" ng-maxlength="20" required/>
+												  <div ng-messages="myAccountChangePasswordForm.userNewPassword.$error" ng-show="myAccountChangePasswordForm.userNewPassword.$dirty" role="alert">
+													<div ng-message="required">Please enter password.</div>
+													<div ng-message="minlength">Password should be minimum 8 letters.</div>
+													<div ng-message="maxlength">Password should be maximum 20 letters.</div>
+													<div ng-message="pattern">Password should contain atleast 1 uppercase, 1 lowercase and 1 numeric.</div>
+												</div>	
+											  </div>
+											</div>
+										  </div>
+										  <div class="form-group">
+											<label for="inputPhone" class="col-sm-4 control-label">Confirm Password</label>
+											<div class="col-sm-8">
+											  <div class="email-tag-field">
+												<input type="password" name="userNewConfirmPassword" compare-to="user.password" id="reset-password2" class="form-control" ng-model="user.confirmPassword" placeholder="*********" required/>
+												 <div ng-messages="myAccountChangePasswordForm.userNewConfirmPassword.$error" ng-show="myAccountChangePasswordForm.userNewConfirmPassword.$dirty" role="alert">
+													<div ng-message="required">Please enter password</div>
+													<div ng-message="compareTo">Confirm password doesnot match</div>
+												 </div>
+												</div>
+											</div>
+										  </div>
+										  <div class="form-group">
+											<div class="col-sm-offset-4 col-sm-8">
+											  <button  type="submit" ng-disabled="myAccountChangePasswordForm.$invalid" class="btn-green">Change Password</button>
+											</div>
+										  </div>
+										</form>
+										<div class="password-success-msg" ng-show="showme">
+											<div class="sucess-check"><i class="check-icon"></i></div><br />
+											<h2>Your Password succesfully changed!</h2>
+											<!-- <p>Do you want to log out from all session?</p>
+											<a href="#/" class="btn-green">yes</a>
+											<a href="javascript:void(0);" ng-click="showme=false" class="btn-green">No</a> -->
+										</div>
+										<div class="noShowMobile"><a href="javascript:void(0);" ng-click="openCloseAccount()" class="close-account">Deactive Account</a></div>
+										<div class="ShowMobile"><a href="javascript:void(0);" ui-sref="deactiveAccountMobile" class="close-account">Deactive Account</a></div>
+									</div>
+								</uib-tab>
+								<uib-tab index="1" heading="Recommend easyBiodata">
+									<form class="form-horizontal">
+									  <div class="form-group">
+										<label for="recomendBiodataEmail" class="col-sm-4 control-label">E-mail address</label>
+										<div class="col-sm-8">
+										  <div class="email-tag-field emailAccountheight">
+											   <input type="email" class="form-control" inputType="email" id="recomendBiodataEmail" placeholder="">
+											  <!--<span class="email-tag">Ankur chaudhary <a href="#">x</a></span>-->
+											  <span class="email-note">Enter one email per line, or separate them with commas.</span>
+										  </div>		
+										</div>
+									  </div>
+									  <div class="form-group">
+										<label for="inputMessage" class="col-sm-4 control-label">Custom message</label>
+										<div class="col-sm-8">
+										  <textarea class="form-control" id="inputMessage" rows="3" >Hello,
+										  
+I wanted to share the easyBiodata.com website with you. I have found the site very helpful in designing Biodata and receiving high quality matches for marriage.
+
+Let me know if you have any questions and enjoy!
+
+Best regards,
+[Name]</textarea>
+										</div>
+									  </div>
+									  <div class="form-group">
+										<div class="col-sm-offset-4 col-sm-8">
+										  <button type="submit" ng-disabled="userResetPasswordForm.$invalid" ng-click="openmessageSent()" class="btn-green">Send Email</button>
+										</div>
+									  </div>
+									</form>
+									<div class="noShowMobile"><a href="javascript:void(0);" ng-click="openCloseAccount()" class="close-account">Deactive Account</a></div>
+									<div class="ShowMobile"><a href="javascript:void(0);" ui-sref="deactiveAccountMobile" class="close-account">Deactive Account</a></div>
+								</uib-tab>
+							</uib-tabset>	
+							<!-- Close Account Popup -->
+							<div close-account-modal=""></div>
+							<!-- /Close Account Popup -->		
+						</div>
+					</div>	
+				</div>
+			</section>
+			<!-- /Middle Section -->
+		</div>
+	</div>
+</div>
+<div message-sent-modal=""></div>

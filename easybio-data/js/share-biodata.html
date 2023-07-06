@@ -1,0 +1,74 @@
+<div class="container" ng-controller="BiodataController">
+	<div class="row">
+		<div class="col-md-12">
+		<script>
+		$('#inputEmail')
+		  .on('tokenfield:createtoken', function (e) {
+		    var data = e.attrs.value.split('|');
+		    e.attrs.value = data[1] || data[0];
+		    e.attrs.label = data[1] ? data[0] + ' (' + data[1] + ')' : data[0];
+		   setTimeout(function(){ $('#inputEmail-tokenfield').focus() },100);
+		  })
+		  .on('tokenfield:createdtoken', function (e) {
+		    // Über-simplistic e-mail validation
+		    var re = /\S+@\S+\.\S+/
+		    var valid = re.test(e.attrs.value)
+		    if (!valid) {
+		        $(e.relatedTarget).addClass('invalid');
+		      	$(e.relatedTarget).dblclick();
+		    } else {
+		    	setTimeout(function(){ $('#inputEmail-tokenfield').focus() },100);
+		    }
+		  })
+		  .on('tokenfield:edittoken', function (e) {
+		    if (e.attrs.label !== e.attrs.value) {
+		      var label = e.attrs.label.split(' (')
+		      e.attrs.value = label[0] + '|' + e.attrs.value
+		    }
+		  })
+		  .on('tokenfield:removedtoken', function (e) {
+		  })
+		  .tokenfield({delimiter:[","," "]});
+		</script>	
+			<!-- Middle Section -->
+			<section id="middle-section">
+				
+				<div class="middle-section-inner">
+					
+					<div class="share-biodata-content">
+						<div class="share-biodata-profile">
+							<img class="covers-info-block-pic" ng-src="{{PersonPic}}" alt="" />
+							<h2>Share biodata of Amit Shrivastav</h2>
+						</div>						
+						<form class="form-horizontal" novalidate>
+						  <div class="form-group">
+							<label for="inputEmail" class="col-sm-3 control-label">E-mail address</label>
+							<div class="col-sm-9">
+							  <div class="email-tag-field">
+								  <input type="email" class="form-control" ng-model="shareBiodata.email_list" inputType="email" id="inputEmail" placeholder="">
+							  </div>		
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="inputMessage" class="col-sm-3 control-label">Default Message</label>
+							<div class="col-sm-9">
+							  <textarea class="form-control" id="inputMessage" ng-model="shareBiodata.default_message" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." rows="3" ></textarea>
+							</div>
+						  </div>
+						  <div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+							  <button type="submit" ng-submit="" class="btn-green">Send Email</button>
+							</div>
+						  </div>
+						</form>							
+						<div class="back-button-box noShowMobile"><a href="javascript:void(0);" back-button class="btn-black">Back</a></div>
+					</div>	
+										
+				</div>
+
+			</section>
+			<!-- /Middle Section -->				
+			
+		</div>
+	</div>
+</div>

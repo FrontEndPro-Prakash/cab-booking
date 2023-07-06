@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>eTMS-Buddy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+</head>
+<body>
+<!-- body part start -->
+<form>
+	<div class="mainWrapper-eleven-plece">
+	<div class="main-section" style="background:#fff;">
+		<div class="main-section-top">
+			<span class="toggle"><a href="javascript:void(0);" class="sbarmenushow" style=""><i class="fa fa-bars fa-bars-icon" aria-hidden="true"></i></a></span>
+			<span class="center-text">Employee Feedback</span>
+			<span class="sos-text"><a href="#" class="" data-toggle="modal" data-target="#exampleModal"><span class="sos-bg">SOS</span></a></span>
+		</div>
+		<div class="main-content-body">
+		<!-- calender -->
+		<div class="edit-schedule" style="margin-top: 10px;">
+		<div class="calender-box calender-schedule" id="demo">
+			<div class="form-group" style="background:#fff;">
+			<input type="text" id="datepicker" placeholder="DD/MM/YYYY">
+			</div>
+			<!-- <p id="demo"></p> -->
+			<i class="fa fa-calendar calender-icons" aria-hidden="true"></i>
+		</div>
+		</div>
+		<div class="edit-schedule">
+			<div class="form-group" style="background:#fff;">
+		<input type="text" name="" class="feedback-input" placeholder="Trip ID (opt)">
+		</div>
+		</div>
+		<div class="edit-schedule">
+			<div class="form-group" style="background:#fff;">
+			<select class="form-control select-field" id="exampleSelect1">
+			  <option>Select Complaint Type</option>
+			  <option>option 1</option>
+			  <option>option 1</option>
+			</select>
+			</div>
+		</div>
+		<div class="edit-schedule">
+		<textarea class="feedback-textarea" style="" placeholder="Suggestion box"></textarea>
+		<p class="" style="font-weight:600;">Maximum 500 Characters</p>
+		</div>
+		<div class="weak-save top-space-save-btn">
+		<a href="5.home.html" class="save-btn">SAVE</a>
+		</div>
+	</div>
+	</div>
+	</div>
+	
+	</form>
+	<!-- sidebar -->
+	<div class="sidebar-main">
+		<div class="sidebar-inner">
+			<div class="sidebar-yellow-bg">
+				<span class="cross-sidebar sbar-close"><img src="images/cross.png" class="male-img"></span>
+				<h4 class="font-weight-bold">Anurag Singh</h4>
+				<ul class="male-infosis">
+				<li> <a href="#"><img src="images/male.png" class="male-img">Male</a> </li>
+				<li> <a href="#"><img src="images/infoces.png" class="male-img">Infosys</a> </li>
+				</ul>
+			</div>
+			<div class="sidebar-navigation-bg">
+				<ul class="main-menu">
+				<li> <a href="5.home.html"><img src="images/manage-roster.png" class="menu-img">Manage Roster</a> </li>
+				<li> <a href="10.manage-adhoc.html"><img src="images/manage-adhoc.png" class="menu-img">Manage Adhoc</a> </li>
+				<li> <a href="12.adhoc-approval.html"><img src="images/adodhe-approvel.png" class="menu-img">Adhoc Approval</a> </li>
+				<li> <a href="16.cab-info.html"><img src="images/cab-info.png" class="menu-img">Cab Info</a> </li>
+				<li> <a href="19.geo-code.html"><img src="images/geo-code.png" class="menu-img">Geo Coding</a> </li>
+				<li> <a href="20.cabdelay-validations.html"><img src="images/cab-.png" class="menu-img">Cab Delay Validation</a> </li>
+				<li> <a href="17.where-is-cab.html"><img src="images/where-is-my-cab.png" class="menu-img">Where is my Cab</a> </li>
+				<li> <a href="22.employee-feedback.html"><img src="images/employe-feedback.png" class="menu-img">Employee Feedback</a> </li>
+				<li> <a href="27.about.html"><img src="images/about.png" class="menu-img">About</a> </li>
+				<li> <a href="#" data-toggle="modal" data-target="#exampleModa-help"><img src="images/help-desk.png" class="menu-img">Transport HelpDesk</a> </li>
+				</ul>
+				<a href="2.registration.html" class="logout-sidebar font-weight-bold">Logout</a>
+			</div>
+		</div>
+	</div>
+	<!-- sidebar end -->
+	
+		<!-- help desk Modal -->
+<div class="modal fade" id="exampleModa-help" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Help Desk</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">(800) 692- 7777</h3>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="tel:800 692- 7777" class="firstbtn">Call</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- help desk modal html -->
+	<!-- SOS Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Help Desk</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">(800) 692- 7777</h3>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="tel:800 692- 7777" class="firstbtn">Call</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SOS modal html -->
+
+<!-- body part end -->
+<script type='text/javascript' src='js/jquery-3.3.1.min.js'></script>
+<script type='text/javascript' src='js/bootstrap.min.js'></script>
+<script type='text/javascript' src='js/popover.js'></script>
+
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type='text/javascript' src='js/custom.js'></script>
+</body>
+</html>

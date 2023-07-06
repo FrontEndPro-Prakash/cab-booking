@@ -1,0 +1,483 @@
+<style>
+.required{ color: #7e2024;}
+input.ng-invalid.ng-dirty.ng-invalid-required {
+    box-shadow: 0 0 8px #c40000;
+}
+.error-message{
+	color:#c40000;position: absolute;top:0px;left:20px;font-size: 12px;
+}
+.Steps-box {
+}
+
+.Steps-box.ng-hide-add {
+  -webkit-animation:0.5s hide;
+  animation:0.5s hide;
+}
+
+@keyframes hide {
+  0% {
+    opacity:1;
+    transform: scale(1);
+  }
+  30% {
+  	opacity:0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:0;
+    transform: scale(0.5);
+  }
+}
+
+@-webkit-keyframes hide {
+  0% {
+    opacity:1;
+    transform: scale(1);
+  }
+  30% {
+  	opacity:0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:0;
+    transform: scale(0.5);
+  }
+}
+
+.Steps-box.ng-hide-remove {
+  -webkit-animation:0.3s show;
+  animation:0.3s show;
+}
+
+@keyframes show {
+  0% {
+    opacity:0;
+    transform: scale(0.5);
+  }
+  70% {
+  	opacity:0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:1;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity:0;
+    transform: scale(0.5);
+  }
+  70% {
+  	opacity:0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:1;
+    transform: scale(1);
+  }
+}
+</style>
+
+<div class="container createBiodataMobile" ng-class="user.profileTemplate" ng-controller="BiodataController">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">
+				
+				<div class="MobileBiodataSideSpc">	
+					<!-- Create Biodata Covers -->
+					<div class="create-biodata-covers">
+						<div class="covers-name">
+							<div class="covers-fields cname">
+								<div>{{user.CName}}Amit Shrivastava</div>
+							</div>
+						</div>
+						<div class="covers-info-block">
+							<div class="covers-info-block-pic">
+								<img class="covers-info-block-picMobile" ng-src="{{PersonPic}}" alt="" />
+							</div>
+							<div class="covers-info-block-content">
+								<div class="covers-info-block-content-heading">
+									Contact Info For This Biodata
+								</div>
+								<div class="covers-info-block-content-field">
+									<i class="fa fa-user"></i>
+									<span ng-show="user.RelativeName">{{user.RelativeName}}</span> 
+									<span ng-show="!user.RelativeName">Tanveer shrivastav</span> 
+
+									<span ng-show="user.relativeRelation">({{user.relativeRelation}})</span>
+									<span ng-show="!user.relativeRelation">(Father)</span>
+								</div>
+								<div class="covers-info-block-content-field">	
+									<i class="fa fa-envelope"></i> 
+									<span ng-show="user.RelativeEmail">{{user.RelativeEmail}}</span>
+									<span ng-show="!user.RelativeEmail">tanveer@gmail.com</span>
+								</div>
+								<div class="covers-info-block-content-field">	
+									<i class="fa fa-phone"></i>
+									<span ng-show="user.RelativePhone">{{user.RelativePhone}}</span>
+									<span ng-show="!user.RelativePhone">+91-123456789</span>
+								</div>
+								<div class="covers-info-block-content-field">	
+									<i class="fa fa-map-marker"></i> 
+									<span ng-show="!user.RelativeAddress">Address</span>
+									<span ng-show="user.RelativeAddress">{{user.RelativeAddress}}</span>
+								</div>
+								<div class="covers-info-block-content-field">
+									<a class="coverDesktopView" href="javascript:void(0);">Click here to see Desktop version of Biodata</a>
+								</div>
+							</div>
+						</div>
+						<div class="covers-symbol">
+							<img ng-src="{{user.profileSymbol}}" alt="" />
+							<div class="shadow-cover"></div>
+						</div>					
+					</div>
+					<!-- /Create Biodata Covers -->				
+					
+					<!-- Create Biodata Tabs -->		
+					<div class="create-biodata-tabs" ng-controller="AccordionCtrl">
+					  <uib-accordion close-others="oneAtATime">
+						<uib-accordion-group is-open="true">
+						 <form name="$root.personalInformationForm" id="personalInformationForm" novalidate>
+						  <uib-accordion-heading>
+							Personal Information
+							<i class="accord-sign"></i>
+						  </uib-accordion-heading>
+						  <div class="row biodata-tab-info">
+							  <div class="col-md-3 col-sm-6">
+								<div class="CBD-fields user-date-of-birth">
+									<div class="CBD-left">Born  <span class="required">*</span></div>
+									<div class="CBD-right">
+									   <span class="cbd-dob" ng-show="user.dob">{{user.dob | date:'MMM dd, yyyy'}}</span><br ng-show="user.dob"/>
+									   <span class="cbd-dotBorn" ng-show="user.dob">{{user.dob | date:'HH:mm a'}}</span>
+									   <span class="cbd-dob" ng-show="!user.dob">MMM dd, yyyy</span><br ng-show="!user.dob"/>
+									   <span class="cbd-dotBorn" ng-show="!user.dob">HH:MM AM</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Birth Place <span class="required">*</span></div>
+									<div class="CBD-right">
+										<span class="cbd-city" ng-show="user.city.name">{{user.city.name}}</span>
+										<span class="cbd-city" ng-show="!user.city.name">City</span>
+
+										<span class="cbd-state" ng-show="user.state.name">{{user.state.name}}</span>
+										<span class="cbd-state" ng-show="!user.state.name">State</span>
+
+										<span class="cbd-country" ng-show="user.country.name">{{user.country.name}}</span>
+										<span class="cbd-country" ng-show="!user.country.name">Country</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Current City</div>
+									<div class="CBD-right" >
+										<span class="cbd-city" ng-show="user.currentCity.name">{{user.currentCity.name}}</span>
+										<span class="cbd-city" ng-show="!user.currentCity.name">City</span>
+										<span class="cbd-state" ng-show="user.currentState.name">{{user.currentState.name}}</span>
+										<span class="cbd-state" ng-show="!user.currentState.name">State</span>
+										<span class="cbd-country" ng-show="user.currentCountry.name">{{user.currentCountry.name}}</span>
+										<span class="cbd-country" ng-show="!user.currentCountry.name">Country</span>
+									</div>
+								</div>								
+								<div class="CBD-fields">
+									<div class="CBD-left">gotra</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-if="user.gotra">{{user.gotra}}</span>
+										<span class="cbd-gotra" ng-if="!user.gotra" >Your Gotra</span>
+										<span class="cbd-religion"  ng-if="user.religion">{{user.religion.name}}</span>
+										<span class="cbd-religion"  ng-if="!user.religion">Your Religion</span>
+										<span class="cbd-caste"  ng-if="user.cast">{{user.cast}}</span>
+										<span class="cbd-caste"  ng-if="!user.cast">Cast</span>
+									</div>
+							    </div>
+								<div class="CBD-fields">
+									<div class="CBD-left">zodiac</div>
+									<div class="CBD-right">
+										<span class="cbd-zodiac" ng-if="user.zodiac">{{user.zodiac.name}}</span>
+										<span class="cbd-zodiac" ng-if="!user.zodiac">Your Zodiac</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">manglik</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="!user.height">Yes</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">moonsign</div>
+									<div class="CBD-right">
+										<span class="cbd-moonsign" ng-if="user.moonsign">{{user.moonsign.name}}</span>
+										<span class="cbd-moonsign" ng-if="!user.moonsign">Your Moonsign</span>
+									</div>					
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Marital Status</div>
+									<div class="CBD-right">
+										<a href="javascript:void(0);" class="cbd-edit-icon"></a>
+										<span class="cbd-marital" ng-show="user.maritalStatus">{{user.maritalStatus}}</span>
+										<span class="cbd-marital" ng-show="!user.maritalStatus">Single</span>
+									</div>							
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">height</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="user.height">{{user.height}}</span>
+										<span class="cbd-gotra" ng-show="!user.height">0'0"</span><br>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Complexion</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="user.complexion">{{user.complexion}}</span>
+										<span class="cbd-gotra" ng-show="!user.complexion">ADD COMPLEXION</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">income</div>
+									<div class="CBD-right item-wrapper">
+										<span class="cbd-income">
+											<span ng-show="user.AnnualIncome"><strong>&#8377;</strong> {{user.AnnualIncome}}</span>
+											<span ng-show="!user.AnnualIncome"> INR / ANNUM </span>
+										</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Own House</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="!user.height">Yes</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Own car</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="!user.height">No</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Blood Type</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="user.height">{{user.height}}</span>
+										<span class="cbd-gotra" ng-show="!user.height">A+</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Smoker</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="user.height">{{user.height}}</span>
+										<span class="cbd-gotra" ng-show="!user.height">No</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Drinker</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="user.height">{{user.height}}</span>
+										<span class="cbd-gotra" ng-show="!user.height">No</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Diet</div>
+									<div class="CBD-right">
+										<span class="cbd-gotra" ng-show="user.height">{{user.height}}</span>
+										<span class="cbd-gotra" ng-show="!user.height">Vegetarian</span>
+									</div>	
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">personal statement</div>
+									<div class="CBD-right">
+										<span class="cbd-per-info-detail" ng-show="!user.personalInformation">add personal statement</span>
+									</div>
+								</div>								
+							  </div>	
+						  </div>					  
+						  </form>
+						</uib-accordion-group>
+						<uib-accordion-group is-disabld="personalInformationForm.$invalid">
+						  <uib-accordion-heading>
+							Education
+							<i class="accord-sign"></i>
+						  </uib-accordion-heading>
+						   <div class="row biodata-tab-info">
+							  <div class="col-md-6 col-sm-6">	
+								<div class="CBD-fields">
+									<div class="CBD-left">education</div>
+									<div class="CBD-right" ng-show="user.WorkExperiences == '' ">
+										<span class="cbd-school">School/University</span><br />
+										<span class="cbd-dot">Level</span><br />
+										<span class="cbd-dot">Graduation year</span><br />
+										<span class="cbd-dot">Degree</span>
+									</div>
+									<div class="CBD-right rightMobileBspace" ng-if="user.EducationDetails != '' " ng-repeat="singleEducationDetail in user.EducationDetails">
+										<span class="cbd-school">{{singleEducationDetail.schoolUniversity}}</span><br />
+										<span class="cbd-dot">{{singleEducationDetail.level}}</span><br />
+										<span class="cbd-dot">{{singleEducationDetail.year}}</span><br />
+										<span class="cbd-dot">{{singleEducationDetail.typeOfDegree.name}}</span>
+									</div>                          	
+								</div>
+							  </div>
+						   </div>
+						</uib-accordion-group>
+						<uib-accordion-group is-disabld="personalInformationForm.$invalid">
+						  <uib-accordion-heading>
+							Work Experience 
+							<i class="accord-sign"></i>
+						  </uib-accordion-heading>
+						  	<div class="row biodata-tab-info">
+							  	<div class="col-md-6 col-sm-6">
+									<div class="CBD-fields">
+									<div class="CBD-left">work experience</div>
+									<div class="CBD-right" ng-show="user.WorkExperiences == '' ">
+										<span class="cbd-school">Company Name</span><br/>
+										<span class="cbd-dot">Title</span><br/>
+										<span class="cbd-dot">City</span><br/>
+										<span class="cbd-dot">Description</span>
+									</div>
+									<div class="CBD-right rightMobileBspace" ng-repeat="singleWorkExperience in user.WorkExperiences" ng-show="user.WorkExperiences != '' ">
+										<span class="cbd-school">{{singleWorkExperience.companyName}}</span><br />
+										<span class="cbd-dot">{{singleWorkExperience.title}}</span><br />
+										<span class="cbd-dot">{{singleWorkExperience.city}}</span><br />
+										<span class="cbd-dot">{{singleWorkExperience.description}}</span>
+									</div>                            	
+								</div>
+							  </div>
+						  	</div>
+						</uib-accordion-group>
+						<uib-accordion-group  is-disabled="disabledFamilyInformation">
+						  <uib-accordion-heading>Family Information<i class="accord-sign"></i>
+						  </uib-accordion-heading>
+						  <div class="row biodata-tab-info">
+							<div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">relationship to candidate</div>
+									<div class="CBD-right" ng-show="user.FamilyInfoArray == '' ">
+										<span class="cbd-school">Add Your Relation</span><br />
+										<span class="cbd-dot">Full Name</span><br />
+										<span class="cbd-dot">Living In</span><br />
+									</div>
+									<div class="CBD-right rightMobileBspace" ng-repeat="singleFamilyInfo in user.FamilyInfoArray" ng-show="user.FamilyInfoArray != '' ">
+										<span class="cbd-school">{{singleFamilyInfo.relation}}</span><br />
+										<span class="cbd-dot">{{singleFamilyInfo.name}}</span><br />
+										<span class="cbd-dot">{{singleFamilyInfo.city.name}}</span><br />
+										<span class="cbd-dot">{{singleFamilyInfo.state.name}}</span><br/>
+										<span class="cbd-dot">{{singleFamilyInfo.country.name}}</span>
+									</div>                            	
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">work experience</div>
+									<div class="CBD-right" ng-show="user.FamilyInfoArray == '' ">		<span class="cbd-add-work">add your work experience</span><br/>
+										<span class="cbd-dot">add your work description</span>
+									</div>
+									<div class="CBD-right rightMobileBspace" ng-repeat="singleFamilyInfo in user.FamilyInfoArray" ng-show="user.FamilyInfoArray != '' ">
+										<span class="cbd-add-work" ng-if="!singleFamilyInfo.workType">add your work experience</span><br ng-if="!singleFamilyInfo.workType"/>
+										<span class="cbd-add-work" ng-if="singleFamilyInfo.workType">{{singleFamilyInfo.workType}}</span><br />
+
+										<span class="cbd-dot" ng-if="!singleFamilyInfo.workDesctiption">add your work description</span>
+										<span class="cbd-dot" ng-if="singleFamilyInfo.workDesctiption">{{singleFamilyInfo.workDesctiption}}</span><br />
+									</div>
+								</div>
+							</div>
+							<div class="subHeadingMobile">Paternal Side</div>
+							<div class="col-md-6 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">relationship to candidate</div>
+									<div class="CBD-right" ng-show="user.PaternalFamilyArray == '' ">
+										<span class="cbd-school">Add Your Relation</span><br />
+										<span class="cbd-dot">Full Name</span><br />
+										<span class="cbd-dot">Living In</span><br />
+									</div>
+									<div class="CBD-right rightMobileBspace" ng-repeat="singlePaternalFamily in user.PaternalFamilyArray" ng-show="user.PaternalFamilyArray != ''">
+										<span class="cbd-school">{{singlePaternalFamily.relation}}</span><br />
+										<span class="cbd-dot">{{singlePaternalFamily.name}}</span><br />
+										<span class="cbd-dot">{{singlePaternalFamily.city.name}}</span><br />
+										<span class="cbd-dot">{{singlePaternalFamily.state.name}}</span><br/>
+										<span class="cbd-dot">{{singlePaternalFamily.country.name}}</span>
+									</div>                              	
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">work experience</div>
+									<div class="CBD-right" ng-show="user.PaternalFamilyArray == '' ">		
+										<span class="cbd-add-work" >add your work experience</span><br/>
+										<span class="cbd-dot" >add your work description</span>
+									</div>
+									<div class="CBD-right rightMobileBspace" ng-repeat="singlePaternalFamily in user.PaternalFamilyArray">
+										<span class="cbd-add-work" ng-if="!singlePaternalFamily.workType">add your work experience</span><br ng-if="!singlePaternalFamily.workType"/>
+										<span class="cbd-add-work" ng-if="singlePaternalFamily.workType">{{singlePaternalFamily.workType}}</span><br />
+
+										<span class="cbd-dot" ng-if="!singlePaternalFamily.workDesctiption">add your work description</span>
+										<span class="cbd-dot" ng-if="singlePaternalFamily.workDesctiption">{{singlePaternalFamily.workDesctiption}}</span><br />
+									</div>
+								</div>
+							</div>
+							<div class="subHeadingMobile">Maternal Side</div>
+							<div class="col-md-6 col-sm-6">	
+								<div class="CBD-fields">
+									<div class="CBD-left">relationship to candidate</div>
+									<div class="CBD-right" ng-click="addNewMaternalFamily();" ng-show="user.MaternalFamilyArray == '' ">
+										<span class="cbd-school">Add Your Relation</span><br />
+										<span class="cbd-dot">Full Name</span><br />
+										<span class="cbd-dot">Living In</span><br />
+									</div>
+									<div class="CBD-right rightMobileBspace" ng-repeat="singleMaternalFamily in user.MaternalFamilyArray" ng-show="user.MaternalFamilyArray != '' ">
+										<span class="cbd-school">{{singleMaternalFamily.relation}}</span><br />
+										<span class="cbd-dot">{{singleMaternalFamily.name}}</span><br />
+										<span class="cbd-dot">{{singleMaternalFamily.city.name}}</span><br />
+										<span class="cbd-dot">{{singleMaternalFamily.state.name}}</span><br/>
+										<span class="cbd-dot">{{singleMaternalFamily.country.name}}</span>
+									</div>                             	
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">work experience</div>
+
+									<div class="CBD-right" ng-show="user.MaternalFamilyArray == '' ">			
+										<span class="cbd-add-work" >add your work experience</span><br/>
+										<span class="cbd-dot" >add your work description</span>
+									</div>
+									<div class="CBD-right rightMobileBspace" ng-repeat="singleMaternalFamily in user.MaternalFamilyArray">
+										<span class="cbd-add-work" ng-if="!singleMaternalFamily.workType">add your work experience</span><br ng-if="!singleMaternalFamily.workType"/>
+										<span class="cbd-add-work" ng-if="singleMaternalFamily.workType">{{singleMaternalFamily.workType}}</span><br />
+										<span class="cbd-dot" ng-if="!singleMaternalFamily.workDesctiption">add your work description</span>
+										<span class="cbd-dot" ng-if="singleMaternalFamily.workDesctiption">{{singleMaternalFamily.workDesctiption}}</span>
+									</div>
+								</div>								
+							  </div>
+						  </div>
+						</uib-accordion-group>
+						<uib-accordion-group  is-disabled="false">
+						  <uib-accordion-heading>
+							Photos & Kundali <i class="accord-sign"></i>
+						  </uib-accordion-heading>
+						  <div class="row biodata-tab-info previewMobilePhoto">
+							  <div class="col-md-12">
+								<div class="CBD-photo-thumb" ng-click="openpreivewUserPic()">
+									<img style="cursor:pionter;" src="images/ProfilePic/profile-photo.jpg" />
+								</div>
+								<div class="CBD-photo-thumb" ng-click="openpreivewUserPic()">
+									<img style="cursor:pionter;" src="images/ProfilePic/profile-photo.jpg" />
+								</div>							
+							  </div>
+							  <div class="subHeadingMobile">Kundali</div>
+							  <div class="col-md-12 center fullKundaliSection">
+								<div class="kundli-preview"><img src="images/kundli-img.png" /></div>
+								<div class="kundli-preview"><img src="images/kundli-img.png" /></div>
+								<div class="center kundali-love">Made with <i class="kundali-heart"></i> on Easybiodata.com </div>
+							  </div>
+						   </div>
+						</uib-accordion-group>			
+					</uib-accordion>
+					</div>
+					<!-- /Create Biodata Tabs -->
+					<!-- Button Section -->
+					<div class="mobileBtnSection">
+						<a href="javascript:void(0);" ui-sref="createBiodataMobileEdit" class="btn-green" ng-click="mobileBDPreview=true">edit biodata</a>
+						<a href="#" class="btn-orange">download biodata</a>
+					</div>
+					<!-- /Button Section -->
+				</div>
+			</section>
+			<!-- /Middle Section -->
+			<span class="outside"></span>
+		</div>
+	</div>
+</div>	
+<div preivew-user-pic-modal=""></div>

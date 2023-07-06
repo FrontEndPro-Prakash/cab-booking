@@ -1,0 +1,164 @@
+<style>
+input.ng-invalid.ng-dirty.ng-invalid-required {
+    border: 1px solid #c40000;
+}
+input.ng-dirty.ng-invalid-email {
+	border: 1px solid #c40000;
+}
+input.ng-dirty.ng-invalid-compare-to {
+	border: 1px solid #c40000;
+}
+input.ng-dirty.ng-invalid-maxlength, input.ng-dirty.ng-invalid-minlength  {
+	border: 1px solid #c40000;
+} 
+.error-message {
+	color:#c40000;position: absolute;top:0px;left:20px;font-size: 12px;
+}
+.btn-green[disabled] {
+    opacity: 0.4;
+}
+</style>
+<script>
+$(document).ready(function () {
+  //called when key is pressed in textbox
+  $("#userPhone").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+               return false;
+    }
+   });
+});
+</script>
+<div class="modal fade" id="userRegistrationModal" tabindex='-1' ng-controller="RegisterController">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!--<div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>-->
+        <div class="modal-body">
+			<div class="modal-Cuswindow createBiodata-form">
+				<h2>1<sup>st</sup> Step to Creating Your Stunning Biodata</h2>							
+				<form name="userRegistrationForm" id="userRegistrationForm" class="form-horizontal" data-ng-submit="saveUser();" novalidate>
+				  <div class="form-group">
+					<div class="col-sm-offset-3 col-sm-9">
+					  <span class="rqrd">All Fields Required</span>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="userFullName" class="col-sm-3 control-label">Your Name</label>
+					<div class="col-sm-9">
+					  <input type="text" class="form-control" name="userFullName" id="userFullName" data-ng-model="user.name" placeholder="Your full name" required>
+					  <div data-ng-messages="userRegistrationForm.userFullName.$error"  data-ng-show="userRegistrationForm.userFullName.$dirty"  role="alert">
+					    <div data-ng-message="required">Please enter username</div>
+					  </div>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="userRelation" class="col-sm-3 control-label">Bio-data For</label>
+					<div class="col-sm-9">
+					  <select class="selectpicker" data-ng-model="user.biodataFor" data-ng-init="checkShowGender();" data-ng-change="checkShowGender();"  name="userRelation" id="userRelation" required>
+					  <option value="">- Select -</option>
+					  <option value="1">My Self</option>
+					  <option value="2">Son</option>
+					  <option value="3">Daughter</option>
+					  <option value="4">Brother</option>
+					  <option value="5">Sister</option>
+					  <option value="6">Friend</option>
+					  <option value="7">Relative</option>
+					  </select>
+					  <div data-ng-messages="userRegistrationForm.userRelation.$error"  data-ng-show="userRegistrationForm.userRelation.$dirty" role="alert">
+						    <div data-ng-message="required">Please select your relation.</div>
+					  	</div>
+					</div>
+				  </div>
+				  <div class="form-group" data-ng-show="showGender">
+					<label for="userGender" class="col-sm-3 control-label">Gender</label>
+					<div class="col-sm-9 cusRadioType">
+					  <input type="radio" class="form-control" value="1" name="userGender" data-ng-model="user.gender" id="userGenderMale">
+					  <label class="labelGender" for="userGenderMale">Male</label>
+					  <input type="radio" class="form-control" value="2" name="userGender" data-ng-model="user.gender" id="userGenderFemale">
+					  <label class="labelGender" for="userGenderFemale">Female</label>
+					   <div data-ng-messages="userRegistrationForm.userGender.$error" data-ng-show="userRegistrationForm.userGender.$dirty" role="alert">
+						    <div data-ng-message="required">Please select Gender.</div>
+					  	</div>
+					 </div>
+				  </div>
+				  <div class="form-group" data-ng-show="showFatherMother">
+					<label for="userGender" class="col-sm-3 control-label">Relation</label>
+					<div class="col-sm-9 cusRadioType">
+					  <input type="radio" class="form-control" value="Father" name="userRelativeRelation" data-ng-model="user.relativeRelation" id="userRelativeFather">
+					  <label class="labelGender" for="userRelativeFather">Father</label>
+					  <input type="radio" class="form-control" value="Mother" name="userRelativeRelation" data-ng-model="user.relativeRelation" id="userRelativeMother">
+					  <label class="labelGender" for="userRelativeMother">Mother</label>
+					   <div data-ng-messages="userRegistrationForm.relativeRelation.$error" data-ng-show="userRegistrationForm.relativeRelation.$dirty" role="alert">
+						    <div data-ng-message="required">Please select Relation.</div>
+					  	</div>
+					 </div>
+				  </div>
+				  <div class="form-group" data-ng-show="showBrotherSister">
+					<label for="userGender" class="col-sm-3 control-label">Relation</label>
+					<div class="col-sm-9 cusRadioType">
+					  <input type="radio" class="form-control" value="Brother" name="userRelativeRelation" data-ng-model="user.relativeRelation" id="userRelativeBrother">
+					  <label class="labelGender" for="userRelativeBrother">Brother</label>
+					  <input type="radio" class="form-control" value="Sister" name="userRelativeRelation" data-ng-model="user.relativeRelation" id="userRelativeSister">
+					  <label class="labelGender" for="userRelativeSister">Sister</label>
+					   <div data-ng-messages="userRegistrationForm.relativeRelation.$error" data-ng-show="userRegistrationForm.relativeRelation.$dirty" role="alert">
+						    <div data-ng-message="required">Please select Relation.</div>
+					  	</div>
+					 </div>
+				  </div>
+				  <div class="form-group">
+					<label for="userEmail" class="col-sm-3 control-label">Your Email ID</label>
+					<div class="col-sm-9">
+					  <input type="email" onCopy="return false" data-ng-change="checkIfUserExists=false;" onDrag="return false" onDrop="return false" onPaste="return false" class="form-control" name="userEmail" data-ng-model="user.email" id="userEmail" placeholder="email@gmail.com" required>
+					   <div data-ng-messages="userRegistrationForm.userEmail.$error" data-ng-show="userRegistrationForm.userEmail.$dirty" role="alert">
+						    <div data-ng-message="required">Please enter email.</div>
+						    <div data-ng-message="email">This field must be a valid email address.</div>
+					  	</div>
+					  	<div class="ng-active" data-ng-show="checkIfUserExists">Email Already Exists</div>
+					 </div>
+				  </div>
+				  <div class="form-group">
+					<label for="userConfirmEmail" class="col-sm-3 control-label confirmEmail">Confirm Your Email ID</label>
+					<div class="col-sm-9">
+					  <input type="email" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" class="form-control" name="userConfirmEmail" id="userConfirmEmail" required compare-to="user.email" data-ng-model="user.confirmEmail" placeholder="email@gmail.com">
+						 <div data-ng-messages="userRegistrationForm.userConfirmEmail.$error" data-ng-show="userRegistrationForm.userConfirmEmail.$dirty" role="alert">
+						    <div data-ng-message="required">Please enter email.</div>
+						    <div data-ng-message="email">This field must be a valid email address.</div>
+						    <div data-ng-message="compareTo">Your Email ID does not match, Please Retype</div>
+					  	</div>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="userPhone" class="col-sm-3 control-label">Phone Number</label>
+					<div class="col-sm-9">
+					<!-- angular validation for user password
+					  <input type="text" data-ng-minlength="8" data-ng-maxlength="20" data-ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" class="form-control" id="userPhone" placeholder="+91-123456789"> -->
+					  <input type="text" class="form-control" name="userPhone" data-ng-minlength="10" required data-ng-maxlength="10" data-ng-model="user.phone" id="userPhone">
+						 <div data-ng-messages="userRegistrationForm.userPhone.$error" data-ng-show="userRegistrationForm.userPhone.$dirty" role="alert">
+						    <div data-ng-message="required">Please enter phone.</div>
+						    <div data-ng-message="minlength">phone number should be minimum 10 digits.</div>
+						    <div data-ng-message="maxlength">phone number should be maximum 10 digits.</div>
+					  	</div>
+					</div>
+				  </div>							  
+				  <div class="form-group">
+					<div class="col-sm-offset-3 col-sm-9">
+					  <button type="submit" data-ng-disabled="userRegistrationForm.$invalid" class="btn-green">Next</button>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<div class="col-sm-12 participateBox">
+					  Participate in our  <a style="cursor:pointer;" onclick="$('#potentialSpouse').modal('show');">premium candidate matching service?</a> 
+					  <a uib-tooltip="FAQ" tooltip-placement="bottom" style="cursor:pointer;" onclick="$('#faqRelationManager').modal('show');console.log('model open');" class="faq"></a>
+					</div>
+				  </div>							  
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

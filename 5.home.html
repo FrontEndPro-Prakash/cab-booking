@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>eTMS-Buddy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+</head>
+<body>
+<!-- body part start -->
+<form>
+	<div class="main-section">
+		<div class="main-section-top">
+			<!-- <a href="#" class="toggle"><i class="fa fa-bars fa-bars-icon" aria-hidden="true"></i></a> -->
+			<span class="toggle"><a href="javascript:void(0);" class="sbarmenushow" style=""><i class="fa fa-bars fa-bars-icon" aria-hidden="true"></i></a></span>
+			<span class="center-text">Manage Roster</span>
+			<span class="sos-text"><a href="#" class="" data-toggle="modal" data-target="#exampleModal"><span class="sos-bg">SOS</span></a></span>
+		</div>
+		<div class="main-content-body">
+		<!-- calender -->
+		<div class="calender-box" id="demo">
+			<div class="form-group" style="background:#fff;">
+			<input type="text" id="datepicker" placeholder="DD/MM/YYYY" class="form-control">
+			</div>
+			<!-- <p id="demo"></p> -->
+			<i class="fa fa-calendar calender-icons" aria-hidden="true"></i>
+		</div>
+		<div class="chat-box">
+			<div class="date-box">
+				<span class="today">Today</span>
+				<span class="icons">
+				<a href="#" class=""  data-toggle="modal" data-target="#exampleModal-info"> <i class="fa fa-info info-icons" aria-hidden="true"></i> </a>
+				<a href="edit-schedule.html"> <i class="fa fa-pencil info-icons" aria-hidden="true"></i> </a>
+				<a href="8.trip-cancel.html"  data-toggle="modal" data-target="#exampleModal-delete"> <i class="fa fa-trash trash-icons" aria-hidden="true"></i> </a>
+				</span>
+			</div>
+			<div class="login-logout-main">
+				<div class="login">
+					<span class="login-text">Login</span>
+					<span class="caricon-div float-right"><i class="fa fa-car fa-car-icon" aria-hidden="true"></i></span>
+					<p class="campus">09:00 AM, CAMPUS</p>
+				</div>
+				<div class="logout">
+					<span class="login-text">Logout</span>
+					<span class="caricon-div float-right"><i class="fa fa-car fa-car-icon" aria-hidden="true"></i></span>
+					<p class="campus">07:00 PM, CAMPUS</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="chat-box">
+			<div class="date-box">
+				<span class="today">22nd June, 2018</span>
+				<span class="icons">
+				<a href="#" class=""  data-toggle="modal" data-target="#exampleModal-info"> <i class="fa fa-info info-icons" aria-hidden="true"></i> </a>
+				<a href="edit-schedule.html"> <i class="fa fa-pencil info-icons" aria-hidden="true"></i> </a>
+				<a href="8.trip-cancel.html"  data-toggle="modal" data-target="#exampleModal-delete"> <i class="fa fa-trash trash-icons" aria-hidden="true"></i> </a>
+				</span>
+			</div>
+			<div class="login-logout-main">
+				<div class="login">
+					<span class="login-text">Login</span>
+					<span class="caricon-div float-right"><i class="fa fa-car fa-car-icon" aria-hidden="true"></i></span>
+					<p class="campus">09:00 AM, CAMPUS</p>
+				</div>
+				<div class="logout">
+					<span class="login-text">Logout</span>
+					<p class="campus">07:00 PM, CAMPUS</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="chat-box">
+			<div class="date-box">
+				<span class="today">23nd June, 2018</span>
+				<span class="icons">
+				<a href="#" class=""  data-toggle="modal" data-target="#exampleModal-info"> <i class="fa fa-info info-icons" aria-hidden="true"></i> </a>
+				<a href="edit-schedule.html"> <i class="fa fa-pencil info-icons" aria-hidden="true"></i> </a>
+				<a href="8.trip-cancel.html"  data-toggle="modal" data-target="#exampleModal-delete"> <i class="fa fa-trash trash-icons" aria-hidden="true"></i> </a>
+				</span>
+			</div>
+			<div class="login-logout-main">
+				<div class="login">
+					<span class="login-text">Login</span>
+					<p class="campus">09:00 AM, CAMPUS</p>
+				</div>
+				<div class="logout">
+					<span class="login-text">Logout</span>
+					<p class="campus">07:00 PM, CAMPUS</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="chat-box">
+			<div class="date-box">
+				<span class="today">24nd June, 2018</span>
+				<span class="icons">
+				<a href="#" class=""  data-toggle="modal" data-target="#exampleModal-info"> <i class="fa fa-info info-icons" aria-hidden="true"></i> </a>
+				<a href="edit-schedule.html"> <i class="fa fa-pencil info-icons" aria-hidden="true"></i> </a>
+				<a href="8.trip-cancel.html"  data-toggle="modal" data-target="#exampleModal-delete"> <i class="fa fa-trash trash-icons" aria-hidden="true"></i> </a>
+				</span>
+			</div>
+			<div class="login-logout-main">
+				<div class="login">
+					<span class="login-text">Login</span>
+					<p class="campus">09:00 AM, CAMPUS</p>
+				</div>
+				<div class="logout">
+					<span class="login-text">Logout</span>
+					<p class="campus">07:00 PM, CAMPUS</p>
+				</div>
+			</div>
+		</div>
+		<div class="chat-box">
+			<div class="date-box">
+				<span class="today">24nd June, 2018</span>
+				<span class="icons">
+				<a href="#" class=""  data-toggle="modal" data-target="#exampleModal-info"> <i class="fa fa-info info-icons" aria-hidden="true"></i> </a>
+				<a href="edit-schedule.html"> <i class="fa fa-pencil info-icons" aria-hidden="true"></i> </a>
+				<a href="#"  data-toggle="modal" data-target="#exampleModal-delete"> <i class="fa fa-trash trash-icons" aria-hidden="true"></i> </a>
+				</span>
+			</div>
+			<div class="login-logout-main">
+				<div class="login">
+					<span class="login-text">Login</span>
+					<p class="campus">09:00 AM, CAMPUS</p>
+				</div>
+				<div class="logout">
+					<span class="login-text">Logout</span>
+					<p class="campus">07:00 PM, CAMPUS</p>
+				</div>
+			</div>
+		</div>
+		<a href="6.add-new-roster.html" class="get-top">
+			<!-- <i class="fa fa-plus plus-circle-icons" aria-hidden="true"></i> -->
+			<span class="plus-circle-icons"><img src="images/add.png" class="" style=""></span>
+		</a>
+		</div>
+	</div>
+	</form>
+	<!-- sidebar -->
+	<div class="sidebar-main">
+		<div class="sidebar-inner">
+			<div class="sidebar-yellow-bg">
+				<span class="cross-sidebar sbar-close"><img src="images/cross.png" class="male-img"></span>
+				<h4 class="font-weight-bold">Anurag Singh</h4>
+				<ul class="male-infosis">
+				<li> <a href="#"><img src="images/male.png" class="male-img">Male</a> </li>
+				<li> <a href="#"><img src="images/infoces.png" class="male-img">Infosys</a> </li>
+				</ul>
+			</div>
+			<div class="sidebar-navigation-bg">
+				<ul class="main-menu">
+				<li> <a href="5.home.html"><img src="images/manage-roster.png" class="menu-img">Manage Roster</a> </li>
+				<li> <a href="10.manage-adhoc.html"><img src="images/manage-adhoc.png" class="menu-img">Manage Adhoc</a> </li>
+				<li> <a href="12.adhoc-approval.html"><img src="images/adodhe-approvel.png" class="menu-img">Adhoc Approval</a> </li>
+				<li> <a href="16.cab-info.html"><img src="images/cab-info.png" class="menu-img">Cab Info</a> </li>
+				<li> <a href="19.geo-code.html"><img src="images/geo-code.png" class="menu-img">Geo Coding</a> </li>
+				<li> <a href="20.cabdelay-validations.html"><img src="images/cab-.png" class="menu-img">Cab Delay Validation</a> </li>
+				<li> <a href="17.where-is-cab.html"><img src="images/where-is-my-cab.png" class="menu-img">Where is my Cab</a> </li>
+				<li> <a href="22.employee-feedback.html"><img src="images/employe-feedback.png" class="menu-img">Employee Feedback</a> </li>
+				<li> <a href="27.about.html"><img src="images/about.png" class="menu-img">About</a> </li>
+				<li> <a href="#" data-toggle="modal" data-target="#exampleModa-help"><img src="images/help-desk.png" class="menu-img">Transport HelpDesk</a> </li>
+				</ul>
+				<a href="2.registration.html" class="logout-sidebar font-weight-bold">Logout</a>
+			</div>
+		</div>
+	</div>
+	<!-- sidebar end -->
+	
+		<!-- help desk Modal -->
+<div class="modal fade" id="exampleModa-help" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Help Desk</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">(800) 692- 7777</h3>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="tel:800 692- 7777" class="firstbtn">Call</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- help desk modal html -->
+
+<!-- delete Modal -->
+<div class="modal fade" id="exampleModal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h6 class="text-center">Are You Sure Want To Delete</h6>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="8.trip-cancel.html" class="firstbtn">OK</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- delete modal end -->
+	
+	<!-- SOS Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Help Desk</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-ques-ans">
+		<h3 class="text-center">(800) 692- 7777</h3>
+		</div>
+      </div>
+      <div class="modal-footer two-btn-modal">
+		<a href="javascript void();" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="tel:800 692- 7777" class="firstbtn">Call</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SOS modal html -->
+
+<!-- info Modal -->
+<div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-info" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel-info">Route Information</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+          <!-- <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+      </div>
+      <div class="modal-body">
+	  <ul class="nav nav-tabs pickup-drop" id="myTab" role="tablist" style="margin-bottom: 12px;">
+  <li class="nav-item pickbtn">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pickup</a>
+  </li>
+  <li class="nav-item pickbtn">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Drop</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+	<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		<div class="pickup-drop-main">
+		</div>
+        <div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Trip ID</h6>
+		<h6 class="">43343R343DA</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Date</h6>
+		<h6 class="">21-june-2018</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Time</h6>
+		<h6 class="">09:00 AM</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal" style="margin-bottom: 8px;">
+		<h6 class="font-weight-bold">Facility </h6>
+		<h6 class="">Campus</h6>
+		</div>
+	</div>
+	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+		<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		<div class="pickup-drop-main">
+		</div>
+        <div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Trip ID</h6>
+		<h6 class="">43343R</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Date</h6>
+		<h6 class="">22-june-2018</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal">
+		<h6 class="font-weight-bold">Shift Time</h6>
+		<h6 class="">08:00 AM</h6>
+		</div>
+		<div class="modal-ques-ans route-information-modal" style="margin-bottom: 8px;">
+		<h6 class="font-weight-bold">Facility </h6>
+		<h6 class="">Campus</h6>
+		</div>
+		</div>
+	</div>
+</div>
+      <div class="modal-footer two-btn-modal">
+		<!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button> -->
+        <!-- <button type="button" class="btn btn-primary">OK</button>  -->
+		<a href="javascript:void(0)" class="firstbtn" data-dismiss="modal">Cancel</a>
+		<a href="javascript:void(0)" class="firstbtn" data-dismiss="modal">OK</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- info modal html -->
+	
+	<!-- body part end -->
+<script type='text/javascript' src='js/jquery-3.3.1.min.js'></script>
+<script type='text/javascript' src='js/bootstrap.min.js'></script>
+<script type='text/javascript' src='js/popover.js'></script>
+
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type='text/javascript' src='js/custom.js'></script>
+
+</body>
+</html>

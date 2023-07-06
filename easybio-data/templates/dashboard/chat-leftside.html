@@ -1,0 +1,17 @@
+<style>
+ul.chat-userMsgList.active {
+    display: block !important;
+}
+</style>
+<ul mb-scrollbar class="chat-userList" ng-show="message.showLeftSide">
+	<li class="" my-enter="jQuery(this).click();"  ng-repeat="singleMessage in message.messages | orderBy: '-lastMessageDateTime' " ng-class="{active:message.isSet(singleMessage.id)}">
+		<a href="javascript:void(0);" my-enter="jQuery(this).click();" ng-click="message.setTab(singleMessage.id)">
+			<span class="chat-userList-time">{{singleMessage.lastMessageDateTime | date:'MMM d, y'}}</span>
+			<img class="chat-userList-pic"  ng-src="{{singleMessage.senderProfileImage}}" alt=""/>
+			<div class="chat-userList-field">
+				<span class="chat-userList-name">{{singleMessage.senderFirstName}} {{singleMessage.senderLastName}}</span>
+				<span class="chat-userList-place">{{singleMessage.senderCity}}, {{singleMessage.senderState}}</span>				
+			</div>
+		</a>
+	</li>
+</ul>

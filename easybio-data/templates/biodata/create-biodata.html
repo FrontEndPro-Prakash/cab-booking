@@ -1,0 +1,1376 @@
+<style>
+.required{ color: #7e2024;}
+input.ng-invalid.ng-dirty.ng-invalid-required {
+    box-shadow: 0 0 8px #c40000;
+}
+.error-message{
+	color:#c40000;position: absolute;top:0px;left:20px;font-size: 12px;
+}
+.Steps-box {
+}
+
+.Steps-box.ng-hide-add {
+  -webkit-animation:0.5s hide;
+  animation:0.5s hide;
+}
+
+@keyframes hide {
+  0% {
+    opacity:1;
+    transform: scale(1);
+  }
+  30% {
+  	opacity:0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:0;
+    transform: scale(0.5);
+  }
+}
+
+@-webkit-keyframes hide {
+  0% {
+    opacity:1;
+    transform: scale(1);
+  }
+  30% {
+  	opacity:0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:0;
+    transform: scale(0.5);
+  }
+}
+
+.Steps-box.ng-hide-remove {
+  -webkit-animation:0.3s show;
+  animation:0.3s show;
+}
+
+@keyframes show {
+  0% {
+    opacity:0;
+    transform: scale(0.5);
+  }
+  70% {
+  	opacity:0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:1;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity:0;
+    transform: scale(0.5);
+  }
+  70% {
+  	opacity:0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:1;
+    transform: scale(1);
+  }
+}
+</style>
+<!-- ==========!^MOBILE^!========== -->
+<div class="ShowMobile">
+	<div ng-includ='"templates/biodata/create-biodata-preview-mobile.html"'></div>
+</div>	
+<!-- ==========!^MOBILE^!========== -->
+<div class="container noShowMobile" ng-class="userprofile.profileTemplate">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">				
+				<!-- Create Biodata Process -->
+				<div class="create-biodata-procees">
+					<div class="biodata-progress-bar" ng-controller="ProgressCtrl">
+						<p>{{userprofile.completionProgress}}% completion required for matching service</p>
+						<uib-progressbar value="userprofile.completionProgress" type="success">	
+						</uib-progressbar>
+						<div class="progress-percent-block">
+							<b class="progress40per">40%</b>
+							<b class="progress50per">50%</b>
+							<b class="progress80per">80%</b>
+							<b class="progress90per">90%</b>
+							<b class="progress100per">100%</b>
+						</div>
+						<ul class="progress-lock-block">
+							<li class="lock-icon open first" uib-tooltip="Unlocked" tooltip-placement="bottom"></li>
+							<li class="lock-icon close second" uib-tooltip="Free Biodata & enroll in matching service" tooltip-placement="bottom"></li>
+							<li class="lock-icon close third" uib-tooltip="1 free match" tooltip-placement="bottom"></li>
+							<li class="lock-icon close fourth" uib-tooltip="2 free match" tooltip-placement="bottom"></li>
+							<li class="lock-icon close fifth" uib-tooltip="3 free match" tooltip-placement="bottom"></li>
+						</ul>
+					</div>
+					<div class="biodata-process-right">
+						
+						<!-- Change Template -->
+						<a class="biodata-setting" href="javascript:void(0);" uib-tooltip="Change Template" tooltip-placement="bottom" ng-click="openChooseTemplate()"></a>
+						<!-- /Change Template -->						
+						<!-- Preview Biodata -->
+						<a href="javascript:void(0);" class="biodata-preview-btn" uib-tooltip="Preview, Print or Download Your Biodata" tooltip-placement="bottom" ng-click="openuserProcessComplete()">preview Biodata</a>
+						<!-- /Preview Biodata -->						
+						<!--<div class="biodata-auto-saved">
+							<img src="images/loader.gif" alt="" /><br />
+							Auto Saved
+						</div>-->
+						<biodata-loading></biodata-loading>
+					</div>
+				</div>
+				<!-- /Create Biodata Process -->
+				
+				<!-- Create Biodata Covers -->
+				<div class="create-biodata-covers">
+					<!-- Learn Step 1 -->
+					<div class="Steps-box step-1" ng-show="createBiodataStepOne && showCreateBiodataSteps">
+						<img class="notiGifLeft" src="images/notification.gif" alt="" />
+						<span class="stepUpArrow Leftside"></span>
+						<h4>Step 01 <a href="javascript:void(0);" ng-click="createBiodataStepOne=false;"  class="step-close">X</a></h4>
+						<p>You can add or edit information in feild easily any time.</p>
+						<a href="javascript:void(0);" ng-click="createBiodataStepOne=false;createBiodataStepTwo=true;" class="step-next shadow">Next <i class="stepArrow">Arrow</i></a>
+					</div>
+					<!-- /Learn Step 1 -->
+					<!-- Learn Step 2 -->
+					<div class="Steps-box step-2" ng-show="createBiodataStepTwo">
+						<img class="notiGifRight" src="images/notification.gif" alt="" />
+						<span class="stepUpArrow Rightside"></span>
+						<h4>Step 02 <a href="javascript:void(0);" ng-click="createBiodataStepTwo=false;" class="step-close">X</a></h4>
+						<p>Now you can easily edit Religion symbols by clicking to this edit symbol button.</p>
+						<a href="javascript:void(0);" ng-click="createBiodataStepTwo=false;createBiodataStepThree=true;" class="step-next shadow">Next <i class="stepArrow">Arrow</i></a>
+					</div>
+					<!-- /Learn Step 2 -->
+					<!-- Learn Step 3 -->
+					<div class="Steps-box step-3" ng-show="createBiodataStepThree">
+						<img class="notiGifDown" src="images/notification.gif" alt="" />
+						<span class="stepDownArrow"></span>
+						<h4>Step 03 <a href="javascript:void(0);" ng-click="createBiodataStepThree=false;" class="step-close">X</a></h4>
+						<p>Start filling your biodata from Personal information , fill all required  fields if not you can't able to go for next tab.</p>
+						<a href="javascript:void(0);"  ng-click="createBiodataStepThree=false;createBiodataStepFour=true;" class="step-next">Next <i class="stepArrow">Arrow</i></a>
+					</div>
+					<!-- /Learn Step 3 -->
+					<!-- Learn Step 4 -->
+					<div class="Steps-box step-4" ng-show="createBiodataStepFour">
+						<img class="notiGifRight" src="images/notification.gif" alt="" />
+						<span class="stepUpArrow Rightside"></span>
+						<h4>Step 04 <a href="javascript:void(0);" ng-click="createBiodataStepFour=false;" class="step-close">X</a></h4>
+						<p>After filling Biodata you can preivew your biodata, how your biodata looks.</p>
+						<a href="javascript:void(0);"  ng-click="createBiodataStepFour=false;createBiodataStepFive=true;" class="step-next">Next <i class="stepArrow">Arrow</i></a>
+					</div>
+					<!-- /Learn Step 4 -->
+					<!-- Learn Step 5 -->
+					<div class="Steps-box step-5" ng-show="createBiodataStepFive">
+						<h4><center>Your biodata looks great so far!</center></h4>
+						<p>Complete the rest of the biodata.  When complete, click on the “Preview” button at the top.</p>
+						<a href="javascript:void(0);"  ng-click="createBiodataStepFive=false;" class="step-ok shadow">ok</a>
+					</div>
+					<!-- /Learn Step 5 -->	
+					<div class="covers-name">
+						<div class="covers-name-required">Required Field</div>
+						<div class="covers-fields cname noShowMobile">
+							<div ng-hide="cnameEnabled" event-focus="click" event-focus-id="userprofileCName" ng-click="cnameEnabled=!cnameEnabled">
+								<span ng-show="userprofile.CName">{{userprofile.CName}}</span><span ng-show="!userprofile.CName">Your Son's Name</span>
+							</div>
+							<input type="text" ng-show="cnameEnabled" id="userprofileCName" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-model="userprofile.CName" ng-blur="cnameEnabled=!cnameEnabled">
+						</div>
+						<div class="covers-fields cphone">
+							<div ng-hide="cphoneEnabled" event-focus="click" event-focus-id="userprofileCPhone" ng-click="cphoneEnabled=!cphoneEnabled">
+								<span ng-show="userprofile.CPhone">{{userprofile.CPhone}}</span>
+								<span ng-show="!userprofile.CPhone">Your Son's Phone</span>
+							</div>
+							<input type="text" ng-show="cphoneEnabled" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" id="userprofileCPhone" ng-model="userprofile.CPhone" ng-blur="cphoneEnabled=!cphoneEnabled">
+						</div>	
+						<div class="covers-fields cemail">
+							<div ng-hide="cemailEnabled" event-focus="click" event-focus-id="userprofileCEmail" ng-click="cemailEnabled=!cemailEnabled">
+								<span ng-show="userprofile.CEmail">{{userprofile.CEmail}}</span>
+								<span ng-show="!userprofile.CEmail">Your Son's Email</span>
+							</div>
+							<input type="text" ng-show="cemailEnabled" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" id="userprofileCEmail" ng-model="userprofile.CEmail" ng-blur="cemailEnabled=!cemailEnabled">
+						</div>	
+					</div>
+					<div class="covers-info-block">
+						<div class="covers-info-block-pic">
+							<img class="covers-info-block-picMobile" ng-src="{{PersonPic}}" alt="" />
+							<a href="javascript:void(0);" class="capture-icon" ng-click="openuploadUserPhoto()"><i class="capt-icon"></i></a>
+						</div>
+						<div class="covers-info-block-content">
+							<div class="covers-info-block-content-heading">
+								Contact Info For This Biodata
+							</div>
+							<div class="covers-info-block-content-field">
+								<i class="fa fa-user"></i>
+								<span ng-show="user.name">{{user.name}}</span> 
+								<!--<span ng-show="!userprofile.contactName"></span> -->
+
+								<span ng-show="userprofile.relativeRelation">({{userprofile.relativeRelation}})</span>
+								<span ng-show="!userprofile.relativeRelation">(Father)</span>
+							</div>
+							<div class="covers-info-block-content-field">
+								<i class="fa fa-envelope"></i> 
+								<span ng-show="user.email">{{user.email}}</span>
+								<span ng-show="!user.email">tanveer@gmail.com</span>
+							</div>
+							<div class="covers-info-block-content-field">	
+								<i class="fa fa-phone"></i>
+								<span ng-show="user.phone">{{user.phone}}</span>
+								<!--<span ng-show="!user.phone">+91-123456789</span>-->
+							</div>
+							<div class="covers-info-block-content-field">	
+								<i class="fa fa-map-marker"></i> 
+								<span ng-show="!user.billingCountry">Address</span>
+								<span ng-show="user.billingCountry">{{user.RelativeAddress}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="covers-symbol" data-ng-if="userprofile.religionSymbol" data-ng-repeat="singleReligionSymbol in religionSymbols | filter:{id:userprofile.religionSymbol}:true">
+						<img ng-src="images/symbols/{{singleReligionSymbol.name}}.svg" alt="" />
+						<span class="symbol-edit"><a class="symbol-edit-icon" href="javascript:void(0);" ng-click="openChooseTemplate()"><i class="symb-icon"></i></a><br /><!-- Edit Symbol --></span>
+						<div class="shadow-cover"></div>
+					</div>
+					<div class="covers-symbol" data-ng-if="!userprofile.religionSymbol">
+						<img ng-src="images/symbols/om.svg" alt="" />
+						<span class="symbol-edit"><a class="symbol-edit-icon" href="javascript:void(0);" ng-click="openChooseTemplate()"><i class="symb-icon"></i></a><br /></span>
+						<div class="shadow-cover"></div>
+					</div>	
+				</div>
+				<!-- /Create Biodata Covers -->				
+				
+				<!-- Create Biodata Tabs -->		
+				<div class="create-biodata-tabs" ng-controller="AccordionCtrl">
+				  <uib-accordion close-others="oneAtATime">
+					<uib-accordion-group is-open="true">
+					 <form name="$root.personalInformationForm" id="personalInformationForm" novalidate>
+
+					  <uib-accordion-heading>
+						Personal Information <span class="tabRequired">Required Field</span>
+						<i class="accord-sign"></i>
+					  </uib-accordion-heading>
+					  <div class="row biodata-tab-info">
+						  <div class="col-md-3 col-sm-6">
+							<div class="CBD-fields user-date-of-birth user-date-of-birth-desktop">
+								<div class="CBD-left">Born  <span class="required">*</span></div>
+								<div class="CBD-right CBD-hover">
+									<a href="javascript:void(0);" ng-click="showuserprofileDOB = !showuserprofileDOB" class="cbd-edit-icon"></a>
+									<a data-original-title="" 
+									   class="editable editable-click cbd-dob" 
+									   href="#" 
+									   id="userprofileDobEventDesktop" 
+									   data-type="combodate" 
+									   data-template="D MMM YYYY  HH:mm"
+									   data-format="YYYY-MM-DDTHH:mm" 
+									   data-viewformat="MMM D, YYYY HH:mm" 
+									   data-pk="1"
+									   name="userprofileDOBinput">
+									   <span class="cbd-dob" ng-show="userprofile.birthDatetime">{{userprofile.birthDatetime | date:'MMM dd, yyyy'}}</span><br ng-show="userprofile.birthDatetime"/>
+									   <span class="cbd-dotBorn" ng-show="userprofile.birthDatetime">{{userprofile.birthDatetime | date:'HH:mm'}}</span>
+									   <span class="cbd-dob" ng-show="!userprofile.birthDatetime">MMM dd, yyyy</span><br ng-show="!userprofile.birthDatetime"/>
+									   <span class="cbd-dotBorn" ng-show="!userprofile.birthDatetime">HH:MM AM</span>
+									</a>
+									<input id="userprofileDateofBirthDesktop" style="display:none;" name="userprofile.birthDatetime" ng-model="userprofile.birthDatetime" ng-required="true"/>
+									<input type="hidden" id="dobvalue" value="{{userprofile.birthDatetime | date:'yyyy-MM-dd'}}T{{userprofile.birthDatetime | date:'HH:mm'}}" />
+									<script>
+								        jQuery(function(){
+								        	setTimeout(function(){
+								            	jQuery('#userprofileDobEventDesktop').editable({
+								                    placement: 'right',
+								                    value: moment($('#dobvalue').val()).format('YYYY-MM-DD HH:mm'),
+								                });
+								            },500);
+								        });
+							        	jQuery('#userprofileDobEventDesktop').click(function(){
+							        		setTimeout(function(){
+							        				jQuery('.user-date-of-birth-desktop .editable-submit').on('click',function(){
+													  jQuery('#userprofileDateofBirthDesktop').val(jQuery('.user-date-of-birth-desktop .editable-input input').val()+'+05:30');
+														jQuery('#userprofileDateofBirthDesktop').trigger('change');  
+													});
+													
+							        		},400);
+							        	});
+								        /*jQuery('document').bind('change','#userprofileDobEvent',function(){
+								        	jQuery('#userprofileDateofBirth').trigger('change');
+								        });*/
+								    </script>
+								</div>
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">Complexion</div>
+								<div class="CBD-right CBD-hover">
+									<a href="javascript:void(0);" class="cbd-edit-icon" event-focus="click" event-focus-id="userprofileComplexion"  ng-click="showuserprofileComplexion = !showuserprofileComplexion"></a>
+									<span class="cbd-gotra"  event-focus="click" event-focus-id="userprofileComplexion"  ng-click="showuserprofileComplexion = !showuserprofileComplexion" ng-show="userprofile.complexion">{{userprofile.complexion}}</span>
+									<span class="cbd-gotra"  event-focus="click" event-focus-id="userprofileComplexion"  ng-click="showuserprofileComplexion = !showuserprofileComplexion" ng-show="!userprofile.complexion">ADD COMPLEXION</span>
+								</div>
+								<div class="CBD-PopUP" ng-show="showuserprofileComplexion">
+									<select 
+										ng-model="userprofile.complexion"                
+										ng-options="obj for obj in complexionArray"
+										class="form-control" 
+										ng-change="showuserprofileComplexion = false"
+										id="userprofileComplexion"
+										ng-blur="showuserprofileComplexion = false"
+										esc-key="showuserprofileComplexion = false"
+										my-enter="showuserprofileComplexion = false">
+									    <option value="">Complexion</option>
+									</select>
+								</div>
+							</div>
+						  </div> 
+						  <div class="col-md-3 col-sm-6">
+							<div class="CBD-fields">
+								<div class="CBD-left">Birth Place <span class="required">*</span></div>
+								<div class="CBD-right CBD-hover"  ng-click="showBirthLocation = ! showBirthLocation;showCurrentLocation = false;">
+									<a href="javascript:void(0);" class="cbd-edit-icon"></a>
+									<span class="cbd-city" ng-show="userprofile.city.name">{{userprofile.city.name}}</span>
+									<span class="cbd-city" ng-show="!userprofile.city.name">City</span>
+
+									<span class="cbd-state" ng-show="userprofile.state.name">{{userprofile.state.name}}</span>
+									<span class="cbd-state" ng-show="!userprofile.state.name">State</span>
+
+									<span class="cbd-country" ng-show="userprofile.country.name">{{userprofile.country.name}}</span>
+									<span class="cbd-country" ng-show="!userprofile.country.name">Country</span>
+								</div>
+								<div class="CBD-PopUP" id="userprofileLocationPopup" ng-show="showBirthLocation" click-outside="showBirthLocation=false;">
+									<select 
+										ng-model="userprofile.country"          
+										ng-options="country as country.name for country in countryArray track by country.id"
+										class="form-control" 
+										id="userprofileCountry"  ng-required="true">
+										<option value="">Choose Country</option>
+									</select>								
+									<select ng-model="userprofile.state" 
+										ng-options="state as state.name for state in stateArray | filter:{countryId: userprofile.country.id?userprofile.country.id:0 } track by state.id"
+										class="form-control"
+										id="userprofileState"  ng-required="true"> 
+										<option value="">Choose State</option>
+									</select>      
+									<select 
+										ng-model="userprofile.city" 
+										ng-options="city as city.name for city in cityArray | filter:{stateId:userprofile.state.id?userprofile.state.id:0}  track by city.id"
+										class="form-control" 
+										id="userprofileCity"  ng-required="true">
+										<option value="">Choose City</option>
+									</select>
+									<a href="javascript:void(0);" ng-click="showBirthLocation = !showBirthLocation" class="CBD-PopUP-close">Close</a>
+									<button ng-click="showBirthLocation = ! showBirthLocation;" class="btn-pink" id="coordinate12">Submit</button>
+								</div>	
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">Current City</div>
+								<div class="CBD-right CBD-hover" ng-click="showCurrentLocation = ! showCurrentLocation;showBirthLocation = false" >
+									<a href="javascript:void(0);" class="cbd-edit-icon"></a>
+									<span class="cbd-city" ng-show="userprofile.currentCity.name">{{userprofile.currentCity.name}}</span>
+									<span class="cbd-city" ng-show="!userprofile.currentCity.name">City</span>
+
+									<span class="cbd-state" ng-show="userprofile.currentState.name">{{userprofile.currentState.name}}</span>
+									<span class="cbd-state" ng-show="!userprofile.currentState.name">State</span>
+
+									<span class="cbd-country" ng-show="userprofile.currentCountry.name">{{userprofile.currentCountry.name}}</span>
+									<span class="cbd-country" ng-show="!userprofile.currentCountry.name">Country</span>
+
+								</div>
+								<div class="CBD-PopUP" id="userprofileCurrentLocationPopup" ng-show="showCurrentLocation"  click-outside="showCurrentLocation=false;">	
+									<select 
+										ng-model="userprofile.currentCountry"                
+										ng-options="country as country.name for country in countryArray track by country.id"
+										class="form-control" 
+										id="country"  ng-required="true">
+										<option value="">Choose Country</option>
+									</select>      
+									<select 
+										ng-model="userprofile.currentState" 
+										ng-options="state as state.name for state in stateArray | filter:{countryId:userprofile.currentCountry.id?userprofile.currentCountry.id:0} track by satet.id"
+										class="form-control"
+										id="state" ng-required="true">
+										<option value="">Choose State</option>
+									</select>      
+									<select 
+										ng-model="userprofile.currentCity"
+										ng-options="city as city.name for city in cityArray | filter:{stateId:userprofile.currentState.id?userprofile.currentState.id:0} track by city.id"
+										class="form-control animate-hide" 
+										id="city"  ng-required="true">
+										<option value="">Choose City</option>
+									</select>
+									<a href="javascript:void(0);"  ng-click="showCurrentLocation = !showCurrentLocation" class="CBD-PopUP-close">Close</a>
+									<button ng-click="showCurrentLocation = !showCurrentLocation" class="btn-pink" id="coordinate12">Submit</button>
+								</div>	
+							</div>
+						  </div>
+						  <div class="col-md-3 col-sm-6">
+							<div class="CBD-fields">
+								<div class="CBD-left">gotra</div>
+								<div class="CBD-right CBD-hover" ng-click="showGotReligionCast = true;">
+									<a href="javascript:void(0);" class="cbd-edit-icon"></a>
+									<span class="cbd-religion"  ng-if="userprofile.religion" data-ng-repeat="singleReligion in religionArray | filter:{id: userprofile.religion}:true">{{singleReligion.name}}</span>
+									<span class="cbd-religion"  ng-if="!userprofile.religion">Your Religion</span>
+									<span class="cbd-gotra" ng-show="userprofile.gothra" event-focus="click" event-focus-id="userprofilegotra">{{userprofile.gothra}}</span>
+									<span class="cbd-gotra" ng-show="!userprofile.gothra" event-focus="click" event-focus-id="userprofilegotra">Your Gotra</span>
+									<span class="cbd-caste"  ng-if="userprofile.caste">{{userprofile.caste}}</span>
+									<span class="cbd-caste"  ng-if="!userprofile.caste">Caste</span>
+								</div>
+								<div class="CBD-PopUP" id="userprofileGotRelationCastPopup"  ng-show="showGotReligionCast" click-outside="showGotReligionCast=false;">
+									<select ng-model="userprofile.religion"                
+											ng-options="religion.id as religion.name for religion in religionArray"
+											class="form-control"
+											id="userprofilereligion" 
+											ng-required="true"	
+											esc-key="showReligion = false">
+									  <option  ng-selected="userprofile.religion==religion.id" value="">Your Religion</option>
+									</select>
+									<input id="userprofilegotra"
+									   placeholder="Your Gotra" 
+									   autocomplete="off"
+									   onmousedown="function(event) { event.preventDefault(); }" 
+									   type="text" 
+									   name="userprofile.gothra" 
+									   ng-model="userprofile.gothra"  
+									   uib-typeahead="gotra for gotra in gotraArray | filter: $viewValue | limitTo:8" class="form-control" 
+									   ng-required="true"/>
+									<input id="userprofilecast" 
+										   placeholder="Your Cast" 
+										   type="text" 
+										   autocomplete="off"
+										   name="userprofile.caste" 
+										   ng-model="userprofile.caste"  
+										   uib-typeahead="cast for cast in castArray | filter: $viewValue | limitTo:8" class="form-control" 
+										   ng-required="true"/>
+										   <a href="javascript:void(0);"  ng-click="showGotReligionCast = !showGotReligionCast" class="CBD-PopUP-close">Close</a>
+										<button ng-click="showGotReligionCast = !showGotReligionCast" class="btn-pink" id="coordinate12">Submit</button>
+								</div>
+						  </div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="CBD-fields">
+								<div class="CBD-left">Own car</div>
+								<div class="CBD-right">
+									<input type="checkbox" ng-model="userprofile.ownCar" ng-disabled="userprofile.ownCar=='Yes'" ng-true-value="'Yes'" ng-false-value="" id="carY" />
+									<label for="carY">YES</label>
+									<input type="checkbox" ng-model="userprofile.ownCar" ng-disabled="userprofile.ownCar=='No'" ng-true-value="'No'" ng-false-value="" id="carN" />
+									<label for="carN">NO</label>
+								</div>
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">Own House</div>
+								<div class="CBD-right">
+									<input type="checkbox" ng-model="userprofile.ownHouse" ng-disabled="userprofile.ownHouse=='Yes'" ng-true-value="'Yes'" ng-false-value="" id="houseYes" />
+									<label for="houseYes">YES</label>
+									<input type="checkbox"  ng-model="userprofile.ownHouse" ng-disabled="userprofile.ownHouse=='No'" ng-true-value="'No'" ng-false-value="" id="houseNo" />
+									<label for="houseNo">NO</label>
+								</div>
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">income</div>
+								<div ng-init="showuserprofileIncome=false;" class="CBD-right CBD-hover item-wrapper" event-focus="click" event-focus-id="userprofileincome" ng-click="showuserprofileIncome = !showuserprofileIncome">
+									<a href="javascript:void(0);" class="cbd-edit-icon"></a>
+									<span class="cbd-income">
+										<span ng-hide="showuserprofileIncome" event-focus="click" event-focus-id="userprofileincome" ng-click="showuserprofileIncome != showuserprofileIncome" ng-show="userprofile.annualIncome"><strong>&#8377;</strong> {{userprofile.annualIncome}}</span>
+										<span event-focus="click" event-focus-id="userprofileincome" ng-click="showuserprofileIncome != showuserprofileIncome" ng-show="!userprofile.annualIncome"> INR / ANNUM </span>
+									</span>
+								</div>
+								<div class="CBD-PopUP" ng-show="showuserprofileIncome">	
+									<select
+										ng-model="userprofile.annualIncome"                
+										ng-options="obj for obj in incomeArray"
+										class="form-control" 
+										ng-change="showuserprofileIncome = false"
+										ng-blur="showuserprofileIncome = false"
+										esc-key="showuserprofileIncome = false"
+										my-enter="showuserprofileIncome = false"
+										id="userprofileincome">
+										<option value="">No Income</option>
+									</select>
+								</div>
+							</div>
+						  </div>
+					  </div>
+					  <div class="create-biodata-tabs-heading">Other Personal Information</div>
+					  <div class="row biodata-tab-info">
+						  <div class="col-md-4 col-sm-6">
+							<div class="CBD-fields">
+								<div class="CBD-left">zodiac</div>
+								<div class="CBD-right CBD-hover" event-focus="click" event-focus-id="userprofileZodiac"  ng-click="showuserprofileZodiac =! showuserprofileZodiac">
+									<a href="javascript:void(0);" class="cbd-edit-icon" ></a>
+									<span class="cbd-zodiac" event-focus="click" event-focus-id="userprofileZodiac"  ng-click="showuserprofileZodiace = !showuserprofileZodiac" ng-if="userprofile.zodiac" data-ng-repeat="singleZodiac in zodiacArray | filter:{id:userprofile.zodiac}:true ">{{singleZodiac.name}}</span>
+									<span class="cbd-zodiac" event-focus="click" event-focus-id="userprofileZodiac"  ng-click="showuserprofileZodiace = !showuserprofileZodiac" ng-if="!userprofile.zodiac">Your Zodiac</span>
+								</div>
+								<div class="CBD-PopUP" ng-show="showuserprofileZodiac">
+									<select 
+										ng-model="userprofile.zodiac"                
+										ng-options="zodiac.id as zodiac.name for zodiac in zodiacArray"
+										class="form-control" 
+										ng-change="showuserprofileZodiac = false"
+										ng-blur="showuserprofileZodiac = false"
+										esc-key="showuserprofileZodiac = false"
+										my-enter="showuserprofileZodiac = false"
+										id="userprofileZodiac">
+										<option value="">Your Zodiac</option>
+									</select>
+								</div>
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">manglik</div>
+								<div class="CBD-right">
+									<input type="checkbox" ng-model="userprofile.isManglik" ng-disabled="userprofile.isManglik" ng-true-value="true" ng-false-value=""  checked="checked" id="manglikY" />
+									<label for="manglikY">YES</label>
+									<input type="checkbox" ng-model="userprofile.isManglik" ng-disabled="!userprofile.isManglik" ng-true-value="false" ng-false-value=""  id="manglikN" />
+									<label for="manglikN">NO</label>
+								</div>
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">moonsign</div>
+								<div class="CBD-right CBD-hover" event-focus="click" event-focus-id="userprofileMoonsign" 
+									 ng-click="showuserprofileMoonsign =! showuserprofileMoonsign">
+									<a href="javascript:void(0);" class="cbd-edit-icon"></a>									
+									<span class="cbd-moonsign"  ng-if="userprofile.moonSign">{{userprofile.moonSign}}</span>
+									<span class="cbd-moonsign" ng-if="!userprofile.moonSign">Your Moonsign</span>
+								</div>
+								<div class="CBD-PopUP" ng-show="showuserprofileMoonsign">
+									<!--<input id="userprofilemoonsign" placeholder="e.g " 
+									type="text" 
+									name="userprofile.moonSign" 
+									ng-model="userprofile.moonSign"  
+									autocomplete="off" 
+									uib-typeahead="moonsign for moonsign in moonsignArray | filter: $viewValue | limitTo:8" class="form-control"
+									esc-key="showuserprofileMoonsign = false"  
+									my-enter="showuserprofileMoonsign = false"/>-->
+									<select 
+										ng-model="userprofile.moonSign"                
+										ng-options="moonsign as moonsign for moonsign in moonsignArray"
+										class="form-control" 
+										ng-change="showuserprofileMoonsign = false"
+										ng-blur="showuserprofileMoonsign = false"
+										esc-key="showuserprofileMoonsign = false"
+										my-enter="showuserprofileMoonsign = false"
+										id="userprofileMoonsign">
+										<option value="">Your Moonsign</option>
+									</select>
+
+								</div>						
+							</div>
+							<div class="CBD-fields user-languages">
+								<!--<div class="CBD-left">Languages</div>-->
+								<div class="CBD-right">								
+									<ul>
+										<li ng-repeat="singlelanguage in userprofile.languages" class="{'fadeOut' : singlelanguage.done}">
+										  <span class="fa fa-close" ng-click="deleteLanguage($index)"></span>
+										  <span>{{singlelanguage.title}}</span>
+										</li>
+									</ul>
+									<div style="width:100%;float:left;" ng-show="showAddLanguage"> 
+										<input type="text" id="addlanguageinputdesktop" autocomplete="off"  name="userprofile.language" ng-model="userprofile.language"
+										uib-typeahead="language for language in languagesArray | filter:$viewValue | notInArray:addedLanguages | limitTo:8" class="form-control" my-enter="addLanguage();showAddLanguage = false"/>
+										<button class="btn-black" ng-disabled="languageForm.$invalid" ng-click="addLanguage();showAddLanguage = false"><i>+</i>Add</button></div>						
+										<a href="javascript:void(0);" ng-click="showAddLanguage = true;jQuery('#addlanguageinputdesktop').focus();" class="cbd-add-lang" event-focus="click" event-focus-id="addlanguageinputdesktop" ><i>+</i>Add Language</a>
+								</div>
+							</div>
+						  </div>
+						  <div class="col-md-4 col-sm-6">
+							<div class="CBD-fields">
+								<div class="CBD-left">height</div>
+								<div class="CBD-right CBD-hover">
+									<a href="javascript:void(0);" class="cbd-edit-icon"></a>
+									<span class="cbd-gotra" event-focus="click" event-focus-id="userprofileHeight"  ng-click="showuserprofileHeight = !showuserprofileHeight" ng-show="userprofile.height"><span  data-ng-repeat="singleHeight in heightsArray | filter:{cm: userprofile.height}:true">{{singleHeight.inch}} ({{singleHeight.cm}})</span></span>
+									<span class="cbd-gotra" event-focus="click" event-focus-id="userprofileHeight"  ng-click="showuserprofileHeight = !showuserprofileHeight" ng-show="!userprofile.height">0'0"</span><br>
+								</div>
+								<div class="CBD-PopUP" ng-show="showuserprofileHeight">
+									<select 
+										ng-model="userprofile.height"                
+										ng-options="height.cm as height.inch for height in heightsArray"
+										class="form-control"
+										ng-change="showuserprofileHeight = false"
+										id="userprofileHeight"
+										ng-blur="showuserprofileHeight = false"
+										esc-key="showuserprofileHeight = false"
+										my-enter="showuserprofileHeight = false">
+									    <option value="">Select Height</option>
+									</select>
+								</div>
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">interest</div>
+								<div class="CBD-right user-interest">
+									<ul>
+										<li ng-repeat="singleinterest in userprofile.interests" class="{'fadeOut' : singleinterest.done}">
+										  <span class="fa fa-close" ng-click="deleteInterest($index)"></span>
+										  <span>{{singleinterest.title}}</span>
+										</li>
+										</ul>
+									<div style="width:100%;float:left;" ng-show="showAddInterest">
+									<input id="addinterestinputdesktop" type="text" autocomplete="off" name="userprofile.interest" ng-model="userprofile.interest"
+									uib-typeahead="interest for interest in interestsArray | filter:$viewValue | notInArray: addedInterests | limitTo:8" class="form-control" my-enter="addInterest();showAddInterest = !showAddInterest"/>
+									<button class="btn-black" ng-disabled="interestForm.$invalid" ng-click="addInterest();showAddInterest = !showAddInterest;"><i>+</i>Add</button></div>
+									<span style="cursor:pointer;" ng-hide="showAddInterest" class="cbd-marital" event-focus="click" event-focus-id="addinterestinputdesktop" ng-click="showAddInterest = !showAddInterest;jQuery('#addinterestinputdesktop').focus();">ADD INTEREST</span>
+								</div>
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">Marital Status</div>
+								<div class="CBD-right CBD-hover">
+									<a href="javascript:void(0);" class="cbd-edit-icon" event-focus="click" event-focus-id="userprofileMaritalStatus"  ng-click="showMaritalStatus =! showMaritalStatus"></a>
+									<span class="cbd-marital" event-focus="click" event-focus-id="userprofileMaritalStatus"  ng-click="showMaritalStatus = !showMaritalStatus" ng-show="userprofile.maritalStatus">{{userprofile.maritalStatus}}</span>
+									<span class="cbd-marital" event-focus="click" event-focus-id="userprofileMaritalStatus"  ng-click="showMaritalStatus = !showMaritalStatus" ng-show="!userprofile.maritalStatus">SELECT</span>
+								</div>
+								<div class="CBD-PopUP" ng-show="showMaritalStatus">
+									<select
+										ng-model="userprofile.maritalStatus"                
+										ng-options="obj for obj in maritalStatusArray"
+										class="form-control animate-hide" 
+										ng-change="showMaritalStatus =false"
+										id="userprofileMaritalStatus"
+										ng-blur="showMaritalStatus = false"
+										esc-key="showMaritalStatus = false"
+										my-enter="showMaritalStatus = false">
+										<option value="">Select marital status</option>
+									</select>
+								</div>								
+							</div>
+						  </div>
+						  <div class="col-md-4 col-sm-12">
+							<div class="CBD-fields">
+								<div class="CBD-left">additional information</div>
+								<div class="CBD-right CBD-hover">
+									<a href="javascript:void(0);" class="cbd-edit-icon" event-focus="click" event-focus-id="userprofilebloodgroup"  ng-click="showAdditionalInfo =! showAdditionalInfo"></a>
+									<span class="cbd-add-info" ng-hide="userprofile.bloodType || userprofile.diet || userprofile.drink || userprofile.smoke" event-focus="click" event-focus-id="userprofilebloodgroup"  ng-click="showAdditionalInfo =! showAdditionalInfo">add information</span>
+									<ul class="cbd-add-info-after" event-focus="click" event-focus-id="userprofilebloodgroup" ng-click="showAdditionalInfo =! showAdditionalInfo" ng-show="userprofile.bloodType || userprofile.diet || userprofile.drink || userprofile.smoke">
+										<li>Blood Group - <span>{{userprofile.bloodType}}<span></li>
+										<li>Diet - <span>{{userprofile.diet}}<span></li>
+										<li>Drink - <span>{{userprofile.drink}}<span></li>
+										<li>Smoke - <span>{{userprofile.smoke}}<span></li>
+									</ul>										
+								</div>
+								<div class="CBD-PopUP" id="userprofileAdditionalInfoPopup"  ng-show="showAdditionalInfo" click-outside="showAdditionalInfo=false">
+									<div class="form-group">
+										<label>Blood Group</label>
+										<select	ng-model="userprofile.bloodType"
+												ng-options="bloodgroup as bloodgroup for bloodgroup in bloodgrouparray"
+												class="form-control animate-hide" 
+												id="userprofilebloodgroup">
+										  <option value="">Select Group</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Diet</label>
+										<select	ng-model="userprofile.diet"                
+												ng-options="diet as diet for diet in dietarray"
+												class="form-control animate-hide" 
+												id="userprofilediet">
+										  <option value="">Select Diet</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Drink</label>
+										<select	ng-model="userprofile.drink"                
+												ng-options="drink as drink for drink in drinkarray"
+												class="form-control animate-hide" 
+												id="userprofiledrink">
+										  <option value="">Select Drink</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Smoke</label>
+										<select	ng-model="userprofile.smoke"                
+												ng-options="smoke as smoke for smoke in smokearray"
+												class="form-control animate-hide" 
+												id="userprofilesmoke">
+										  <option value="">Select Smoke</option>
+										</select>
+									</div>
+									<a href="javascript:void(0);" my-enter="showAdditionalInfo = false" ng-click="showAdditionalInfo = false" class="CBD-PopUP-close">Close</a>
+									<button my-enter="showAdditionalInfo = false" ng-click="showAdditionalInfo = false" class="btn-pink" id="">Submit</button>
+									</form>											
+								</div>
+							</div>
+							<div class="CBD-fields">
+								<div class="CBD-left">personal statement</div>
+								<div class="CBD-right CBD-hover" ng-init="userprofilePersonalInformation=false;">
+									<a href="javascript:void(0);" event-focus="click" event-focus-id="userprofilepersonalinformationdesktop" ng-click="userprofilePersonalInformation = !userprofilePersonalInformation" class="cbd-edit-icon"></a>
+									<span class="cbd-per-info" event-focus="click" event-focus-id="userprofilepersonalinformationdesktop" ng-click="userprofilePersonalInformation = !userprofilePersonalInformation" ng-show="!userprofile.description && !userprofilePersonalInformation">add personal statement</span>
+									<span class="cbd-per-info-after" event-focus="click" event-focus-id="userprofilepersonalinformationdesktop" ng-click="userprofilePersonalInformation = !userprofilePersonalInformation" ng-show="userprofile.description && userprofilePersonalInformation==false">{{userprofile.description}}</span>
+                                    <span class="cbd-per-info-after">
+                                        <textarea my-enter="userprofilePersonalInformation = false" id="userprofilepersonalinformationdesktop" ng-blur="userprofilePersonalInformation = false" ng-show="userprofilePersonalInformation" ng-model="userprofile.description" 
+                                        class="personal-information" esc-key="userprofilePersonalInformation = false;">
+                                        </textarea>
+                                    </span>
+								</div>
+							</div>
+						  </div>
+					  </div>
+					  </form>
+					</uib-accordion-group>
+					<uib-accordion-group is-disabld="personalInformationForm.$invalid">
+					  <uib-accordion-heading>
+						Education / Work Experience 
+						<i class="accord-sign"></i>
+						<a href="#" class="CBD-linkedin">
+						<i class="fa fa-linkedin"></i>Fetch Data From LinkedIn</a>
+					  </uib-accordion-heading>
+					  <div class="row biodata-tab-info">
+						  <div class="col-md-6 col-sm-6">	
+							<div class="CBD-fields cus-position">
+								<div class="CBD-left">education</div>
+								<div class="CBD-right CBD-hover" ng-click="addNewEducationDetail();showWorkExperience=false;" ng-show="userprofile.EducationDetails == '' ">
+									<span class="cbd-school">School/University</span><br />
+									<span class="cbd-dot">Level</span><br />
+									<span class="cbd-dot">Graduation year</span><br />
+									<span class="cbd-dot">Degree</span>
+								</div>
+								<div class="CBD-right CBD-hover removeEdit" ng-if="userprofile.EducationDetails != '' " ng-repeat="singleEducationDetail in userprofile.EducationDetails">
+									<span class="cbd-remove-icon" confirmation-click-message="you really want to delete education detail?" confirmation-click="removeEducationDetail($index)">X</span>
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editEducationDetail($index);showWorkExperience=false;"></a>
+									<span class="cbd-school">{{singleEducationDetail.schoolUniversity}}</span><br />
+									<span class="cbd-dot">{{singleEducationDetail.level}}</span><br />
+									<span class="cbd-dot">{{singleEducationDetail.year}}</span><br />
+									<span class="cbd-dot">{{singleEducationDetail.typeOfDegree.name}}</span>
+                               	</div>
+								<form ng-submit="addEducationDetail()" class="CBD-PopUP" ng-show="showEducationDetail" tabindex="0">
+									<div class="form-group">
+										<label>School/Univercity</label>
+										<input ng-model="EducationDetailsTemp.schoolUniversity" 
+											   name="EducationDetailsTemp.schoolUniversity" 
+											   type="text" 
+											   placeholder="School/University" required/>
+									</div>
+									<div class="form-group">
+										<label>Level</label>
+										<select	ng-model="EducationDetailsTemp.level"
+												ng-options="level.id as level.name for level in educationLevels"
+												class="form-control"
+												id="country" required>
+												<option value="">Select Level</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Year</label>
+										<select	ng-model="EducationDetailsTemp.year"                
+												ng-options="obj as obj for obj in ['1989','1999','2000','2001','2002','2003','2004','2005','2006','2012','2013']"
+												class="form-control" 
+												id="country" required>
+												<option value="">Select year</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Degree</label>
+										<input id="EducationDetailsTemp.typeOfDegree" 
+											   placeholder="Degree" 
+											   autocomplete="off"
+											   type="text" 
+											   name="EducationDetailsTemp.typeOfDegree" 
+											   ng-model="EducationDetailsTemp.typeOfDegree"
+											   uib-typeahead="degree as degree.name for degree in degreeArray | filter:$viewValue | limitTo:8" class="form-control" required/>
+									</div>
+									<a href="javascript:void(0);" ng-click="closeEducationDetail();" class="CBD-PopUP-close">Close</a>
+									<button class="btn-pink" id="coordinate12" type="submit">Save</button>
+								</form>                               	
+                        	</div>
+							<div class="CBD-fields">
+								<a href="javascript:void(0);" ng-click="addNewEducationDetail();showWorkExperience=false;" class="cbd-add-lang"><i>+</i>Add Education</a>
+							</div>
+						  </div>
+						  <div class="col-md-6 col-sm-6">
+							<div class="CBD-fields cus-position">
+								<div class="CBD-left">work experience</div>
+								<div class="CBD-right CBD-hover removeEdit" ng-click="addNewWorkExperience();" ng-show="userprofile.WorkExperiences == '' ">
+									<span class="cbd-school">Company Name</span><br/>
+									<span class="cbd-dot">Title</span><br/>
+									<span class="cbd-dot">City</span><br/>
+									<span class="cbd-dot">Description</span>
+                               	</div>
+								<div class="CBD-right CBD-hover removeEdit" style="min-height:126px;" ng-repeat="singleWorkExperience in userprofile.WorkExperiences" ng-show="userprofile.WorkExperiences != '' ">
+									<span class="cbd-remove-icon" confirmation-click-message="you really want to delete work experience detail?" confirmation-click="removeWorkExperience($index);showEducationDetail=false;">X</span>
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editWorkExperience($index);"></a>
+									<span class="cbd-school">{{singleWorkExperience.companyName}}</span><br />
+									<span class="cbd-dot">{{singleWorkExperience.title}}</span><br />
+									<span class="cbd-dot">{{singleWorkExperience.city}}</span><br />
+									<span class="cbd-dot">{{singleWorkExperience.description}}</span>
+                               	</div>
+								<form class="CBD-PopUP" ng-submit="addWorkExperience();showWorkExperience=false;" name="userprofileWorkExperienceForm" ng-show="showWorkExperience">
+									<div class="form-group">
+										<label>Company</label>
+										<input ng-model="WorkExperienceTemp.companyName" 
+											   name="WorkExperienceTemp.companyName" 
+											   type="text" 
+											   placeholder="Company" required/>
+									</div>
+									<div class="form-group">
+										<label>Title</label>
+										<input ng-model="WorkExperienceTemp.title" 
+											   name="WorkExperienceTemp.title" 
+											   type="text" 
+											   placeholder="Title" required/>
+									</div>
+									<div class="form-group">
+										<label>City</label>
+										<select	ng-model="WorkExperienceTemp.city"                
+												ng-options="obj as obj for obj in ['Select City','Zira','Chandigarh','Amritsar','Jalandhar','Moga']"
+												class="form-control" 
+												id="workexperiencecity" required>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Description</label>
+										<textarea ng-model="WorkExperienceTemp.description" placeholder="Description" required></textarea>
+									</div>
+									<a href="javascript:void(0);" ng-click="closeWorkExperience();showWorkExperience=false;" class="CBD-PopUP-close">Close</a>
+									<button class="btn-pink" id="coordinate12" type="submit">Save</button>
+								</form>                               	
+                        	</div>
+							<div class="CBD-fields">
+								<a href="javascript:void(0);" ng-click="addNewWorkExperience();showWorkExperience=true;" class="cbd-add-lang"><i>+</i>Add Work Experience</a>
+							</div>
+						  </div>
+					  </div>
+					</uib-accordion-group>
+					<uib-accordion-group  is-disabled="disabledFamilyInformation">
+					  <uib-accordion-heading>Family Information<i class="accord-sign"></i>
+					  </uib-accordion-heading>
+					  <div class="row biodata-tab-info">
+					  	<div class="col-md-6 col-sm-6">
+							<div class="CBD-fields cus-position">
+								<div class="CBD-left">relationship to candidate</div>
+								<div class="CBD-right CBD-hover removeEdit" id="FamilyInfoTempDesktopDisplay" ng-click="addNewFamilyInfo();" ng-show="userprofile.FamilyInfoArray == '' ">
+									<span class="cbd-school">Add Your Relation</span><br />
+									<span class="cbd-dot">Full Name</span><br />
+									<span class="cbd-dot">Living In</span><br />
+								</div>
+								<div class="CBD-right CBD-hover removeEdit" ng-repeat="singleFamilyInfo in userprofile.FamilyInfoArray" ng-show="userprofile.FamilyInfoArray != '' ">
+									<span class="cbd-remove-icon" confirmation-click-message="you really want to delete family information?" confirmation-click="removeFamilyInfo($index)">X</span>
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editFamilyInfo($index);"></a>
+									<span class="cbd-school">{{singleFamilyInfo.relation}}</span><br />
+									<span class="cbd-dot">{{singleFamilyInfo.name}}</span><br />
+									<span class="cbd-dot">{{singleFamilyInfo.city.name}}</span><br />
+									<span class="cbd-dot">{{singleFamilyInfo.state.name}}</span><br/>
+									<span class="cbd-dot">{{singleFamilyInfo.country.name}}</span>
+                               	</div>
+								<form class="CBD-PopUP" ng-submit="addFamilyInfo()" id="userprofileFamilyInfoFormDesktop" name="userprofileFamilyInfoForm" ng-show="showFamilyInfo">
+									<div class="form-group" id="FamilyInfoTempDesktopRelation">
+										<label>Relation</label>
+										<select	ng-model="FamilyInfoTemp.relation"                
+												ng-options="relation.id as relation.name for relation in familyRelations"
+												class="form-control" 
+												id="FamilyInfoRelation" required>
+												<option value="">Choose Relation</option>
+										</select>
+									</div>
+									<div class="form-group" id="FamilyInfoTempDesktopName">
+										<label>Full Name</label>
+										<input ng-model="FamilyInfoTemp.name" 
+											   name="FamilyInfoTemp.title" 
+											   type="text" 
+											   placeholder="Full Name" required/>
+									</div>
+									<div class="form-group" id="FamilyInfoTempDesktopCity">
+										<label>City</label>
+										<input id="userprofile.City"  placeholder="e.g Amritsar" type="text" name="FamilyInfoTemp.city" 
+										ng-model="FamilyInfoTemp.city" autocomplete="off"  uib-typeahead="city as city.name for city in cityArray | filter: $viewValue| filter:{stateId:FamilyInfoTemp.state.id?FamilyInfoTemp.state.id:0 } | limitTo:8" 
+									class="form-control" required/>
+
+									</div>
+									<div class="form-group" id="FamilyInfoTempDesktopState">
+										<label>State</label>
+										<select 
+											ng-model="FamilyInfoTemp.state" 
+											ng-options="state as state.name for state in stateArray | filter:{countryId:FamilyInfoTemp.country.id?FamilyInfoTemp.country.id:0 } track by state.id"
+											class="form-control"
+											ng-change="getStateCities();"
+											id="FamilyInfoState" required>
+											<option value="">Choose State</option>
+										</select> 
+									</div>
+									<div class="form-group" id="FamilyInfoTempDesktopCountry">
+										<label>Country</label>
+										<select 
+											ng-model="FamilyInfoTemp.country"          
+											ng-options="country as country.name for country in countryArray track by country.id"
+											ng-change="getCountryStates();"
+											class="form-control" 
+											id="FamilyInfoCountry" required>
+											<option value="">Choose Country</option>
+										</select>		
+									</div>
+									<div class="clearfix"></div>
+									<a href="javascript:void(0);" ng-click="closeFamilyInfo();" class="CBD-PopUP-close">Close</a>
+									<button class="btn-pink" id="coordinate12" type="submit">Save</button>
+								</form>                               	
+                        	</div>
+							<div class="CBD-fields">
+								<a href="javascript:void(0);" ng-click="addNewFamilyInfo();" class="cbd-add-lang"><i>+</i>Add Member</a>
+							</div>
+						  </div>
+						  <div class="col-md-6 col-sm-6">
+							<div class="CBD-fields  cus-position">
+								<div class="CBD-left">work experience</div>
+								
+								<div class="CBD-right CBD-hover removeEdit" ng-show="userprofile.FamilyInfoArray == '' ">
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editFamilyInfoWorkExperience($index);"></a>			
+									<span class="cbd-add-work">add your work experience</span><br/>
+									<span class="cbd-dot">add your work description</span>
+                               	</div>
+
+								<div class="CBD-right CBD-hover removeEdit" style="min-height: 126px;" ng-repeat="singleFamilyInfo in userprofile.FamilyInfoArray" ng-show="userprofile.FamilyInfoArray != '' ">
+									<span class="cbd-remove-icon" confirmation-click-message="you really want to delete work information?" confirmation-click="removeFamilyInfo($index)">X</span>
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editFamilyInfoWorkExperience($index);"></a>									
+									<!-- just to display if work experience is blank -->
+									<span class="cbd-add-work" ng-if="!singleFamilyInfo.workType">add your work experience</span><br ng-if="!singleFamilyInfo.workType"/>
+									<span class="cbd-dot" ng-if="!singleFamilyInfo.workDesctiption">add your work description</span>
+									<!-- end of just to display if work experience is blank -->
+									<span class="cbd-add-work" ng-if="singleFamilyInfo.workType">{{singleFamilyInfo.workType}}</span><br />
+									<span class="cbd-dot" ng-if="singleFamilyInfo.workDesctiption">{{singleFamilyInfo.workDesctiption}}</span><br />
+                               	</div>
+
+								<form class="CBD-PopUP" ng-submit="addFamilyInfoWorkExperience()" name="userprofileFamilyInfoWorkExperienceForm" ng-show="showFamilyInfoWorkExperience">
+									<div class="form-group">
+										<label>Select Work</label>
+										<select	ng-model="FamilyInfoTemp.workType"                
+												ng-options="obj as obj for obj in ['Govt Employ','Business','Private job','Shopkeeper']"
+												class="form-control" 
+												id="FamilyInfoWork" required>
+												<option value="">Select Work</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Description</label>
+										<textarea ng-model="FamilyInfoTemp.workDesctiption" 
+											   name="FamilyInfoTemp.title" 
+											   type="text" 
+											   placeholder="Description" required/>
+									</div>
+									<a href="javascript:void(0);" ng-click="closeFamilyInfoWorkExperience();" class="CBD-PopUP-close">Close</a>
+									<button class="btn-pink" id="coordinate12" type="submit">Save</button>
+								</form> 
+							</div>
+						  </div>
+					  </div>
+					</uib-accordion-group>
+					<div class="enable-disable-tab">
+						<span class="status" ng-if="userprofile.paternalPreview">Section Enabled</span>
+						<span class="status" ng-if="!userprofile.paternalPreview">Section Disabled</span>
+						<i class="fa fa-toggle-on active" ng-if="userprofile.paternalPreview == true" ng-click="changePreviewStatus('paternal');"></i>
+						<i class="fa fa-toggle-on fa-rotate-180 inactive" ng-if="userprofile.paternalPreview == false" ng-click="changePreviewStatus('paternal');"></i>
+					</div>
+					<uib-accordion-group  is-disabled="flase">
+					  <uib-accordion-heading>
+						Paternal Side 
+						<i class="accord-sign"></i>
+					  </uib-accordion-heading>
+					  <div class="row biodata-tab-info">
+					  	<div class="col-md-6 col-sm-6">
+							<div class="CBD-fields cus-position">
+								<div class="CBD-left">relationship to candidate</div>
+								<div class="CBD-right CBD-hover removeEdit" ng-click="addNewPaternalFamily();" ng-show="userprofile.PaternalFamilyArray == '' ">
+									<span class="cbd-school">Add Your Relation</span><br />
+									<span class="cbd-dot">Full Name</span><br />
+									<span class="cbd-dot">Living In</span><br />
+								</div>
+								<div class="CBD-right CBD-hover removeEdit" ng-repeat="singlePaternalFamily in userprofile.PaternalFamilyArray" ng-show="userprofile.PaternalFamilyArray != ''">
+									<span class="cbd-remove-icon" confirmation-click-message="you really want to delete family detail?" confirmation-click="removePaternalFamily($index)">X</span>
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editPaternalFamily($index);"></a>
+									<span class="cbd-school">{{singlePaternalFamily.relation}}</span><br />
+									<span class="cbd-dot">{{singlePaternalFamily.name}}</span><br />
+									<span class="cbd-dot">{{singlePaternalFamily.city.name}}</span><br />
+									<span class="cbd-dot">{{singlePaternalFamily.state.name}}</span><br/>
+									<span class="cbd-dot">{{singlePaternalFamily.country.name}}</span>
+                               	</div>
+								<form class="CBD-PopUP" ng-submit="addPaternalFamily();" name="userprofilePaternalFamilyForm" ng-show="showPaternalFamily">
+									<!--<p class="error-message" ng-show="userprofilePaternalFamilyForm.$invalid && userprofilePaternalFamilyForm.$submitted">Please Enter Required Information</p>-->
+									<!--<p>{{userprofilePaternalFamilyForm.$submitted}}</p>-->
+									<div class="form-group">
+										<label>Relation</label>
+										<select	ng-model="PaternalFamilyTemp.relation"                
+												ng-options="obj as obj for obj in paternalRelationArray"
+												class="form-control" 
+												id="PaternalFamilyRelation" required>
+												<option value="">Select Relation</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Full Name</label>
+										<input ng-model="PaternalFamilyTemp.name" 
+											   name="PaternalFamilyTemp.title" 
+											   type="text" 
+											   placeholder="Full Name" required/>
+									</div>
+									<div class="form-group">
+										<label>City</label>
+										<input id="userprofile.City"  placeholder="e.g Amritsar" type="text" name="PaternalFamilyTemp.city" 
+										ng-model="PaternalFamilyTemp.city" autocomplete="off"  uib-typeahead="city.city for city in cityArray | filter: $viewValue | filter:{stateId:PaternalFamilyTemp.state.id?ParentalFamilyTemp.state.id:0} | limitTo:8" 
+										class="form-control" required/>
+									</div>
+									<div class="form-group">
+										<label>State</label>
+										<select 
+											ng-model="PaternalFamilyTemp.state" 
+											ng-options="state as state.name for state in stateArray | filter:{countryId:PaternalFamilyTemp.country.id?ParentalFamilyTemp.country.id:0} track by state.id"
+											class="form-control"
+											ng-change="getStateCities();"
+											id="PaternalFamilyState" required>
+											<option value="">Choose State</option>
+										</select> 
+									</div>
+									<div class="form-group">
+										<label>Country</label>
+										<!--<select	ng-model="PaternalFamilyTemp.relation"                
+												ng-options="obj as obj for obj in relationArray"
+												class="form-control" 
+												id="PaternalFamilyRelation">-->
+										<select 
+											ng-model="PaternalFamilyTemp.country"          
+											ng-options="country as country.name for country in countryArray track by country.id"
+											ng-change="getCountryStates();"
+											class="form-control" 
+											id="PaternalFamilyCountry" required>
+											<option value="">Choose Country</option>
+										</select>		
+									</div>
+									<div class="clearfix"></div>
+									<a href="javascript:void(0);" ng-click="closePaternalFamily();" class="CBD-PopUP-close">Close</a>
+									<button class="btn-pink" type="submit" id="coordinate12">Save</button>
+								</form>                               	
+                        	</div>
+							<div class="CBD-fields">
+								<a href="javascript:void(0);" ng-click="addNewPaternalFamily();" class="cbd-add-lang"><i>+</i>Add Member</a>
+							</div>
+						  </div>
+						  <div class="col-md-6 col-sm-6">
+							<div class="CBD-fields  cus-position">
+								<div class="CBD-left">work experience</div>
+								<div class="CBD-right CBD-hover removeEdit" ng-show="userprofile.PaternalFamilyArray == '' ">
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editPaternalFamilyInfoWorkExperience($index);"></a>			
+									<span class="cbd-add-work" >add your work experience</span><br/>
+									<span class="cbd-dot" >add your work description</span>
+                               	</div>
+								<div class="CBD-right CBD-hover removeEdit" style="min-height: 126px;" ng-repeat="singlePaternalFamily in userprofile.PaternalFamilyArray">
+									<span class="cbd-remove-icon" confirmation-click-message="you really want to delete work experience detail?" confirmation-click="removePaternalFamily($index)">X</span>
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editPaternalFamilyWorkExperience($index);"></a>
+									<!-- just to display if work experience is blank -->
+									<span class="cbd-add-work" ng-if="!singlePaternalFamily.workType">add your work experience</span><br ng-if="!singlePaternalFamily.workType"/>
+									<span class="cbd-dot" ng-if="!singlePaternalFamily.workDesctiption">add your work description</span>
+									<!-- end of just to display if work experience is blank -->
+									<span class="cbd-add-work" ng-if="singlePaternalFamily.workType">{{singlePaternalFamily.workType}}</span><br />
+									<span class="cbd-dot" ng-if="singlePaternalFamily.workDesctiption">{{singlePaternalFamily.workDesctiption}}</span><br />
+                               	</div>
+								<form class="CBD-PopUP" ng-submit="addPaternalFamilyWorkExperience()" name="userprofilePaternalFamilyWorkExperienceForm" ng-show="showPaternalFamilyWorkExperience">
+									<div class="form-group">
+										<label>Select Work</label>
+										<select	ng-model="PaternalFamilyTemp.workType"                
+												ng-options="obj as obj for obj in ['Govt Employ','Business','Private job','Shopkeeper']"
+												class="form-control" 
+												id="PaternalFamilyWork" required>
+												<option value="">Select work</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Description</label>
+										<textarea ng-model="PaternalFamilyTemp.workDesctiption" 
+											   name="PaternalFamilyTemp.title" 
+											   type="text" 
+											   placeholder="Description" required/>
+									</div>
+									<div class="clearfix"></div>
+									<a href="javascript:void(0);" ng-click="closePaternalFamilyWorkExperience();" class="CBD-PopUP-close">Close</a>
+									<button class="btn-pink" id="coordinate12" type="submit">Save</button>
+								</form> 
+							</div>
+						  </div>
+					  </div>
+					</uib-accordion-group>
+					<div class="enable-disable-tab">
+						<span class="status" ng-if="userprofile.maternalPreview">Section Enabled</span>
+						<span class="status" ng-if="!userprofile.maternalPreview">Section Disabled</span>
+						<i class="fa fa-toggle-on active" ng-if="userprofile.maternalPreview == true" ng-click="changePreviewStatus('maternal');"></i>
+						<i class="fa fa-toggle-on fa-rotate-180 inactive" ng-if="userprofile.maternalPreview == false" ng-click="changePreviewStatus('maternal');"></i>
+					</div>
+					<uib-accordion-group  is-disabled="false">
+					  <uib-accordion-heading>
+						Maternal Side 
+						<i class="accord-sign"></i>
+					  </uib-accordion-heading>
+				  	<div class="row biodata-tab-info">
+					  	<div class="col-md-6 col-sm-6">
+							<div class="CBD-fields cus-position">
+								<div class="CBD-left">relationship to candidate</div>
+								<div class="CBD-right CBD-hover removeEdit" ng-click="addNewMaternalFamily();" ng-show="userprofile.MaternalFamilyArray == '' ">
+									<span class="cbd-school">Add Your Relation</span><br />
+									<span class="cbd-dot">Full Name</span><br />
+									<span class="cbd-dot">Living In</span><br />
+								</div>
+
+								<div class="CBD-right CBD-hover removeEdit" ng-repeat="singleMaternalFamily in userprofile.MaternalFamilyArray" ng-show="userprofile.MaternalFamilyArray != '' ">
+									<span class="cbd-remove-icon" confirmation-click-message="you really want to delete family detail?" confirmation-click="removeMaternalFamily($index)">X</span>
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editMaternalFamily($index);"></a>
+									<span class="cbd-school">{{singleMaternalFamily.relation}}</span><br />
+									<span class="cbd-dot">{{singleMaternalFamily.name}}</span><br />
+									<span class="cbd-dot">{{singleMaternalFamily.city.name}}</span><br />
+									<span class="cbd-dot">{{singleMaternalFamily.state.name}}</span><br/>
+									<span class="cbd-dot">{{singleMaternalFamily.country.name}}</span>
+                               	</div>
+
+								<form class="CBD-PopUP"  ng-submit="addMaternalFamily();" name="userprofileMaternalFamilyForm" ng-show="showMaternalFamily">
+									<div class="form-group">
+										<label>Relation</label>
+										<select	ng-model="MaternalFamilyTemp.relation"                
+												ng-options="obj as obj for obj in maternalRelationArray"
+												class="form-control" 
+												id="MaternalFamilyRelation">
+												<option value="">Select Relation</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Full Name</label>
+										<input ng-model="MaternalFamilyTemp.name" 
+											   name="MaternalFamilyTemp.title" 
+											   type="text" 
+											   placeholder="Full Name"/>
+									</div>
+									<div class="form-group">
+										<label>City</label>
+										<input id="userprofile.City"  placeholder="e.g Amritsar" type="text" name="MaternalFamilyTemp.city" 
+									ng-model="MaternalFamilyTemp.city" autocomplete="off" uib-typeahead="city.city for city in cityArray | filter: $viewValue | filter:{stateId:MaternalFamilyTemp.state.id?MaternalFamilyTemp.state.id:0} | limitTo:8" 
+									class="form-control"/>
+
+									</div>
+									<div class="form-group">
+										<label>State</label>
+										<select 
+											ng-model="MaternalFamilyTemp.state" 
+											ng-options="state as state.name for state in stateArray | filter:{countryId:MaternalFamilyTemp.country.id?MaternalFamilyTemp.country.id:0} track by state.id"
+											class="form-control"
+											ng-change="getStateCities();"
+											id="MaternalFamilyState">
+											<option value="">Choose State</option>
+										</select> 
+									</div>
+									<div class="form-group">
+										<label>Country</label>
+										<select 
+											ng-model="MaternalFamilyTemp.country"          
+											ng-options="country as country.name for country in countryArray track by country.id"
+											ng-change="getCountryStates();"
+											class="form-control" 
+											id="MaternalFamilyCountry">
+											<option value="">Choose Country</option>
+										</select>		
+									</div>
+									<div class="clearfix"></div>
+									<a href="javascript:void(0);" ng-click="closeMaternalFamily();" class="CBD-PopUP-close">Close</a>
+									<button class="btn-pink" id="coordinate12" type="submit">Save</button>
+								</form>                               	
+                        	</div>
+							<div class="CBD-fields">
+								<a href="javascript:void(0);" ng-click="addNewMaternalFamily();" class="cbd-add-lang"><i>+</i>Add Member</a>
+							</div>
+						  </div>
+						  <div class="col-md-6 col-sm-6">
+							<div class="CBD-fields  cus-position">
+								<div class="CBD-left">work experience</div>
+								<div class="CBD-right CBD-hover removeEdit" ng-show="userprofile.MaternalFamilyArray == '' ">
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editMaternalFamilyInfoWorkExperience($index);"></a>			
+									<span class="cbd-add-work" >add your work experience</span><br/>
+									<span class="cbd-dot" >add your work description</span>
+                               	</div>
+
+
+								<div class="CBD-right CBD-hover removeEdit" style="min-height: 126px;" ng-repeat="singleMaternalFamily in userprofile.MaternalFamilyArray">
+									<span class="cbd-remove-icon" confirmation-click-message="you really want to delete work experience detail?" confirmation-click="removeMaternalFamily($index)">X</span>
+									<a href="javascript:void(0);" class="cbd-edit-icon" 
+									ng-click="editMaternalFamilyWorkExperience($index);"></a>
+									<!-- just to display if work experience is blank -->
+									<span class="cbd-add-work" ng-if="!singleMaternalFamily.workType">add your work experience</span><br ng-if="!singleMaternalFamily.workType"/>
+									<span class="cbd-dot" ng-if="!singleMaternalFamily.workDesctiption">add your work description</span>
+									<!-- end of just to display if work experience is blank -->
+									<span class="cbd-add-work" ng-if="singleMaternalFamily.workType">{{singleMaternalFamily.workType}}</span><br />
+									<span class="cbd-dot" ng-if="singleMaternalFamily.workDesctiption">{{singleMaternalFamily.workDesctiption}}</span><br />
+                               	</div>
+
+								<form class="CBD-PopUP" name="userprofileMaternalFamilyWorkExperienceForm"  ng-submit="addMaternalFamilyWorkExperience()" ng-show="showMaternalFamilyWorkExperience">
+									<div class="form-group">
+										<label>Select Work</label>
+										<select	ng-model="MaternalFamilyTemp.workType"                
+												ng-options="obj as obj for obj in ['Govt Employ','Business','Private job','Shopkeeper']"
+												class="form-control" 
+												id="MaternalFamilyWork" required>
+												<option value="">Select Work</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Description</label>
+										<textarea ng-model="MaternalFamilyTemp.workDesctiption" 
+											   name="MaternalFamilyTemp.title" 
+											   type="text" 
+											   placeholder="Description" required/>
+									</div>
+									<div class="clearfix"></div>
+									<a href="javascript:void(0);" ng-click="closeMaternalFamilyWorkExperience();" class="CBD-PopUP-close">Close</a>
+									<button class="btn-pink" id="coordinate12" type="submit">Save</button>
+								</form> 
+							</div>
+						  </div>
+					  </div>
+					</uib-accordion-group>
+					<uib-accordion-group  is-disabled="false">
+					  <uib-accordion-heading>
+						Add Photos <i class="accord-sign"></i>
+					  </uib-accordion-heading>
+					  <div class="row biodata-tab-info">
+						  <div class="col-md-12">
+							<div class="CBD-photo-thumb" onclick="jQuery('#uploadUserPhotos').modal('show');">
+								<img style="cursor:pionter;" src="images/ProfilePic/profile-photo.jpg" />
+							</div>
+							<a href="javascript:void(0);" class="CBD-add-photo" onclick="jQuery('#uploadUserPhotos').modal('show');">
+								<i class="CBD-add-photo-icon">+</i>
+							</a>							
+						  </div>
+					  </div>
+					</uib-accordion-group>
+					<uib-accordion-group  is-disabled="false">
+					  <uib-accordion-heading>
+						Make Your Kundali <i class="accord-sign"></i>
+					  </uib-accordion-heading>
+					  <div class="row biodata-tab-info KundaliBox">
+						  <div ng-hide="showKundali" class="noneEdit">
+							  <div class="col-md-12"><h2 class="kundli-head">YOUR BIRTH DETAILS</h2></div>
+							  <div class="col-md-5 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Name</div>
+									<div class="CBD-right">
+										<span class="cbd-k-name" ng-show="userprofile.firstName">{{userprofile.firstName}} {{userprofile.lastName}}</span>
+										<span class="cbd-k-name" ng-show="!userprofile.firstName">Your Name</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Date of birth Time</div>
+									<div class="CBD-right">
+										<span class="cbd-k-dob" ng-show="userprofile.birthDatetime">{{userprofile.birthDatetime | date:'MMM dd, yyyy HH:mm a'}}</span>
+										<span class="cbd-k-dob" ng-show="!userprofile.birthDatetime">MMM dd, yyyy HH:mm</span>
+									</div>
+								</div>
+							  </div>
+							  <div class="col-md-2 hidden-sm"></div>
+							  <div class="col-md-5 col-sm-6">
+								<div class="CBD-fields">
+									<div class="CBD-left">Gender</div>
+									<div class="CBD-right">
+										<span class="cbd-k-sex" ng-show="userprofile.gender">{{userprofile.gender}}</span>
+										<span class="cbd-k-sex" ng-show="!userprofile.gender">Gender</span>
+									</div>
+								</div>
+								<div class="CBD-fields">
+									<div class="CBD-left">Birth Place</div>
+									<div class="CBD-right">
+										<span class="cbd-k-city">
+											<span ng-show="userprofile.city.name">{{userprofile.city.name}},</span> 
+											<span ng-show="!userprofile.city.name">City,</span> 
+											<span ng-show="userprofile.country.name">{{userprofile.country.name}}</span>
+											<span ng-show="!userprofile.country.name">Country</span>
+										</span>
+									</div>
+								</div>
+							  </div>
+							  <div class="col-md-12 center padd-none kundaliFooter">
+								<!-- Coordinate Kundali -->
+								<div class="coordinatePopoverMain" ng-controller="PopoverCtrl">
+									<a uib-popover-template="coordinatePopover.templateUrl" popover-placement="top" popover-trigger="outsideClick" href="javascript:void(0);" class="kundli-cord">Coordinate and advance settings</a>
+									<script type="text/ng-template" id="coordinatePopoverTemplate.html">
+										<div class="coordinatePopup">
+											<form name="form" role="form">
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.longituteDegree" id="coordinate1" placeholder="Longitute Degree">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.longituteMinute" id="coordinate2" placeholder="Longitute Minute">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.longituteEw" id="coordinate3" placeholder="Longitute Ew">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.latitudeDegree" id="coordinate4" placeholder="Latitude Degree">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.latitudeMinute" id="coordinate5" placeholder="Latitude Minute">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.latitudeNs" id="coordinate6" placeholder="Latitude NS">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.timezone" id="coordinate7" placeholder="Time Zone">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.dst" id="coordinate8" placeholder="DST">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.kpHoraryNo" id="coordinate9" placeholder="KP Horary No">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.ayanamsa" id="coordinate10" placeholder="Ayanamsa">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" ng-model="tempKundali.chartStyle" id="coordinate11" placeholder="Chart Style">
+												</div>
+												<div class="clearfix"></div>
+												
+												<a href="javascript:void(0);" onclick="$('.outside').click();" class="coordinate-close">Close</a>
+												<button class="btn-pink" ng-click="saveUserKundali();" id="coordinate12">Submit</button>
+												
+											</form>											
+										</div>
+									</script>
+								</div>
+								<!-- /Coordinate Kundali -->
+								<div class="center kundali-love">Made with <i class="kundali-heart"></i> on Easybiodata.com </div>
+								<a class="biodata-make-kundali-btn" href="javascript:void(0);" ng-click="showKundali=true">Make your kundali</a>
+							  </div>
+						  </div>
+						  <div class="col-md-12 center" ng-show="showKundali">
+							<div class="kundli-preview"><img src="images/kundli-img.png" /></div>
+							<div class="kundli-preview"><img src="images/kundli-img.png" /></div>
+							<a class="edit-kundali" href="javascript:void(0);" ng-click="showKundali=false">Close Kundali</a>
+						  </div>					  					  
+					  </div>
+					</uib-accordion-group>
+					
+				  </uib-accordion>
+				</div>
+				<!-- /Create Biodata Tabs -->
+				
+				<!-- Create Biodata Terms -->
+				<div class="create-biodata-terms-block">
+					<input type="checkbox" checked="checked" id="terms" />
+					<label for="terms"><a ui-sref="termsCondition">agree to all Terms & conditions.</a></label>
+				</div>
+				<div class="col-sm-12 participateBox kundaliParticipate">
+				  Participate in our  <a style="cursor:pointer;" onclick="$('#potentialSpouse').modal('show');">premium candidate matching service?</a> 
+				  <a uib-tooltip="FAQ" tooltip-placement="bottom" style="cursor:pointer;" onclick="$('#faqRelationManager').modal('show');console.log('model open');" class="faq"></a>
+				  <input type="checkbox" checked="checked" id="matching" />
+				  <label for="matching"></label>
+				</div>
+				<!-- /Create Biodata Terms -->
+
+			</section>
+			<!-- /Middle Section -->
+			<span class="outside"></span>
+		</div>
+	</div>
+</div>
+<!-- Modals with Directives -->
+<div user-process-complete-modal=""></div>
+<div preivew-user-biodata-modal=""></div>
+<div faq-relation-manager-modal=""></div>
+<div choose-template-modal=""></div>
+<div upload-user-photo-modal=""></div>
+<div upload-user-photos-modal=""></div>
+<div potential-spouse-modal=""></div>	
+<div preivew-user-pic-modal=""></div>				
+<!-- /Modals with Directives -->

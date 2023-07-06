@@ -1,0 +1,39 @@
+<style>
+.ng-invalid.ng-dirty.ng-invalid-number {
+    box-shadow: 0 0 8px #c40000;
+}
+</style>
+<script>
+$(document).ready(function () {
+  //called when key is pressed in textbox
+  $("#userPasswordResetOpt").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+               return false;
+    }
+   });
+});
+</script>
+<div class="modal fade" id="userOptPassword" tabindex='-1'>
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<a data-dismiss="modal" class="popup-close" href="javascript:void(0);"></a>
+			<div class="modal-body">
+				<div class="cus-msg-box opt-box">
+					<form name="saveUserOtp" ng-submit="" novalidate>
+						An OTP has been sent to your phone.<br/>Please check the phone ending: xxxxxx0840<br />
+						<div class="form-group">
+						    <input type="text" class="form-control" name="userPasswordResetOpt" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required id="userPasswordResetOpt" name="opt" placeholder="Enter OTP here" ng-model="opt.resetPassword" ng-required="true">
+							<div ng-messages="saveUserOtp.userPasswordResetOpt.$error" ng-show="saveUserOtp.userPasswordResetOpt.$dirty" role="alert">
+								<div ng-message="required">Please enter number.</div>
+							</div>
+						</div>
+						<button type="submit" ng-disabled="saveUserOtp.$invalid" class="opt-btn">verify</button>
+						<div class="resend-opt">Didn’t recieve OTP?<a href="javascript:void(0);">Resend OTP</a></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>		

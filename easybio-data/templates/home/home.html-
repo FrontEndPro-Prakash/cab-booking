@@ -1,0 +1,253 @@
+<style>
+.outer-wrap.wrap {
+  position: relative;
+  margin: 0 auto;
+  width:100%;
+  
+}
+.middle-wrap.wrap {
+  position: relative;
+  left: 0px;
+  width:200%;
+  -webkit-animation: play 12s ease infinite;
+  -moz-animation: play 12s ease infinite;
+  -ms-animation: play 12s ease infinite;
+  -o-animation: pplay 12s ease infinite;
+  animation: play 12s ease infinite;
+}
+.inner-wrap.wrap {
+    float: left;
+    width: 50% !important;
+    left:0;
+}
+@-webkit-keyframes play {
+    0%     { left: 0%; } 
+  30% { left: 0%; } 
+  34.13% { left: -100%; }     
+  36.51% { left: -100%; }
+  76.51% { left: -100%; } 
+  80.51% { left: 0%; } 
+  100%   { left: 0%; } 
+}
+}
+
+@-moz-keyframes play {
+  0%     { left: 0%; } 
+  30% { left: 0%; } 
+  34.13% { left: -100%; }     
+  36.51% { left: -100%; }
+  76.51% { left: -100%; } 
+  80.51% { left: 0%; } 
+  100%   { left: 0%; } 
+}
+}
+
+@-ms-keyframes play {
+  0%     { left: 0%; } 
+  30% { left: 0%; } 
+  34.13% { left: -100%; }     
+  36.51% { left: -100%; }
+  76.51% { left: -100%; } 
+  80.51% { left: 0%; } 
+  100%   { left: 0%; } 
+}
+}
+
+@-o-keyframes play {
+   0%     { left: 0%; } 
+  30% { left: 0%; } 
+  34.13% { left: -100%; }     
+  36.51% { left: -100%; }
+  76.51% { left: -100%; } 
+  80.51% { left: 0%; } 
+  100%   { left: 0%; } 
+}
+@keyframes play {
+  0%     { left: 0%; } 
+  30% { left: 0%; } 
+  34.13% { left: -100%; }     
+  36.51% { left: -100%; }
+  76.51% { left: -100%; } 
+  80.51% { left: 0%; } 
+  100%   { left: 0%; } 
+}
+</style>
+<script>
+	$(document).ready(function() {
+		if($( window ).width()<=767){
+			jQuery('.outer-wrap').addClass('wrap');
+			jQuery('.inner-wrap').addClass('wrap');
+			jQuery('.middle-wrap').addClass('wrap');
+			/*setTimeout(function(){setInterval(function(){
+					if(jQuery('.middle-wrap').css('left')=="0px"){
+						jQuery(".middle-wrap").animate({left: "-100%"});
+					} else {
+					    jQuery(".middle-wrap").animate({left: "0px"});
+					}             
+				},4000);
+			},100);*/
+		}
+	});
+</script>
+<script>
+$(document).ready(function(){
+	  $(".owl-carousel").owlCarousel(
+	  {
+		loop:true,
+		margin:0,
+		autoplay:true,
+		responsiveClass:true,
+		responsive:{
+			0:{
+				items:2,
+				nav:true
+			},
+			600:{
+				items:4,
+				nav:true
+			},
+			1000:{
+				items:6,
+				nav:true,
+			}
+		}	
+	   }
+	  );
+	  
+	});
+</script>
+<!-- Hero Header -->
+<div id="hero-header-two-col">
+	<div class="container outer-wrap">
+		<div class="row" style="overflow: hidden;">
+			<div class="middle-wrap">
+				<div class="col-sm-6 col-md-6 inner-wrap heor-headerLeft">
+					<h2>Create Beautiful Biodata</h2>
+					<p>Create, Download, Print your Biodata</p>
+					<img src="images/hero-slide-img2.png" alt="" />
+				</div>	
+				<div class="col-sm-6 col-md-6 inner-wrap heor-headerRight" style="display:block !important">
+					<h2>Personal Dedicated Marriage Counselor</h2>
+					<p>Hand-picked genuine Biodatas from your personal marriage counselor</p>	
+					<!-- <div class="price"><strong>&#8377;650</strong> per month</div>	-->
+					<img src="images/hero-slide-img3.png" alt="" /> 
+				</div>
+			</div>
+			<a ng-if="!authenticate" class="noShowMobile" ng-click="openRegistrationForm();">start creating Biodata</a>
+			<a ng-if="" class="loginMobile" ui-sref="createBiodataMobileForm">start creating Biodata</a>
+		</div>
+	</div>
+</div>
+<!-- /Hero Header -->
+
+<!-- Make Biodata Format -->
+<div id="make-biodata-fomat">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-5">
+				<h2>View Matrimonial Biodata Format Samples</h2>
+				<ul class="row user-short-list">
+					<a ui-sref="biodataSample">
+						<li class="col-md-6 col-sm-6 col-xs-6">
+							<img class="user-short-list-pic" src="images/user-pic-132x132-1.png" alt="" />
+							<h3 class="user-short-list-name">Amisha Patel</h3>
+						</li>
+					</a>
+					<a ui-sref="biodataSample">
+						<li class="col-md-6 col-sm-6 col-xs-6">
+							<img class="user-short-list-pic" src="images/user-pic-132x132-2.png" alt="" />
+							<h3 class="user-short-list-name">Rajeev Garg</h3>
+						</li>
+					</a>
+					<a ui-sref="biodataSample" class="noShowMobile">
+						<li class="col-md-6 col-sm-6 col-xs-6">
+							<img class="user-short-list-pic" src="images/user-pic-132x132-3.png" alt="" />
+							<h3 class="user-short-list-name">Rajeev Garg</h3>
+						</li>
+					</a>
+					<a ui-sref="biodataSample" class="noShowMobile">
+						<li class="col-md-6 col-sm-6 col-xs-6">
+							<img class="user-short-list-pic" src="images/user-pic-132x132-4.png" alt="" />
+							<h3 class="user-short-list-name">Amisha Patel</h3>
+						</li>
+					</a>
+				</ul>
+			</div>
+			<div class="col-md-8 col-sm-7">
+				<h2 id="make-biodata-video-head">See How to Make Biodata?</h2>
+				<div class="biodata-video">
+					<div class="biodata-video-inner">
+						<iframe id="the-iframe" class="hidee" width="420" src="https://www.youtube.com/embed/ZJXZP_UJVIQ" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+						 <span class="biodata-video-inner-content" id="cover" >
+							<a href="javascript:void(0);" id="cover"><img src="images/video-play-icon.svg" alt="" /></a>
+						</span>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Make Biodata Format -->
+
+<!-- Featured On -->
+<div id="featured-on">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Featured On</h2>
+				<ul id="owl-Related" class="featured-list owl-carousel">
+					<li><img src="images/featured/featured-img1.png" alt="" /></li>
+					<li><img src="images/featured/featured-img2.png" alt="" /></li>
+					<li><img src="images/featured/featured-img3.png" alt="" /></li>
+					<li><img src="images/featured/featured-img4.png" alt="" /></li>
+					<li><img src="images/featured/featured-img5.png" alt="" /></li>
+					<li><img src="images/featured/featured-img6.png" alt="" /></li>
+					<li><img src="images/featured/featured-img3.png" alt="" /></li>
+					<li><img src="images/featured/featured-img2.png" alt="" /></li>
+					<li><img src="images/featured/featured-img5.png" alt="" /></li>
+					<li><img src="images/featured/featured-img6.png" alt="" /></li>
+					<li><img src="images/featured/featured-img1.png" alt="" /></li>
+					<li><img src="images/featured/featured-img2.png" alt="" /></li>
+					<li><img src="images/featured/featured-img6.png" alt="" /></li>
+					<li><img src="images/featured/featured-img1.png" alt="" /></li>
+					<li><img src="images/featured/featured-img2.png" alt="" /></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Featured On -->
+
+<!-- Happy Story -->
+<div id="happy-story" ng-controller="successStoryController">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-12">
+				<div class="ShowMobile success-story-content">
+					<h2>Over 4 Million Happy Stories</h2>
+				</div>
+				<ul class="success-story">
+					<li ng-repeat="story in stories track by $index | limitTo:quantity">
+						<div class="success-story-pic">
+							<img ng-src="{{story.img}}" alt="" />
+							<div class="success-story-description">
+								<h3>{{story.name}}</h3>
+								<p data-ng-bind-html="story.description | words:15"></p>
+								<a ng-href="{{story.readMore}}" target="_blank">READ MORE</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<a class="ShowMobile moreViewBtn" href="http://think360.co/work/easybio-data/blog/" target="_blank">read all stories</a>
+			</div>
+			<div class="col-md-4 col-sm-12 success-story-content noShowMobile">
+				<h2>Over 4 Million Happy Stories</h2>
+				<p class="noShowMobile">The Lorem Ipsum "expertise on demand" way of delivering top-notch marketing and creative services gives you the flexibility and cost efficiencies of paying for the talent you need, when you need us.</p>
+				<p class="yellow noShowMobile">Your story is waiting to happen!</p>
+				<a class="noShowMobile" ng-if="!authenticate" ng-click="openRegistrationForm();">start creating Biodata</a>
+				<a class="noShowMobile" ng-if="authenticate" ui-sref="createBiodataMobileForm">start creating Biodata</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Happy Story -->

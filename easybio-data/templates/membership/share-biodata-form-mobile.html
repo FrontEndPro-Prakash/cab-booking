@@ -1,0 +1,61 @@
+<div class="container createBiodataMobile" ng-class="user.profileTemplate" ng-controller="BiodataController">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Middle Section -->
+			<section id="middle-section">
+			
+				<div class="mobileTabGroup">
+					<div class="mobileTabContent">
+						<div class="mobileTopHead"><a href="javascript:void(0);" class="ShowMobile backButton memberBackBtn" back-button>back</a><h4>Share Biodata with 5 people to get free access</h4></div>
+						
+						<div class="modal-Cuswindow left-border">
+							<form class="ShareBioform" name="shareBiodataForm" role="form" novalidate>
+							  <div class="form-group">
+								<input type="email" class="form-control" id="shareEmail1" name="shareUserEmail2" ng-model="shareBiodata.shareEmail[1]" placeholder="Enter Email Id" required matcher="shareBiodata">
+								<div ng-messages="shareBiodataForm.shareUserEmail2.$error"  ng-show="shareBiodataForm.shareUserEmail2.$dirty" role="alert">
+									<div ng-message="required">Please enter email.</div>
+									<div ng-message="email">Please enter valid email.</div>
+								</div>
+							  </div>
+							  <div class="form-group">
+								<input type="email" class="form-control" id="shareEmail2" name="shareUserEmail2" ng-model="shareBiodata.shareEmail[1]" placeholder="Enter Email Id" required matcher="shareBiodata">
+								<div ng-messages="shareBiodataForm.shareUserEmail2.$error"  ng-show="shareBiodataForm.shareUserEmail2.$dirty" role="alert">
+									<div ng-message="required">Please enter email.</div>
+									<div ng-message="email">Please enter valid email.</div>
+								</div>
+							  </div>
+							  <div class="form-group">
+								<input type="email" class="form-control" id="shareEmail3" name="shareUserEmail3" ng-model="shareBiodata.shareEmail[2]" placeholder="Enter Email Id" required matcher="shareBiodata">
+								<div ng-messages="shareBiodataForm.shareUserEmail3.$error" ng-show="shareBiodataForm.shareUserEmail3.$dirty" role="alert">
+									<div ng-message="required">Please enter email.</div>
+									<div ng-message="email">Please enter valid email.</div>
+								</div>
+							  </div>
+							  <div class="form-group">
+								<input type="email" class="form-control" id="shareEmail4" name="shareUserEmail4" ng-model="shareBiodata.shareEmail[3]" placeholder="Enter Email Id" required matcher="shareBiodata">
+								<div ng-messages="shareBiodataForm.shareUserEmail4.$error" ng-show="shareBiodataForm.shareUserEmail4.$dirty" role="alert">
+									<div ng-message="required">Please enter email.</div>
+									<div ng-message="email">Please enter valid email.</div>
+								</div>
+							  </div>
+							  <div class="form-group">
+								<input type="email" class="form-control" id="shareEmail5" name="shareUserEmail5" ng-model="shareBiodata.shareEmail[4]" placeholder="Enter Email Id" required matcher="shareBiodata">
+								<div ng-messages="shareBiodataForm.shareUserEmail5.$error" ng-show="shareBiodataForm.shareUserEmail5.$dirty" role="alert">
+									<div ng-message="required">Please enter email.</div>
+									<div ng-message="email">Please enter valid email.</div>
+								</div>
+							  </div>
+							  <div class="form-group">
+								<button class="btn-green" type="submit" id="shareBiodataButton" ng-disabled="shareBiodataForm.$invalid || shareEmailsInvalid">share Biodata</button>
+							  </div>
+							</form>  
+							
+						</div>
+						
+					</div>
+				</div>
+			
+			</section>
+		</div>
+	</div>
+</div>

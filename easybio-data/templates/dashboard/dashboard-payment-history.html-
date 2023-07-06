@@ -1,0 +1,28 @@
+<div class="payment-history">
+	<div class="row">
+		<h4>Payment History</h4>
+		<div class="table-box">
+			<table class="table table-responsive">
+				<tr>
+					<th width="6%">#</th>
+					<th width="40%">Date of Payment</th>
+					<th width="27%"><span class="pay-currency">&#8377;</span> Payment</th>
+					<th width="27%">Invoice No.</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>01/02/2016</td>
+					<td><span class="pay-currency">&#8377;</span> 620</td>
+					<td>EBD1010240</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>03/03/2016</td>
+					<td><span class="pay-currency">&#8377;</span> 620</td>
+					<td>EBD1015400</td>
+				</tr> 			
+			</table>
+		</div>
+		<div class="payment-history-btn noShowMobile"><a href="#/dashboard" class="btn-black">back to matches</a></div>
+	</div>	
+</div>

@@ -1,0 +1,64 @@
+<style>
+button[disabled="disabled"]{
+	opacity: 0.5;
+}
+</style>
+<div class="modal fade" id="userLoginModal" tabindex='-1'>
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <a data-dismiss="modal" class="popup-close" href="javascript:void(0);"></a>
+		<div class="modal-body">
+<div class="access-section">
+	<div class="access-header">Login</div>
+	<div class="access-content">
+		<form data-ng-submit="loginFunction();" id="userLoginForm" name="userLogin" role="form" novalidate>
+				<div role="alert" data-ng-show="loginErrorMessage" style="position: relative;bottom:0;" class="ng-active" style="">
+					<div class="ng-scope" style="">{{loginErrorMessage}}</div>
+				</div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-envelope"></i>
+					</span>
+					<input type="email" name="userEmail" id="userEmail" class="form-control" data-ng-model="usrlogin.usernameOrEmail" placeholder="Your Email" required/>
+					<div data-ng-messages="userLogin.userEmail.$error" data-ng-show="userLogin.userEmail.$dirty" role="alert">
+						<div data-ng-message="required">Please enter email.</div>
+						<div data-ng-message="email">Please enter valid email.</div>
+					</div>
+				</div>
+				<span data-ng-show="">Email is required</span>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-lock"></i>
+					</span>
+					<input type="password" name="userPassword" id="userPassword" class="form-control" data-ng-model="usrlogin.password" placeholder="Password" required/>
+					<div data-ng-messages="userLogin.userPassword.$error" data-ng-show="userLogin.userPassword.$dirty" role="alert">
+						<div data-ng-message="required">Please enter password.</div>
+					</div>
+				</div>
+				<span data-ng-show="">Password is required</span>
+			</div>
+			<div class="form-group formG-cus">
+			  <div class="checkbox">
+				<input type="checkbox" id="checkboxSuccess" value="option1">
+				<label for="checkboxSuccess">Remember me</label>
+			  </div>
+			  <a class="forgot-pass" style="cursor: pointer;" data-ng-click="showForgotPassword();">Forgot password?</a>
+			</div>
+			<div class="form-actions">
+				<button type="submit"  data-ng-disabled="userLogin.$invalid || isLoading"  class="">Login</button>
+				<img data-ng-if="vm.dataLoading" src="loader.gif" />
+			</div>
+		</form>		
+		<div class="access-footer">Don’t have account? <a data-ng-click="openRegistration();" style="text-decoration:underline;cursor:pointer;">Sign Up</a></div>
+	</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
